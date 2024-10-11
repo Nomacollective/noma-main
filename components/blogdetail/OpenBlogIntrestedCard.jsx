@@ -9,6 +9,7 @@ export const colorLookup = {
 
 const OpenBlogIntrestedCard = ({ item }) => {
   const BgColor = featuredBlogsBgs({ item });
+  console.log("item", item.category);
 
   return (
     <>

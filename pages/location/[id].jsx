@@ -75,7 +75,6 @@ export const CustomText = ({ text }) => {
 export const getServerSideProps = async ({ params }) => {
   let location;
   const idPattern = /^[a-zA-Z0-9]+$/;
-  console.log("test", idPattern.test(params.id));
   if (idPattern.test(params.id)) {
     location = await getLocationById({ locationId: params.id });
   } else {

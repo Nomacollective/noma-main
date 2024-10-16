@@ -305,8 +305,17 @@ export const getAllBlogs = async () => {
   return data?.data;
 };
 
+interface Sys {
+  id: string;
+}
+
+interface Item {
+  sys: Sys;
+  startDate: string;
+}
+
 const filterByMonth = (
-  { data }: { data: any },
+  { data }: { data: Item[] },
   { month, year }: { month: string; year: string }
 ) => {
   const dataArray = Array.isArray(data) ? data : [data];

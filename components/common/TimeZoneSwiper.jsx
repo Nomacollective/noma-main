@@ -31,6 +31,11 @@ const TimeZoneSwiper = ({ locations }) => {
       10
     )}`;
 
+    const link = `${l.city.replace(" ", "-")}-${formattedStartDate.substring(
+      0,
+      3
+    )}-${year}`;
+
     return {
       id: l?.sys?.id,
       firstbtn: l?.timeZone,
@@ -46,6 +51,7 @@ const TimeZoneSwiper = ({ locations }) => {
       ),
       img: [{ src: l?.heroImage?.url }],
       locationColor: l?.locationCardColor,
+      link: link,
     };
   });
 
@@ -53,7 +59,7 @@ const TimeZoneSwiper = ({ locations }) => {
     <>
       <div className="gap-5 gap-y-8 mb-[140px] sm:mt-8 xl:gap-[68px] grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-3   max-w-[1120px] w-full mx-auto px-4 xl:px-0">
         {locationsMapped.map((item, index) => (
-          <Link key={index} href={`/location/${item.id}`}>
+          <Link key={index} href={`/location/${item.link}`}>
             <FeaturedEditionCard item={item} value={index} key={index} />
           </Link>
         ))}

@@ -131,6 +131,19 @@ const GET_BLOG_BY_ID = (blogId: string) => `
   }
 }`;
 
+const GET_ID_BY_CITY = (city: string) => `
+{
+  contentTypeLocationCollection(where: {city: "${city}"}) {
+    items {
+      sys {
+        id
+      }
+      startDate
+    }
+  }
+}
+`;
+
 const GET_LOCATION_BY_ID = (locationId: string) => `
 {
     contentTypeLocation(id: "${locationId}") {
@@ -290,6 +303,49 @@ export const getFaqs = async () => {
 export const getAllBlogs = async () => {
   const data = await fetchGraphQL(GET_ALL_BLOGSS);
   return data?.data;
+};
+
+interface Sys {
+  id: string;
+}
+
+interface Item {
+  sys: Sys;
+  startDate: string;
+}
+
+const filterByMonth = (
+  { data }: { data: Item[] },
+  { month, year }: { month: string; year: string }
+) => {
+  const dataArray = Array.isArray(data) ? data : [data];
+
+  return dataArray.filter((item) => {
+    const itemDate = new Date(item.startDate);
+    const itemMonth = itemDate.toLocaleString("en-US", { month: "short" });
+    const itemYear = itemDate.getFullYear();
+    return itemMonth === month && itemYear === parseInt(year, 10);
+  });
+};
+
+export const getLocationByCity = async (
+  { city }: { city: string },
+  { month, year }: { month: string; year: string }
+) => {
+  const locationIdResponse = await fetchGraphQL(
+    GET_ID_BY_CITY(city.replace("-", " "))
+  );
+
+  const filteredId = filterByMonth(
+    { data: locationIdResponse.data.contentTypeLocationCollection.items },
+    { month, year }
+  )[0].sys.id;
+
+  const dataResponse = await fetchGraphQL(GET_LOCATION_BY_ID(filteredId));
+
+  const data = dataResponse.data;
+
+  return data;
 };
 
 export const getLocationById = async ({

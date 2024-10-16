@@ -11,7 +11,7 @@ import HighLights from "@/components/editions/HighLights";
 import ProfileMeet from "@/components/editions/ProfileMeet";
 import ProgressCircle from "@/components/editions/ProgressCircle";
 import WhatIncluded from "@/components/editions/WhatIncluded";
-import { getLocationById } from "@/lib/api";
+import { getLocationByCity, getLocationById } from "@/lib/api";
 import { parseISO, format } from "date-fns";
 import React from "react";
 
@@ -57,7 +57,10 @@ export const CustomText = ({ text }) => {
         // Check if the part is a comma or parenthesis
         if (part === "," || part === "(" || part === ")") {
           return (
-            <span key={index + 'custom-text'} className="font-serif font-extrabold">
+            <span
+              key={index + "custom-text"}
+              className="font-serif font-extrabold"
+            >
               {part}
             </span>
           );
@@ -68,8 +71,22 @@ export const CustomText = ({ text }) => {
     </span>
   );
 };
+
 export const getServerSideProps = async ({ params }) => {
-  const location = await getLocationById({ locationId: params.id });
+  let location;
+  const idPattern = /^[a-zA-Z0-9]+$/;
+  if (idPattern.test(params.id)) {
+    location = await getLocationById({ locationId: params.id });
+  } else {
+    const city = params.id.substring(0, params.id.length - 9);
+    const monthRegex = /-(\w{3})-\d{4}$/;
+    const month = params.id.match(monthRegex)[1];
+    const year = params.id.match(/-\d{4}$/);
+    location = await getLocationByCity(
+      { city: city },
+      { month: month, year: year[0].slice(1) }
+    );
+  }
   return {
     props: {
       location,
@@ -97,7 +114,10 @@ const Editions = ({ location }) => {
     whatsIncluded: location?.contentTypeLocation?.facilitiesCollection?.items,
     manager: location?.contentTypeLocation?.managerCollection?.items?.[0],
     highlights: location?.contentTypeLocation?.highlightsCollection?.items,
-    accomodation: location?.contentTypeLocation?.accomodationsCollection?.items.sort((a, b) => a?.price - b?.price),
+    accomodation:
+      location?.contentTypeLocation?.accomodationsCollection?.items.sort(
+        (a, b) => a?.price - b?.price
+      ),
     guestGallery:
       location?.contentTypeLocation?.guestgalleryCollection?.items || [],
     alumniReviews: location?.contentTypeLocation?.alumniReviewCollection?.items,

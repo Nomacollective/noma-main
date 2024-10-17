@@ -40,7 +40,7 @@ const PreferredPartners = ({ preferredPartners }) => {
   return (
     <Layout>
       <PageSEO title="Noma - Preferred Partners" />
-      <HeroImage bg='url("/img/contact-us-cover.png")' />
+      <HeroImage bg='url("/img/preferred-partners.jpg")' />
       <div className="mb-[400px] sm:mb-[150px]">
         <div className="my-4">
           <Heading heading="Daily Edition" />
@@ -48,7 +48,7 @@ const PreferredPartners = ({ preferredPartners }) => {
         <h4 className="font-Montserrat my-4 font-extrabold text-3xl text-center px-4 text-carbon-Black">
           Tips and Guides for Nomads
         </h4>
-        <div className="m-auto max-w-[1300px]">
+        <div className="m-auto max-w-[1100px]">
           {Object.entries(groupedPartners).map(
             ([category, partners], index) => {
               const [open, setOpen] = useState(true);

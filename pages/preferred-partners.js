@@ -22,6 +22,18 @@ export const getServerSideProps = async () => {
   };
 };
 
+const getCategoryLineColor = (category) => {
+  const category_color_map = {
+    "Useful Products": "#FCD9DF",
+    "Trusted Providers": "#D9E4FC",
+    "Accommodations": "#ECECFD",
+    "Technology": "#DFD4AD",
+    "Other": "#BBE4D7",
+  };
+  return category_color_map[category] || category_color_map["Other"]
+
+}
+
 const PreferredPartners = ({ preferredPartners }) => {
   const groupedPartners = groupBy(preferredPartners, "category");
 
@@ -36,18 +48,18 @@ const PreferredPartners = ({ preferredPartners }) => {
         <h4 className="font-Montserrat my-4 font-extrabold text-3xl text-center px-4 text-carbon-Black">
           Tips and Guides for Nomads
         </h4>
-        <div className="m-auto max-w-[1200px]">
+        <div className="m-auto max-w-[1300px]">
           {Object.entries(groupedPartners).map(
             ([category, partners], index) => {
               const [open, setOpen] = useState(true);
               return (
                 <div
                   key={index + "this is a faq"}
-                  className="flex flex-col mb-6"
+                  className="flex flex-col mb-6 "
                 >
                   <div
                     onClick={() => setOpen((prev) => !prev)}
-                    className="faq-btn-style"
+                    className={`faq-btn-style bg-[${getCategoryLineColor(category)}]`}
                   >
                     <h3 className="text-carbon-Black font-Montserrat text-sm sm:text-base font-bold">
                       {category}
@@ -64,7 +76,7 @@ const PreferredPartners = ({ preferredPartners }) => {
                     {Children.toArray(
                       partners.map((partner) => (
                         <div
-                          className={`flex px-5 sm:px-8 pb-4 pt-12  relative -mt-7  rounded-t-[57px] min-h-[400px] `}
+                          className={`flex px-5 sm:px-1 pb-4 pt-12  relative -mt-7  rounded-t-[57px] min-h-[400px] `}
                         >
                           <div className="sm:flex w-full gap-5">
                             <Image
@@ -103,7 +115,7 @@ const PreferredPartners = ({ preferredPartners }) => {
                                 )}
                               </div>
 
-                              <div className="flex justify-center lg:mt-10 pb-5">
+                              <div className="flex justify-center lg:mt-7 pb-5">
                                 <button
                                   className="p-2 w-[250px] h-[50px] flex items-center justify-center bg-main-orange rounded-[28px] text-white text-lg font-bold leading-normal hover:text-main-orange hover:bg-transparent transition duration-300 ease-in-out  border border-main-orange"
                                   onClick={() =>

@@ -11,7 +11,7 @@
     @apply !text-squantgrey text-base rounded-full focus:ring-blue-500 focus:border-blue-500 block px-4 p-2.5;
   }
   .faq-btn-style {
-    @apply flex justify-between gap-2 items-center cursor-pointer  bg-light-purple shadow-[0px_4px_4px_0px_rgba(0,0,0,0.10)] pl-5 sm:pl-8  rounded-[57px] z-10 relative;
+    @apply flex justify-between gap-2 items-center cursor-pointer shadow-[0px_4px_4px_0px_rgba(0,0,0,0.10)] pl-5 sm:pl-8  rounded-[57px] z-10 relative;
   }
   .faq-content-style {
     @apply text-carbon-Black font-Montserrat text-sm sm:text-base sm:max-w-[635px];

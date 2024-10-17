@@ -43,10 +43,10 @@ const PreferredPartners = ({ preferredPartners }) => {
       <HeroImage bg='url("/img/preferred-partners.jpg")' />
       <div className="mb-[400px] sm:mb-[150px]">
         <div className="my-4">
-          <Heading heading="Daily Edition" />
+          <Heading heading="Partners" />
         </div>
         <h4 className="font-Montserrat my-4 font-extrabold text-3xl text-center px-4 text-carbon-Black">
-          Tips and Guides for Nomads
+          Tips & Tricks for Nomads
         </h4>
         <div className="m-auto max-w-[1100px]">
           {Object.entries(groupedPartners).map(

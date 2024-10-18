@@ -11,7 +11,7 @@
     @apply !text-squantgrey text-base rounded-full focus:ring-blue-500 focus:border-blue-500 block px-4 p-2.5;
   }
   .faq-btn-style {
-    @apply flex justify-between gap-2 items-center cursor-pointer  bg-light-purple shadow-[0px_4px_4px_0px_rgba(0,0,0,0.10)] pl-5 sm:pl-8  rounded-[57px] z-10 relative;
+    @apply flex justify-between gap-2 items-center cursor-pointer shadow-[0px_4px_4px_0px_rgba(0,0,0,0.10)] pl-5 sm:pl-8  rounded-[57px] z-10 relative;
   }
   .faq-content-style {
     @apply text-carbon-Black font-Montserrat text-sm sm:text-base sm:max-w-[635px];
@@ -89,9 +89,9 @@ body {
   }
 }
 .custom-shadow {
-  border-radius: 0px 0px 36px 36px;
+  border-radius: 0px 36px 36px 0px;
   background: var(--Noma, #f4f1e6);
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 4px 4px 1px rgba(0, 0, 0, 0.1);
 }
 
 .terms-conditions {

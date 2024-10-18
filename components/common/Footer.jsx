@@ -47,7 +47,7 @@ const Footer = () => {
   };
   return (
     <div className="">
-      <div className='bg-cover bg-no-repeat bg-center mt-[-100px] bg-[url("/img/foterupperlayer.png")] h-[14vh] w-full' />
+      <div className='bg-cover bg-no-repeat bg-center mt-[-100px] bg-[url("/img/foterupperlayer.png")] h-[14vh] w-full ' />
       <div className="w-full bg-[#666] sm:h-[500px] -mt-1 md:h-[500px] px-4">
         <div className="bg-[#666666] h-[100px]"></div>
         <div className="py-4 sm:flex sm:flex-col sm:justify-center sm:items-center mt-4">

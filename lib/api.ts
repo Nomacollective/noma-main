@@ -258,6 +258,7 @@ const GET_ALL_PREFERRED_PARTNERS = `
       }
       link
       category
+      buttonText
     }
   }
 }`;

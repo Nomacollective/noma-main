@@ -36,7 +36,6 @@ const getCategoryLineColor = (category) => {
 
 const PreferredPartners = ({ preferredPartners }) => {
   const groupedPartners = groupBy(preferredPartners, "category");
-
   return (
     <Layout>
       <PageSEO title="Noma - Preferred Partners" />
@@ -122,7 +121,7 @@ const PreferredPartners = ({ preferredPartners }) => {
                                     window.open(partner?.link || "", "_blank")
                                   }
                                 >
-                                  GET YOUR DISCOUNT
+                                  {partner.buttonText}
                                 </button>
                               </div>
                             </div>

@@ -249,7 +249,7 @@ const TermsConditions = () => {
 
         <h2>Room Sharing Option:</h2>
         <p>
-          or guests selecting the room sharing option available on some of our Editions, 
+          For guests selecting the room sharing option available on some of our Editions, 
           you can coordinate with a friend to book separately, with each of you taking
           one bed in the shared room. If you don’t have a personally chosen roommate, 
           Noma Collective will assign a roommate at random from others who selected this 

@@ -247,6 +247,22 @@ const TermsConditions = () => {
           this as a cancellation and subject to the cancellation policy above.
         </p>
 
+        <h2>Room Sharing Option:</h2>
+        <p>
+          or guests selecting the room sharing option available on some of our Editions, 
+          you can coordinate with a friend to book separately, with each of you taking
+          one bed in the shared room. If you don’t have a personally chosen roommate, 
+          Noma Collective will assign a roommate at random from others who selected this 
+          same room option. Roommates are assigned randomly, and while we strive to pair 
+          guests based on sex (male with male, female with female), there is a possibility 
+          of co-ed room assignments.
+        </p>
+
+        <p>
+          If you have any questions or preferences, feel free to discuss them with
+          a Noma team member during your pre-trip call.
+        </p>
+
         <h2>Events Beyond Our Reasonable Control</h2>
         <p>
           We will not be held responsible for any delay or failure to comply

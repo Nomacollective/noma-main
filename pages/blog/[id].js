@@ -19,7 +19,7 @@ export const getServerSideProps = async ({ params }) => {
 
 const Blog = ({ blog, allBlogs }) => {
   const sortedBlogs = allBlogs.blogCollection.items.filter((item) => item.title !== blog.blog.title) // Removing an existing blog
-  const interestingBlogs = sortedBlogs.filter((item) => item.category === blog.blog.category)
+  const interestingBlogs = sortedBlogs.filter((item) => item.category === blog.blog.category).slice(0, 3);
   return (
     <Layout>
       <PageSEO title="Blogs" />

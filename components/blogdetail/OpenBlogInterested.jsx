@@ -2,7 +2,6 @@ import React from "react";
 import OpenBlogIntrestedCard from "./OpenBlogIntrestedCard";
 
 const OpenBlogInterested = ({ interestingBlogs }) => {
-  console.log("pachimu", interestingBlogs);
   return (
     <>
       <div className="bg-light-purple pb-[100px]">

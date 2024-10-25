@@ -9,7 +9,6 @@ export const colorLookup = {
 
 const OpenBlogIntrestedCard = ({ item }) => {
   const BgColor = featuredBlogsBgs({ item });
-
   return (
     <>
       <div className="w-[328px] cursor-pointer hover:scale-[1.02] transition duration-300 ease-in-out mx-auto">

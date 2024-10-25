@@ -853,33 +853,39 @@ export const faqList = [
 export const BasicFaqsMapData = [
   {
     bg: "bg-[#ECECFD]",
-    title: "Is Belize the only available destination?",
+    title: "Are there more destinations available?",
     description:
-      "No - we can offer other destinations for smaller group sizes of 8-10 people.",
+      "Absolutely! The world is at your fingertips. While our listed destinations are proven favorites among our digital nomad community, we’re eager to help you discover new ones. Whether you're dreaming of Portugal, New Zealand, or anywhere in between, our expert logistics team will work closely with you to find the perfect retreat spot tailored to your team’s vision.",
   },
   {
     bg: "bg-[#FCD9DF]",
-    title: "Do you book our flights?",
+    title: "How long should the retreat last?",
     description:
-      "No - we can offer other destinations for smaller group sizes of 8-10 people.",
+      "Whether you envision a long weekend or a month-long retreat, we can help shape the perfect timeline. We’ll collaborate with you based on location, your goals for the retreat, and your team’s time and budget constraints to create an unforgettable experience.",
   },
   {
     bg: "bg-[#BBE4D7]",
-    title: "How long should our retreat last?",
+    title: "How many people can I bring/ how many people can the community be?",
     description:
-      "No - we can offer other destinations for smaller group sizes of 8-10 people.",
+      "Community is the heart of everything we do. While the average group size is 10-25 people, we can adapt to smaller or larger groups depending on the location and your specific needs.",
   },
   {
     bg: "bg-[#D9E4FC]",
-    title: "How many people can you accommodate comfortably?",
+    title: "How far in advance do we need to plan?",
     description:
-      "No - we can offer other destinations for smaller group sizes of 8-10 people.",
+      "Ideally, planning starts 8+ months in advance to give your community ample time to prepare. However, our highly organized team can successfully pull together a retreat in as little as 6 months, ensuring a seamless experience.",
   },
   {
     bg: "bg-[#FCD9DF]",
-    title: "How far in advance do we need to book? ",
+    title: "How involved will I need to be / can I be in the process of planning? ",
     description:
-      "No - we can offer other destinations for smaller group sizes of 8-10 people. ",
+      "We’ll work closely with you to capture your retreat’s vision—whether it’s team building and bonding, cultural immersions, workshops, or something else. While our team handles the logistics, you’ll stay informed and involved in every step to ensure the experience perfectly aligns with your community's needs. This includes creating custom webpages for you to share with your team, detailing all of the exciting elements of the retreat, as well as a POS where securing their spot is as easy as a 'book now' button! ",
+  },
+  {
+    bg: "bg-[#BBE4D7]",
+    title: "Why should I work with Noma Collective?",
+    description:
+      "With years of experience under our belt creating culturally immersive, meaningful group experiences, Noma Collective is passionate about bringing your retreat vision to life- and we have the tools and experience to do it, seemlessly. Our dedicated team takes care of every detail from finding/securing the perfect location, to full on boarding communication so your team has all the details they need leading up to the retreat, to booking/planning your calendar of on-site events; ensuring a seamless and unforgettable experience for your community. We love connecting people and creating lasting memories, and want to share it with you! Let our team carry the heavy lift of logistics in bringing your team together for a refreshed company culture.",
   },
 ];
 

@@ -44,7 +44,7 @@ const TimeZoneSwiper = ({ locations }) => {
       description: l?.country,
       date: `${formattedStartDate} - ${endDayMonth} ${endYear}`,
       days: Math.abs(
-        differenceInDays(new Date(l.endDate), new Date(l.startDate))
+        differenceInDays(new Date(l.endDate), new Date(l.startDate) + [1])
       ),
       price: Math.min(
         ...l?.accomodationsCollection?.items?.map((i) => i?.price)

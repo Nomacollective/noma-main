@@ -38,18 +38,34 @@ const socialLinks = [
 ];
 
 const Footer = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const handleOpenModal = () => {
-    setIsModalOpen(true);
-  };
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
   return (
     <div className="">
       <div className='bg-cover bg-no-repeat bg-center mt-[-100px] bg-[url("/img/foterupperlayer.png")] h-[14vh] w-full ' />
       <div className="w-full bg-[#666] sm:h-[500px] -mt-1 md:h-[500px] px-4">
-        <div className="bg-[#666666] h-[100px]"></div>
+        <h1 className="text-center flex justify-center heading p-1 text-[#FFFFFF]">
+          Sing up for our mailer
+        </h1>
+        <div className="bg-[#666666] h-[250px]">
+          <iframe
+            src="https://link.jbenquet.com/widget/form/SO8up6ErSbXX2VnWL3BX"
+            className="w-full h-full border-none rounded-[36px]"
+            width="100%"
+            id="inline-SO8up6ErSbXX2VnWL3BX"
+            data-layout="{'id':'INLINE'}"
+            data-trigger-type="alwaysShow"
+            data-trigger-value=""
+            data-activation-type="alwaysActivated"
+            data-activation-value=""
+            data-deactivation-type="neverDeactivate"
+            data-deactivation-value=""
+            data-form-name="Footer"
+            data-height="400"
+            data-layout-iframe-id="inline-SO8up6ErSbXX2VnWL3BX"
+            data-form-id="SO8up6ErSbXX2VnWL3BX"
+            title="Footer"
+          ></iframe>
+          <script src="https://link.jbenquet.com/js/form_embed.js"></script>
+        </div>
         <div className="py-4 sm:flex sm:flex-col sm:justify-center sm:items-center mt-4">
           {/* <p className="text-white text-center font-sergio-trendy text-2xl sm:text-4xl leading-[120%] font-extrabold mb-4 sm:mb-0">
             Sign up for our mailer
@@ -96,7 +112,7 @@ const Footer = () => {
           <span className=" max-w-full block sm:hidden py-6">
             <FooterLine />
           </span>
-          <div className=" sm:pl-0 sm:flex sm:justify-around sm:w-full max-w-[1000px]">
+          <div className="sm:pl-0 sm:flex sm:justify-around sm:w-full max-w-[1000px]">
             <div className="column-uno text-white -mt-8 hidden sm:block">
               <Link href="/">
                 <img

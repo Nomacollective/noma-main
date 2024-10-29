@@ -202,7 +202,7 @@ const locations = ({ locations }) => {
       </div>
       <TimeZoneSwiper locations={filteredItems} />
       <div className="mb-36">
-        <CommonButton text="BOOK YOUR CALL" />
+        <CommonButton text="GET STARTED" />
       </div>
     </Layout>
   );

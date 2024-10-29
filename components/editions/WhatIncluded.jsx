@@ -20,7 +20,6 @@ const getStylesWhatsIncludedImage = (title) => {
 };
 
 const WhatIncluded = ({ d, items }) => {
-
   return (
     <>
       <div className="bg-[#FFDA7F]">
@@ -67,7 +66,7 @@ const WhatIncluded = ({ d, items }) => {
                   )
                 }
               >
-                BOOK YOUR CALL
+                GET STARTED
               </button>
             </div>
           </div>

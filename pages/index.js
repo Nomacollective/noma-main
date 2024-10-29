@@ -64,7 +64,7 @@ export default function Home({ locations, blogs }) {
       </div>
       {/* <VideoComponent video="/video/sample-video.mp4" /> */}
       <div className="sm:mt-8">
-        <CommonButton text="BOOK YOUR CALL" />
+        <CommonButton text="GET STARTED" />
       </div>
       <div className="max-sm:mt-[7px]">
         <Steps />

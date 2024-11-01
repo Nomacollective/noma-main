@@ -39,7 +39,7 @@ const Navbar = () => {
               )
             }
           >
-            BOOK YOUR CALL
+            GET STARTED
           </button>
         </div>
       </div>
@@ -129,7 +129,7 @@ const Navbar = () => {
                 )
               }
             >
-              BOOK YOUR CALL
+              GET STARTED
             </button>
           </div>
         </div>

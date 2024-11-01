@@ -53,7 +53,7 @@ const HowItWork = ({ faqs }) => {
       </h4>
 
       <div className="mb-24">
-        <CommonButton text="BOOK YOUR CALL" />
+        <CommonButton text="GET STARTED" />
       </div>
     </Layout>
   );

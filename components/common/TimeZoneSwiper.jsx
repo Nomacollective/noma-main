@@ -30,11 +30,10 @@ const TimeZoneSwiper = ({ locations }) => {
       endDay,
       10
     )}`;
-
     const link = `${l.city.replace(" ", "-")}-${formattedStartDate.substring(
       0,
       3
-    )}-${year}`;
+    )}-${date}-${year}`;
 
     return {
       id: l?.sys?.id,

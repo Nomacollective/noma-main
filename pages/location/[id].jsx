@@ -78,13 +78,15 @@ export const getServerSideProps = async ({ params }) => {
   if (idPattern.test(params.id)) {
     location = await getLocationById({ locationId: params.id });
   } else {
-    const city = params.id.substring(0, params.id.length - 9);
-    const monthRegex = /-(\w{3})-\d{4}$/;
+    const city = params.id.substring(0, params.id.length - 12);
+    const monthRegex = /-(\w{3})-\d{1,2}-\d{4}$/;
     const month = params.id.match(monthRegex)[1];
-    const year = params.id.match(/-\d{4}$/);
+    const startDayRegex = /-(\d{1,2})-\d{4}$/;
+    const startDay = Number(params.id.match(startDayRegex)[1]);
+    const year = params.id.match(/-\d{4}$/)[0].slice(1);
     location = await getLocationByCity(
       { city: city },
-      { month: month, year: year[0].slice(1) }
+      { month: month, year: year, startDay: startDay }
     );
   }
   return {

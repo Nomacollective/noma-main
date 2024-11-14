@@ -14,6 +14,7 @@ import WhatIncluded from "@/components/editions/WhatIncluded";
 import { getLocationByCity, getLocationById } from "@/lib/api";
 import { parseISO, format } from "date-fns";
 import React from "react";
+import { differenceInDays } from "date-fns";
 
 export const monthNames = [
   "January",
@@ -124,7 +125,6 @@ const Editions = ({ location }) => {
       location?.contentTypeLocation?.guestgalleryCollection?.items || [],
     alumniReviews: location?.contentTypeLocation?.alumniReviewCollection?.items,
   };
-
   return (
     <Layout>
       <PageSEO title="Location" />

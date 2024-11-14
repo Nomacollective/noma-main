@@ -1,6 +1,12 @@
 import FeaturedEditionCard from "./FeaturedEditionCard";
 import Link from "next/link";
-import { format, differenceInDays } from "date-fns";
+import {
+  differenceInDays,
+  parseISO,
+  format,
+  utcToZonedTime,
+  zonedTimeToUtc,
+} from "date-fns";
 
 export const monthNames = [
   "Jan",
@@ -16,6 +22,25 @@ export const monthNames = [
   "Nov",
   "Dec",
 ];
+
+const normalizeDate = (dateString, timeZoneOffset) => {
+  const offsetHours = parseInt(
+    timeZoneOffset.replace("GMT", "").replace(":", ""),
+    10
+  );
+  const date = new Date(dateString);
+  date.setHours(date.getHours() + offsetHours);
+  date.setUTCHours(0, 0, 0, 0);
+  return format(date, "yyyy-MM-dd");
+};
+
+const calculateDaysDifference = (startDate, endDate, timeZoneOffset) => {
+  const normalizedStartDate = normalizeDate(startDate, timeZoneOffset);
+  const normalizedEndDate = normalizeDate(endDate, timeZoneOffset);
+  const start = parseISO(`${normalizedStartDate}T00:00:00Z`);
+  const end = parseISO(`${normalizedEndDate}T00:00:00Z`);
+  return Math.abs(differenceInDays(start, end));
+};
 
 const TimeZoneSwiper = ({ locations }) => {
   const locationsMapped = locations?.map((l) => {
@@ -42,9 +67,7 @@ const TimeZoneSwiper = ({ locations }) => {
       title: l?.city,
       description: l?.country,
       date: `${formattedStartDate} - ${endDayMonth} ${endYear}`,
-      days: Math.abs(
-        differenceInDays(new Date(l.endDate), new Date(l.startDate) + [1])
-      ),
+      days: calculateDaysDifference(l.startDate, l.endDate, l.timeZone),
       price: Math.min(
         ...l?.accomodationsCollection?.items?.map((i) => i?.price)
       ),

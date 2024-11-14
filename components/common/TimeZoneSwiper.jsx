@@ -1,12 +1,6 @@
 import FeaturedEditionCard from "./FeaturedEditionCard";
 import Link from "next/link";
-import {
-  differenceInDays,
-  parseISO,
-  format,
-  utcToZonedTime,
-  zonedTimeToUtc,
-} from "date-fns";
+import { differenceInDays, parseISO } from "date-fns";
 
 export const monthNames = [
   "Jan",
@@ -23,23 +17,31 @@ export const monthNames = [
   "Dec",
 ];
 
-const normalizeDate = (dateString, timeZoneOffset) => {
-  const offsetHours = parseInt(
-    timeZoneOffset.replace("GMT", "").replace(":", ""),
-    10
-  );
-  const date = new Date(dateString);
-  date.setHours(date.getHours() + offsetHours);
-  date.setUTCHours(0, 0, 0, 0);
-  return format(date, "yyyy-MM-dd");
+const getDaysInMonth = (year, month) => {
+  return new Date(year, month + 1, 0).getDate();
 };
 
-const calculateDaysDifference = (startDate, endDate, timeZoneOffset) => {
-  const normalizedStartDate = normalizeDate(startDate, timeZoneOffset);
-  const normalizedEndDate = normalizeDate(endDate, timeZoneOffset);
-  const start = parseISO(`${normalizedStartDate}T00:00:00Z`);
-  const end = parseISO(`${normalizedEndDate}T00:00:00Z`);
-  return Math.abs(differenceInDays(start, end));
+const calculateDaysDifference = (startDateStr, endDateStr) => {
+  const startDate = new Date(startDateStr);
+  const endDate = new Date(endDateStr);
+  const startYear = startDate.getFullYear();
+  const startMonth = startDate.getMonth();
+  const startDay = startDate.getDate();
+  const endYear = endDate.getFullYear();
+  const endMonth = endDate.getMonth();
+  const endDay = endDate.getDate();
+  const daysInStartMonth = getDaysInMonth(startYear, startMonth);
+  const daysInEndMonth = getDaysInMonth(endYear, endMonth);
+  const isStartDateLastDay = startDay === daysInStartMonth;
+  const isEndDateLastDay = endDay === daysInEndMonth;
+  if (startYear === endYear && startMonth === endMonth) {
+    return endDay - startDay + 1;
+  } else {
+    const daysFromStartMonth = daysInStartMonth - startDay;
+    const daysInEndMonthActual =
+      endDay + (isEndDateLastDay && !isStartDateLastDay ? 1 : 0);
+    return daysFromStartMonth + daysInEndMonthActual + 1;
+  }
 };
 
 const TimeZoneSwiper = ({ locations }) => {
@@ -67,7 +69,7 @@ const TimeZoneSwiper = ({ locations }) => {
       title: l?.city,
       description: l?.country,
       date: `${formattedStartDate} - ${endDayMonth} ${endYear}`,
-      days: calculateDaysDifference(l.startDate, l.endDate, l.timeZone),
+      days: calculateDaysDifference(l.startDate, l.endDate),
       price: Math.min(
         ...l?.accomodationsCollection?.items?.map((i) => i?.price)
       ),

@@ -21,7 +21,7 @@ const getDaysInMonth = (year, month) => {
   return new Date(year, month + 1, 0).getDate();
 };
 
-const calculateDaysDifference = (startDateStr, endDateStr) => {
+export const calculateDaysDifference = (startDateStr, endDateStr) => {
   const startDate = new Date(startDateStr);
   const endDate = new Date(endDateStr);
   const startYear = startDate.getFullYear();

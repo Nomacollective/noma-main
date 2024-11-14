@@ -7,6 +7,7 @@ import { SliderLeftArrowIcon, SliderRightArrowIcon } from "../common/Icons";
 import FeaturedEditionCard from "../common/FeaturedEditionCard";
 import { format, differenceInDays } from "date-fns";
 import Link from "next/link";
+import { calculateDaysDifference } from "../common/TimeZoneSwiper";
 
 export const monthNames = [
   "Jan",
@@ -37,6 +38,7 @@ export default function FeaturedEditionSectionSlider({ locations }) {
         endDay,
         10
       )}`;
+      const days = calculateDaysDifference(l.startDate, l.endDate);
 
       return {
         ...l,
@@ -46,9 +48,7 @@ export default function FeaturedEditionSectionSlider({ locations }) {
         title: l?.city,
         description: l?.country,
         date: `${formattedStartDate} - ${endDayMonth} ${endYear}`,
-        days: Math.abs(
-          differenceInDays(new Date(l.endDate), new Date(l.startDate))
-        ),
+        days: days,
         price: Math.min(
           ...l?.accomodationsCollection?.items?.map((i) => i?.price)
         ),

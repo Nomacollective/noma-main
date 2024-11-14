@@ -10,11 +10,6 @@ const FeaturedEditionSection = ({ locations }) => {
         <div className="">
           <Heading heading="Featured" />
         </div>
-        {/* <div>
-          <p className="text-center text-black font-kurdis text-2xl font-extrabold leading-normal block sm:hidden">
-            Featured
-          </p>
-        </div> */}
       </div>
       <FeaturedEditionSectionSlider locations={locations} />
       <div className="block">

@@ -42,13 +42,13 @@ const Footer = () => {
     <div className="">
       <div className='bg-cover bg-no-repeat bg-center mt-[-100px] bg-[url("/img/foterupperlayer.png")] h-[14vh] w-full ' />
       <div className="w-full bg-[#666] sm:h-[500px] -mt-1 md:h-[500px] px-4">
-        <h1 className="text-center flex justify-center heading p-1 text-[#FFFFFF]">
-          Sing up for our mailer
+        <h1 className="text-center flex justify-center sm:text-5xl text-2xl font-bold p-1 text-[#FFFFFF]">
+          Let’s Stay Connected
         </h1>
         <div className="bg-[#666666] h-[250px]">
           <iframe
             src="https://link.jbenquet.com/widget/form/SO8up6ErSbXX2VnWL3BX"
-            className="w-full h-full border-none rounded-[36px]"
+            // style="width:100%;height:100%;border:none;border-radius:36px"
             width="100%"
             id="inline-SO8up6ErSbXX2VnWL3BX"
             data-layout="{'id':'INLINE'}"

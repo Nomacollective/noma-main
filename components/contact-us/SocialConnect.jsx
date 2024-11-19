@@ -10,11 +10,11 @@ import {
 } from "../common/Icons";
 import SocialMediaCardWapper from "./SocialMediaCardWapper";
 
-const SocialConnect = () => {
+const SocialConnect = ({ posts }) => {
   return (
     <div className="socials text-center">
       <h4 className="py-4 sm:pb-8 px-4 text-2xl sm:text-3xl font-bold font-Montserrat">
-       Wanna see what else we're about? Say hi on our socials!
+        Wanna see what else we're about? Say hi on our socials!
       </h4>
 
       <div className="text-white pt-4 sm:pt-8 pb-[100px] sm:pb-[150px]">

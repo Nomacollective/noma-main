@@ -1,6 +1,6 @@
 import FeaturedEditionCard from "./FeaturedEditionCard";
 import Link from "next/link";
-import { format, differenceInDays } from "date-fns";
+import { differenceInDays, parseISO } from "date-fns";
 
 export const monthNames = [
   "Jan",
@@ -17,6 +17,33 @@ export const monthNames = [
   "Dec",
 ];
 
+const getDaysInMonth = (year, month) => {
+  return new Date(year, month + 1, 0).getDate();
+};
+
+export const calculateDaysDifference = (startDateStr, endDateStr) => {
+  const startDate = new Date(startDateStr);
+  const endDate = new Date(endDateStr);
+  const startYear = startDate.getFullYear();
+  const startMonth = startDate.getMonth();
+  const startDay = startDate.getDate();
+  const endYear = endDate.getFullYear();
+  const endMonth = endDate.getMonth();
+  const endDay = endDate.getDate();
+  const daysInStartMonth = getDaysInMonth(startYear, startMonth);
+  const daysInEndMonth = getDaysInMonth(endYear, endMonth);
+  const isStartDateLastDay = startDay === daysInStartMonth;
+  const isEndDateLastDay = endDay === daysInEndMonth;
+  if (startYear === endYear && startMonth === endMonth) {
+    return endDay - startDay + 1;
+  } else {
+    const daysFromStartMonth = daysInStartMonth - startDay;
+    const daysInEndMonthActual =
+      endDay + (isEndDateLastDay && !isStartDateLastDay ? 1 : 0);
+    return daysFromStartMonth + daysInEndMonthActual + 1;
+  }
+};
+
 const TimeZoneSwiper = ({ locations }) => {
   const locationsMapped = locations?.map((l) => {
     const start = l?.startDate?.split("T")[0];
@@ -30,11 +57,10 @@ const TimeZoneSwiper = ({ locations }) => {
       endDay,
       10
     )}`;
-
     const link = `${l.city.replace(" ", "-")}-${formattedStartDate.substring(
       0,
       3
-    )}-${year}`;
+    )}-${date}-${year}`;
 
     return {
       id: l?.sys?.id,
@@ -43,9 +69,7 @@ const TimeZoneSwiper = ({ locations }) => {
       title: l?.city,
       description: l?.country,
       date: `${formattedStartDate} - ${endDayMonth} ${endYear}`,
-      days: Math.abs(
-        differenceInDays(new Date(l.endDate), new Date(l.startDate) + [1])
-      ),
+      days: calculateDaysDifference(l.startDate, l.endDate),
       price: Math.min(
         ...l?.accomodationsCollection?.items?.map((i) => i?.price)
       ),

@@ -317,7 +317,7 @@ interface Item {
 
 const filterByMonth = (
   { data }: { data: Item[] },
-  { month, year }: { month: string; year: string }
+  { month, year, startDay }: { month: string; year: string; startDay: number }
 ) => {
   const dataArray = Array.isArray(data) ? data : [data];
 
@@ -325,21 +325,25 @@ const filterByMonth = (
     const itemDate = new Date(item.startDate);
     const itemMonth = itemDate.toLocaleString("en-US", { month: "short" });
     const itemYear = itemDate.getFullYear();
-    return itemMonth === month && itemYear === parseInt(year, 10);
+    const itemDay = itemDate.getDate();
+    return (
+      itemMonth === month &&
+      itemYear === parseInt(year, 10) &&
+      startDay === itemDay
+    );
   });
 };
 
 export const getLocationByCity = async (
   { city }: { city: string },
-  { month, year }: { month: string; year: string }
+  { month, year, startDay }: { month: string; year: string; startDay: number }
 ) => {
   const locationIdResponse = await fetchGraphQL(
     GET_ID_BY_CITY(city.replace("-", " "))
   );
-
   const filteredId = filterByMonth(
     { data: locationIdResponse.data.contentTypeLocationCollection.items },
-    { month, year }
+    { month, year, startDay }
   )[0].sys.id;
 
   const dataResponse = await fetchGraphQL(GET_LOCATION_BY_ID(filteredId));

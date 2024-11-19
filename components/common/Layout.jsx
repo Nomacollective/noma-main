@@ -10,7 +10,7 @@ const Layout = ({ children }) => {
       <script
         type="text/javascript"
         charSet="UTF-8"
-        src="//cdn.cookie-script.com/s/e28166a6cec87c8d411cf6eb7ada29f7.js"
+        src="//cdn.cookie-script.com/s/5c5d85780c76b22af355b1864d208ccd.js"
       ></script>
       <GoogleTagManager gtmId="GTM-WRZZGKJ" />
       <Navbar />

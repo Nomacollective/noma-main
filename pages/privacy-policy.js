@@ -1,4 +1,5 @@
 import Layout from "@/components/common/Layout";
+import { DownloadIcon } from '@heroicons/react/outline';
 
 const PrivacyPolicy = () => {
   return (
@@ -63,6 +64,15 @@ const PrivacyPolicy = () => {
           personal information that we collect, please contact us by email at{" "}
           <a href="mailto:info@noma-collective.com">info@noma-collective.com</a>
           .
+        </p>
+
+        <h2>Cookies Policy</h2>
+
+        <p className="text-main-orange group hover:text-[#000]">
+          <a href="Noma_Cookies_Policy.pdf" download className="flex flex-row gap-1 hover:text-[#000] group-hover:underline">
+            <span className="text-orange-500 group-hover:text-[#000]">Find out about our cookies policy</span>
+            <DownloadIcon className="h-5 w-5 text-orange-500 group-hover:text-[#000]" />
+          </a>
         </p>
       </div>
     </Layout>

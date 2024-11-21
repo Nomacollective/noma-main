@@ -65,6 +65,11 @@
     "@react-aria/interactions" "^3.21.1"
     "@tanstack/react-virtual" "3.5.0"
 
+"@heroicons/react@^1.0.6":
+  "integrity" "sha512-JJCXydOFWMDpCP4q13iEplA503MQO3xLoZiKum+955ZCtHINWnx26CUxVxxFQu/uLb4LW3ge15ZpzIkXKkJ8oQ=="
+  "resolved" "https://registry.npmjs.org/@heroicons/react/-/react-1.0.6.tgz"
+  "version" "1.0.6"
+
 "@isaacs/cliui@^8.0.2":
   "integrity" "sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA=="
   "resolved" "https://registry.npmjs.org/@isaacs/cliui/-/cliui-8.0.2.tgz"
@@ -906,7 +911,7 @@
     "prop-types" "^15.7.2"
     "react-fast-compare" "^3.0.1"
 
-"react@^0.14.0 || ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^16.8.0 || ^17.0.0-rc.1 || ^18.0.0", "react@^16.8.6 || ^17.0.0 || ^18.0.0", "react@^18", "react@^18.1.0", "react@^18.2.0", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", "react@>=16.6.0", "react@>=16.8.0":
+"react@^0.14.0 || ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^16.8.0 || ^17.0.0-rc.1 || ^18.0.0", "react@^16.8.6 || ^17.0.0 || ^18.0.0", "react@^18", "react@^18.1.0", "react@^18.2.0", "react@>= 16", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", "react@>=16.6.0", "react@>=16.8.0":
   "integrity" "sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ=="
   "resolved" "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
   "version" "18.2.0"

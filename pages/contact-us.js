@@ -12,7 +12,6 @@ import Instagram from 'instagram-web-api';
 export const getServerSideProps = async () => {
   const faqs = await getFaqs();
   const client = new Instagram({ username: process.env.NEXT_PUBLIC_INSTAGRAM_USERNAME, password: process.env.NEXT_PUBLIC_INSTAGRAM_PASSWORD });
-  await client.login();
 
   const response = await client.getPhotosByUsername({
     username: 'INSTAGRAM_USERNAME',

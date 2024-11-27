@@ -7,18 +7,28 @@ import { FaqsSlider } from "@/components/contact-us/FaqsSlider";
 import SocialConnect from "@/components/contact-us/SocialConnect";
 import { getFaqs } from "@/lib/api";
 import Link from "next/link";
+import Instagram from 'instagram-web-api';
 
 export const getServerSideProps = async () => {
   const faqs = await getFaqs();
+  const client = new Instagram({ username: process.env.NEXT_PUBLIC_INSTAGRAM_USERNAME, password: process.env.NEXT_PUBLIC_INSTAGRAM_PASSWORD });
+  await client.login();
+
+  const response = await client.getPhotosByUsername({
+    username: 'INSTAGRAM_USERNAME',
+  });
+  console.log(client)
   return {
     props: {
       title: "Contact",
       faqs: faqs || [],
+      posts: response.user.edge_owner_to_timeline_media.edges,
     },
   };
 };
 
-const ContactUs = ({ faqs }) => {
+
+const ContactUs = ({ faqs, posts }) => {
   return (
     <Layout>
       <PageSEO title="Noma - Contact-us" />
@@ -54,7 +64,7 @@ const ContactUs = ({ faqs }) => {
         ></iframe>
         <script src="https://link.jbenquet.com/js/form_embed.js"></script>
       </div>
-      <SocialConnect />
+      {/* <SocialConnect /> */}
     </Layout>
   );
 };

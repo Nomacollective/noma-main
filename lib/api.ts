@@ -159,6 +159,9 @@ const GET_LOCATION_BY_ID = (locationId: string) => `
       natureAndWildlife
       activityAndFitness
       nightlifeAndPartying
+      pdf {
+        url
+      }
       heroImage {
         url
       }
@@ -343,7 +346,6 @@ export const getLocationByCity = async (
   )[0].sys.id;
 
   const dataResponse = await fetchGraphQL(GET_LOCATION_BY_ID(filteredId));
-
   const data = dataResponse.data;
 
   return data;

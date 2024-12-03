@@ -104,6 +104,7 @@ const Editions = ({ location }) => {
       location?.contentTypeLocation?.endDate
     ),
     description: location?.contentTypeLocation?.description,
+    pdf: location?.contentTypeLocation?.pdf,
     foodieHaven: location?.contentTypeLocation?.foodieHaven,
     wellnessAndRelaxation: location?.contentTypeLocation?.wellnessAndRelaxation,
     natureAndWildlife: location?.contentTypeLocation?.natureAndWildlife,
@@ -122,7 +123,6 @@ const Editions = ({ location }) => {
       location?.contentTypeLocation?.guestgalleryCollection?.items || [],
     alumniReviews: location?.contentTypeLocation?.alumniReviewCollection?.items,
   };
-
   return (
     <Layout>
       <PageSEO title="Location" />
@@ -160,6 +160,7 @@ const Editions = ({ location }) => {
       <WhatIncluded
         d={locationMapped?.description2}
         items={locationMapped?.whatsIncluded}
+        pdfFile={locationMapped?.pdf.url}
       />
       {!!locationMapped?.manager && (
         <ProfileMeet manager={locationMapped?.manager} />

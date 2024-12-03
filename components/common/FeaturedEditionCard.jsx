@@ -41,7 +41,7 @@ const FeaturedEditionCard = ({ item, value }) => {
         <button
           type="submit"
           className="px-3 py-2 rounded-full"
-          style={{ backgroundColor: '#F7F7F7' }}
+          style={{ backgroundColor: "#F7F7F7" }}
         >
           {item.secondbtn}
         </button>

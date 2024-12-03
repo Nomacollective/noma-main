@@ -19,7 +19,11 @@ const getStylesWhatsIncludedImage = (title) => {
   return "";
 };
 
+<<<<<<< HEAD
 const WhatIncluded = ({ d, items, pdfFile }) => {
+=======
+const WhatIncluded = ({ d, items }) => {
+>>>>>>> stage
   return (
     <>
       <div className="bg-[#FFDA7F]">

@@ -344,6 +344,7 @@ export const getLocationByCity = async (
   const locationIdResponse = await fetchGraphQL(
     GET_ID_BY_CITY(city.replace("-", " "))
   );
+  console.log(locationIdResponse);
   const filteredId = filterByMonth(
     { data: locationIdResponse.data.contentTypeLocationCollection.items },
     { month, year, startDay }

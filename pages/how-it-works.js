@@ -38,7 +38,7 @@ const HowItWork = ({ faqs }) => {
         <Steps />
       </div>
       <div className="mt-11 mb-8 sm:mb-0">
-        <VideoPlayer url='https://www.youtube.com/watch?v=Y_6fqQDYTJk&ab_channel=MuradIbraqimov' />
+        <VideoPlayer url='https://www.youtube.com/watch?v=qrrDPzFlATY&ab_channel=NomaCollective' />
         <Subheading
           width="700px"
           paragraph={`Noma Collective not only brings you the world, but a real community to see it with. Above all else, we recognize that it’s the people who make the experience. Each Edition brings together a unique and diverse community who are united through values of openness, compassion and collaboration. We create a safe space for creative collaboration where you and your community can thrive.`}

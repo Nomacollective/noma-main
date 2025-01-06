@@ -50,7 +50,7 @@ const HowItWork = ({ faqs }) => {
         <span className="lowercase">t</span> decide
         <span className="font-serif font-extrabold">?</span> Let our expert team
         help you craft your dream Edition. Adventure awaits{" "}
-        <span className="font-serif font-extrabold">-</span> book a call today
+        <span className="font-serif font-extrabold ">-</span> book <span className="lowercase">a</span> call today
         <span className="font-serif font-extrabold">?</span>
       </h4>
 

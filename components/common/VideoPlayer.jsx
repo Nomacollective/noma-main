@@ -7,11 +7,14 @@ const VideoPlayer = ({ url }) => {
 
   useEffect(() => {
     const updateHeight = () => {
-      if (window.innerWidth <= 768) {
+      if (window.innerWidth <= 420) {
         setHeight("200px");
         setWidth("90%");
+      } else if (window.innerWidth <= 768) {
+        setHeight("300px");
+        setWidth("80%");
       } else if (window.innerWidth <= 1200) {
-        setHeight("330px");
+        setHeight("300px");
       } else {
         setHeight("600px");
       }

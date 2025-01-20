@@ -4,7 +4,6 @@ import AccomodationCardBtns from "./AccomodationCardBtns";
 
 const AccomodationCard = ({ item }) => {
   const zeroSpots = item?.spotsLeft === 0;
-  console.log("zeroSpots", item?.spotsLeft);
   return (
     <div className="mx-auto w-[328px] cursor-pointer hover:scale-[1.02] transition duration-300 ease-in-out flex flex-col gap-2 max-sm:px-2 max-sm:py-4">
       <div className="flex gap-2">

@@ -125,6 +125,7 @@ const Editions = ({ location }) => {
       location?.contentTypeLocation?.guestgalleryCollection?.items || [],
     alumniReviews: location?.contentTypeLocation?.alumniReviewCollection?.items,
   };
+  console.log(locationMapped.accomodation);
   return (
     <Layout>
       <PageSEO title="Location" />

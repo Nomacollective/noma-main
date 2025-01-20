@@ -4,7 +4,8 @@ import { accomodationCardData } from "../common/Helper";
 import NewsHeading from "./NewsHeading";
 import NewsSubheading from "./NewsSubheading";
 
-const Accomodation = ({accomodation}) => {
+const Accomodation = ({ accomodation }) => {
+  console.log("accomodation", accomodation);
   return (
     <div className="px-4 xl:px-0">
       <div className="w-full px-2.5 py-4 sm:pb-4 sm:pt-8 mx-auto">

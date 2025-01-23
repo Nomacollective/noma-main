@@ -11,7 +11,7 @@ const AccomodationCard = ({ item }) => {
           item={{
             button: zeroSpots
               ? item.preOrder
-                ? "Pre-order"
+                ? "Reserve A Spot"
                 : "Sold out"
               : item?.spotsLeft + " Spots left",
           }}

@@ -9,7 +9,11 @@ const AccomodationCard = ({ item }) => {
       <div className="flex gap-2">
         <AccomodationCardBtns
           item={{
-            button: zeroSpots ? "Sold out" : item?.spotsLeft + " Spots left",
+            button: zeroSpots
+              ? item.preOrder
+                ? "Reserve A Spot"
+                : "Sold out"
+              : item?.spotsLeft + " Spots left",
           }}
           value={zeroSpots ? 1 : 0}
         />

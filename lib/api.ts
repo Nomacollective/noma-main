@@ -196,6 +196,7 @@ const GET_LOCATION_BY_ID = (locationId: string) => `
       accomodationsCollection {
         items {
           title
+          preOrder
           price
           description
           spotsLeft

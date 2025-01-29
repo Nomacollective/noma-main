@@ -159,6 +159,9 @@ const GET_LOCATION_BY_ID = (locationId: string) => `
       natureAndWildlife
       activityAndFitness
       nightlifeAndPartying
+      pdf {
+        url
+      }
       heroImage {
         url
       }
@@ -342,13 +345,13 @@ export const getLocationByCity = async (
   const locationIdResponse = await fetchGraphQL(
     GET_ID_BY_CITY(city.replace("-", " "))
   );
+  console.log(locationIdResponse);
   const filteredId = filterByMonth(
     { data: locationIdResponse.data.contentTypeLocationCollection.items },
     { month, year, startDay }
   )[0].sys.id;
 
   const dataResponse = await fetchGraphQL(GET_LOCATION_BY_ID(filteredId));
-
   const data = dataResponse.data;
 
   return data;

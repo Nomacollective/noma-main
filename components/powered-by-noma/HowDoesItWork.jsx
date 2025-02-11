@@ -16,7 +16,7 @@ const HowDoesItWork = () => {
         </h2>
       </header>
       <article>
-        <p className="text-lg text-center mb-2">
+        <p className="text-lg text-center mb-2 px-5 sm:px-0">
           Powered by Noma offers flexibility, freedom, and full customisation.
           You tell us what you want, and we make it happen.
         </p>

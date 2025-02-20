@@ -4,7 +4,7 @@ const SuccsessStoriesCard = ({ img, title, text, color }) => {
   return (
     <section
       className={classNames(
-        `flex flex-col rounded-xl pb-[72px] w-[300px] sm:w-[500px] pb-[32px] bg-${color} gap-8 drop-shadow-md`
+        `flex flex-col rounded-xl pb-[50px] w-[300px] sm:w-[500px] pb-[32px] bg-${color} gap-8 drop-shadow-md`
       )}
     >
       <img

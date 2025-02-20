@@ -1,13 +1,13 @@
 const WhyNoma = () => {
   return (
     <article className="bg-[#FFDA7F] w-full flex max-xl:flex-col max-sm:gap-5 max-xl:gap-10 max-sm:py-5 gap-9 max-xl:py-10 sm:mb-10">
-      <div className="w-full xl:w-1/2 xl:h-[568px] max-xl:px-4 flex items-center justify-center">
+      <div className="w-full xl:w-1/2 xl:h-[560px] max-xl:px-4 flex items-center xl:justify-end justify-center">
         <img
           src="/img/HDIT_WhyNoma.jpg"
-          className="h-full w-full max-xl:max-w-[550px] max-xl:max-h-[568px]"
+          className="h-full w-[860px]  max-xl:max-h-[568px]"
         />
       </div>
-      <div className="xl:h-[568px] flex flex-col items-center justify-center  sm:px-0 px-5 ">
+      <div className="xl:h-[560px] flex flex-col items-center justify-center  sm:px-0 px-5 ">
         <h5 className="text-[#070707] text-center font-sergio-trendy text-[28px] md:text-[34px] lg:text-5xl font-normal capitalize">
           Why Noma
         </h5>
@@ -31,12 +31,12 @@ const WhyNoma = () => {
           </p>
         </div>
         <div className="flex justify-center mt-8">
-          <button
-            type="submit"
+          <a
+            href="mailto:info@noma-collective.com"
             className="bg-[#FF9500] rounded-full px-4 lg:px-8 py-2 lg:py-4 border-[2px] border-[#FF9500] text-[#F7F7F7] font-Montserrat text-xs lg:text-base font-extrabold leading-normal hover:bg-transparent hover:text-[#FF9500] duration-300 ease-in-out mx-auto"
           >
             REQUEST A QUOTE
-          </button>
+          </a>
         </div>
       </div>
     </article>

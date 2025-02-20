@@ -11,7 +11,7 @@ const HowDoesItWorkCard = ({
   return (
     <section
       className={classNames(
-        `flex flex-col rounded-xl pb-[72px] w-[300px] lg:w-[352px] bg-${color} gap-6 drop-shadow-md`
+        `flex flex-col rounded-xl pb-[50px] w-[300px] lg:w-[352px] bg-${color} gap-6 drop-shadow-md`
       )}
     >
       <img

@@ -1,8 +1,13 @@
+import classNames from "classnames";
 import React from "react";
 
 const Teamhero = ({ heading, text, btn }) => {
   return (
-    <div className="bg-[url('/img/teamretrates_img.png')] bg-no-repeat bg-cover bg-center h-[450px] sm:h-[800px] flex flex-col justify-center items-center md:px-0 px-4">
+    <div
+      className={
+        "bg-[url('/img/teamretrates_img.png')] bg-no-repeat bg-cover bg-center h-[450px] sm:h-[800px] flex flex-col justify-center items-center md:px-0 px-4"
+      }
+    >
       <h1 className="text-center text-2xl sm:text-[48px] font-sergio-trendy font-normal text-[#F4F1E6] capitalize leading-normal xl:mt-[120px]">
         {heading}
       </h1>

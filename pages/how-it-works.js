@@ -5,6 +5,7 @@ import Layout from "@/components/common/Layout";
 import PageSEO from "@/components/common/PageSEO";
 import Subheading from "@/components/common/Subheading";
 import VideoComponent from "@/components/common/Videocomponent";
+import VideoPlayer from "@/components/common/VideoPlayer";
 import Basics from "@/components/how-it-work/Basics";
 import Steps from "@/components/how-it-work/Steps";
 import { getFaqs } from "@/lib/api";
@@ -37,8 +38,9 @@ const HowItWork = ({ faqs }) => {
         <Steps />
       </div>
       <div className="mt-11 mb-8 sm:mb-0">
+        <VideoPlayer url='https://www.youtube.com/watch?v=qrrDPzFlATY&ab_channel=NomaCollective' />
         <Subheading
-          width="800px"
+          width="700px"
           paragraph={`Noma Collective not only brings you the world, but a real community to see it with. Above all else, we recognize that it’s the people who make the experience. Each Edition brings together a unique and diverse community who are united through values of openness, compassion and collaboration. We create a safe space for creative collaboration where you and your community can thrive.`}
         />
       </div>
@@ -48,7 +50,7 @@ const HowItWork = ({ faqs }) => {
         <span className="lowercase">t</span> decide
         <span className="font-serif font-extrabold">?</span> Let our expert team
         help you craft your dream Edition. Adventure awaits{" "}
-        <span className="font-serif font-extrabold">-</span> book a call today
+        <span className="font-serif font-extrabold ">-</span> book <span className="lowercase">a</span> call today
         <span className="font-serif font-extrabold">?</span>
       </h4>
 

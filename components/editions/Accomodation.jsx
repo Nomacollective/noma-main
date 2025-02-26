@@ -1,8 +1,6 @@
 import React from "react";
 import AccomodationCard from "./AccomodationCard";
-import { accomodationCardData } from "../common/Helper";
 import NewsHeading from "./NewsHeading";
-import NewsSubheading from "./NewsSubheading";
 
 const Accomodation = ({ accomodation }) => {
   return (

@@ -23,7 +23,7 @@ const Chart = ({ parcent, img, text, color }) => {
           {parcent}%{" "}
         </div>{" "}
         <div className="w-full h-full text-white text-[42px] bg-white flex items-center justify-center rounded-full">
-          <Image src={img} height={76} width={76} />
+          <Image src={img} height={76} width={76} alt="chart"/>
         </div>
       </div>
       <p className="text-[#313131] font-Montserrat font-extrabold text-xl sm:text-[32px] text-center ">

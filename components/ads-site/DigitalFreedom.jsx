@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 
 const DigitalFreedom = () => {
 

@@ -3,9 +3,12 @@ import PageSEO from "@/components/common/PageSEO";
 import ReadOurReviews from "@/components/home/ReadOurReviews";
 import BasicFaqs from "@/components/Team-retreats/BasicFaqs";
 import SuggestedLocations from "@/components/Team-retreats/SuggestedLocations";
-import Teamhero from "@/components/Team-retreats/Teamhero";
-import WhatToExpect from "@/components/Team-retreats/WhatToExpect";
-import WhyNoma from "@/components/Team-retreats/PoweredByNoma";
+import Teamhero from "@/components/powered-by-noma/Teamhero";
+import WhatToExpect from "@/components/powered-by-noma/WhatToExpect";
+import WhyNoma from "@/components/powered-by-noma/WhyNoma";
+import Solution from "@/components/powered-by-noma/Solution";
+import HowDoesItWork from "@/components/powered-by-noma/HowDoesItWork";
+import SuccsessStories from "@/components/powered-by-noma/SuccsessStories";
 
 const PoweredByNoma = () => {
   return (
@@ -14,15 +17,16 @@ const PoweredByNoma = () => {
       <main className="mb-28">
         <Teamhero
           heading="Powered by Noma"
-          text="We specialize in curating unique and bespoke in-person retreats for online communities to meet, learn and grow together in beautiful locations around the world."
-          btn="Talk To Us"
+          text="We specialize in curating unique, bespoke in person
+          retreats that bring online communities together to meet,
+          learn, and grow in beautiful locations worldwide."
+          btn="REQUEST A QUOTE"
         />
         <WhatToExpect />
+        <Solution />
+        <HowDoesItWork />
         <WhyNoma />
-        <SuggestedLocations />
-        <section className="mt-14">
-          <ReadOurReviews />
-        </section>
+        <SuccsessStories />
         <BasicFaqs />
       </main>
     </Layout>

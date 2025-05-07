@@ -89,7 +89,7 @@ const Navbar = () => {
                     href="/powered-by-noma"
                     className="hover:font-bold duration-300"
                   >
-                    Powered by noma
+                    Powered by Noma
                   </Link>
                   <Link
                     href="/team-retreats"

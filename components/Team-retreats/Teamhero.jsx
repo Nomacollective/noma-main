@@ -1,4 +1,3 @@
-import classNames from "classnames";
 import React from "react";
 
 const Teamhero = ({ heading, text, btn }) => {
@@ -15,7 +14,9 @@ const Teamhero = ({ heading, text, btn }) => {
         {text}
       </p>
       <div className="flex justify-center ">
-        <button className="bg-[#FF9500] text-[#F7F7F7] border border-[#FF9500] text-sm md:text-base font-extrabold leading-normal font-Montserrat sm:px-8 px-4 py-[9px] sm:py-4 rounded-[28px] w-fit mx-auto mt-4 hover:bg-transparent  duration-700">
+        <button 
+          onClick={() => window.open('https://link.jbenquet.com/widget/booking/IxjVdMfKgvhm2xSRSPBV', '_blank')} style={{ cursor: 'pointer' }}
+          className="bg-[#FF9500] text-[#F7F7F7] border border-[#FF9500] text-sm md:text-base font-extrabold leading-normal font-Montserrat sm:px-8 px-4 py-[9px] sm:py-4 rounded-[28px] w-fit mx-auto mt-4 hover:bg-transparent  duration-700">
           {btn}
         </button>
       </div>

@@ -1,30 +1,27 @@
 import Image from "next/image";
 import React from "react";
+import { useEffect } from "react";
 
 const DigitalFreedom = () => {
+
+    useEffect(() => {
+      const script = document.createElement("script");
+      script.src = "https://link.jbenquet.com/js/form_embed.js";
+      script.async = true;
+      document.body.appendChild(script);
+  
+      return () => {
+        document.body.removeChild(script);
+      };
+    }, []);
+
   return (
     <section className="bg-[#BBE4D7] py-12">
       <div className="grid 2xl:grid-cols-2 xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 gap-10 max-w-[1450px] px-4 w-full mx-auto">
-        <div className="col-span-1">
-          <iframe
-            src="https://link.jbenquet.com/widget/form/H7JLnG7Yp5NzB9ZvQdKX"
-            // style="width:100%;height:100%;border:none;border-radius:36px"
-            id="inline-H7JLnG7Yp5NzB9ZvQdKX"
-            data-layout="{'id':'INLINE'}"
-            data-trigger-type="alwaysShow"
-            data-trigger-value=""
-            data-activation-type="alwaysActivated"
-            data-activation-value=""
-            data-deactivation-type="neverDeactivate"
-            data-deactivation-value=""
-            data-form-name="Noma Collective Booking Form 2"
-            data-height="1628"
-            data-layout-iframe-id="inline-H7JLnG7Yp5NzB9ZvQdKX"
-            data-form-id="H7JLnG7Yp5NzB9ZvQdKX"
-            title="Noma Collective Booking Form 2"
-            width="100%"
-          ></iframe>
-          <script src="https://link.jbenquet.com/js/form_embed.js"></script>
+
+        {/* Embedded Form Container */}
+        <div className="col-span-1 flex justify-center items-center">
+          <div id="embed-form-container"></div>
         </div>
 
         <div className="grid-span-2">
@@ -49,6 +46,7 @@ const DigitalFreedom = () => {
               src="/img/digital-freedom.png"
               width={618}
               height={380}
+              alt="digital-freedom"
             />
           </article>
           <article className="w-[95%] mt-10">
@@ -93,6 +91,7 @@ const DigitalFreedom = () => {
               src="/img/WayToLiveCard.png"
               width={608}
               height={400}
+              alt="way-to-live-card"
             />
           </article>
         </div>

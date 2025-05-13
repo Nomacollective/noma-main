@@ -9,6 +9,7 @@ const WhyNoma = () => {
           width={720}
           height={568}
           className="h-full w-full max-lg:max-w-[550px] max-lg:max-h-[568px]"
+          alt="why-noma"
         />
       </div>
       <div className="w-full lg:w-1/2 lg:h-[568px] flex flex-col items-center justify-center px-4">

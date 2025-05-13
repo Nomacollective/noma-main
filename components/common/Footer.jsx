@@ -1,7 +1,6 @@
 import Link from "next/link";
-import React, { useState } from "react";
-import { FooterLine, LogoIcon } from "./Icons";
-import SignUpModal from "./SignUpModal";
+import React, { useEffect } from "react";
+import { FooterLine } from "./Icons";
 import Image from "next/image";
 
 const socialLinks = [
@@ -38,33 +37,26 @@ const socialLinks = [
 ];
 
 const Footer = () => {
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://link.jbenquet.com/js/form_embed.js";
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
   return (
-    <div className="">
+    <div>
       <div className='bg-cover bg-no-repeat bg-center mt-[-100px] bg-[url("/img/foterupperlayer.png")] h-[14vh] w-full ' />
       <div className="w-full bg-[#666] sm:h-[500px] -mt-1 md:h-[500px] px-4">
         <h1 className="text-center flex justify-center sm:text-5xl text-2xl font-bold p-1 text-[#FFFFFF]">
           Let’s Stay Connected
         </h1>
-        <div className="bg-[#666666] h-[250px]">
-          <iframe
-            src="https://link.jbenquet.com/widget/form/SO8up6ErSbXX2VnWL3BX"
-            // style="width:100%;height:100%;border:none;border-radius:36px"
-            width="100%"
-            id="inline-SO8up6ErSbXX2VnWL3BX"
-            data-layout="{'id':'INLINE'}"
-            data-trigger-type="alwaysShow"
-            data-trigger-value=""
-            data-activation-type="alwaysActivated"
-            data-activation-value=""
-            data-deactivation-type="neverDeactivate"
-            data-deactivation-value=""
-            data-form-name="Footer"
-            data-height="400"
-            data-layout-iframe-id="inline-SO8up6ErSbXX2VnWL3BX"
-            data-form-id="SO8up6ErSbXX2VnWL3BX"
-            title="Footer"
-          ></iframe>
-          <script src="https://link.jbenquet.com/js/form_embed.js"></script>
+        <div className="bg-[#666666] h-[250px] flex justify-center items-center">
+          <div id="embed-form-container"></div>
         </div>
         <div className="py-4 sm:flex sm:flex-col sm:justify-center sm:items-center mt-4">
           {/* <p className="text-white text-center font-sergio-trendy text-2xl sm:text-4xl leading-[120%] font-extrabold mb-4 sm:mb-0">

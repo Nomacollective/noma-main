@@ -15,9 +15,8 @@ const TeamRetreats = () => {
         <Teamhero
           heading="Team Retreats"
           text="Give your team a break and let us shoulder the burden of planning a memorable and inspiring corporate getaway"
-          btn="REQUEST A QUOTE"
-        />
-        <button onclick="visitPage();">Visit Page Now</button>
+          btn="REQUEST A QUOTE"/>
+        {/* <button onClick={() => visitPage()}>Visit Page Now</button>  */}
         <WhatToExpect />
         <WhyNoma />
         <SuggestedLocations />

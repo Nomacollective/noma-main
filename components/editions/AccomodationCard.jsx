@@ -39,24 +39,28 @@ const AccomodationCard = ({ item }) => {
         From ${item.price}
       </p>
 
-      {zeroSpots ? (
-        <p className="text-[#666666] text-sm sm:text-base font-Montserrat font-extrabold leading-normal max-sm:order-1">
-          CONTACT TEAM NOMA
-        </p>
-      ) : (
-        <button
+      <button
           type="submit"
-          className="w-[153px] sm:w-[183px] h-[33px] bg-[#ff9500] rounded-2xl text-[#F4F1E6] text-center font-Montserrat text-sm sm:text-base font-extrabold leading-normal hover:text-[#ff9500] border border-[#ff9500] hover:bg-transparent transition duration-300 ease-in-out max-sm:order-1"
+          className={`w-[153px] sm:w-[183px] h-[33px] ${
+            zeroSpots ? "bg-[#666666]" : "bg-[#ff9500]"
+          } rounded-2xl text-[#F4F1E6] text-center font-Montserrat text-sm sm:text-base font-extrabold leading-normal ${
+            zeroSpots ? "hover:text-[#666666]" : "hover:text-[#ff9500]"
+          } border
+          
+          ${
+            zeroSpots ? "border-[#666666]" : "border-[#ff9500]"
+          } hover:bg-transparent transition duration-300 ease-in-out  max-sm:order-1`}
           onClick={() =>
             window.open(
-              "https://lp.noma-collective.com/schedule-your-meeting-page",
+              zeroSpots
+                ? "https://www.noma-collective-bookings.com/waitlist"
+                : "https://lp.noma-collective.com/schedule-your-meeting-page",
               "_self"
             )
           }
         >
-          BOOK YOUR TRIP
+          {zeroSpots ? "JOIN WAITLIST" : "BOOK YOUR TRIP"}
         </button>
-      )}
     </div>
     </div>
   );

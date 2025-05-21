@@ -34,33 +34,30 @@ const AccomodationCard = ({ item }) => {
         </p>
       </div>
       <div className="bg-[#ADADAD] w-full h-px"></div>
-      <div className="flex items-center justify-between gap-2 5">
-        <p className="text-[#313131] text-sm sm:text-base font-Montserrat font-bold leading-normal max-sm:order-2">
-          From ${item.price}
+      <div className="flex items-center justify-between gap-2.5">
+      <p className="text-[#313131] text-sm sm:text-base font-Montserrat font-bold leading-normal max-sm:order-2">
+        From ${item.price}
+      </p>
+
+      {zeroSpots ? (
+        <p className="text-[#666666] text-sm sm:text-base font-Montserrat font-extrabold leading-normal max-sm:order-1">
+          CONTACT TEAM NOMA
         </p>
+      ) : (
         <button
           type="submit"
-          className={`w-[153px] sm:w-[183px] h-[33px] ${
-            zeroSpots ? "bg-[#666666]" : "bg-[#ff9500]"
-          } rounded-2xl text-[#F4F1E6] text-center font-Montserrat text-sm sm:text-base font-extrabold leading-normal ${
-            zeroSpots ? "hover:text-[#666666]" : "hover:text-[#ff9500]"
-          } border
-          
-          ${
-            zeroSpots ? "border-[#666666]" : "border-[#ff9500]"
-          } hover:bg-transparent transition duration-300 ease-in-out  max-sm:order-1`}
+          className="w-[153px] sm:w-[183px] h-[33px] bg-[#ff9500] rounded-2xl text-[#F4F1E6] text-center font-Montserrat text-sm sm:text-base font-extrabold leading-normal hover:text-[#ff9500] border border-[#ff9500] hover:bg-transparent transition duration-300 ease-in-out max-sm:order-1"
           onClick={() =>
             window.open(
-              zeroSpots
-                ? "https://www.noma-collective-bookings.com/waitlist"
-                : "https://lp.noma-collective.com/schedule-your-meeting-page",
+              "https://lp.noma-collective.com/schedule-your-meeting-page",
               "_self"
             )
           }
         >
-          {zeroSpots ? "JOIN WAITLIST" : "BOOK YOUR TRIP"}
+          BOOK YOUR TRIP
         </button>
-      </div>
+      )}
+    </div>
     </div>
   );
 };

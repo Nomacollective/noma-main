@@ -55,8 +55,26 @@ const Footer = () => {
         <h1 className="text-center flex justify-center sm:text-5xl text-2xl font-bold p-1 text-[#FFFFFF]">
           Let’s Stay Connected
         </h1>
-        <div className="bg-[#666666] h-[250px] flex justify-center items-center">
-          <div id="embed-form-container"></div>
+        <div className="bg-[#666666] h-[250px]">
+          <iframe
+            src="https://link.jbenquet.com/widget/form/SO8up6ErSbXX2VnWL3BX"
+            // style="width:100%;height:100%;border:none;border-radius:36px"
+            width="100%"
+            id="inline-SO8up6ErSbXX2VnWL3BX"
+            data-layout="{'id':'INLINE'}"
+            data-trigger-type="alwaysShow"
+            data-trigger-value=""
+            data-activation-type="alwaysActivated"
+            data-activation-value=""
+            data-deactivation-type="neverDeactivate"
+            data-deactivation-value=""
+            data-form-name="Footer"
+            data-height="400"
+            data-layout-iframe-id="inline-SO8up6ErSbXX2VnWL3BX"
+            data-form-id="SO8up6ErSbXX2VnWL3BX"
+            title="Footer"
+          ></iframe>
+          <script src="https://link.jbenquet.com/js/form_embed.js"></script>
         </div>
         <div className="py-4 sm:flex sm:flex-col sm:justify-center sm:items-center mt-4">
           {/* <p className="text-white text-center font-sergio-trendy text-2xl sm:text-4xl leading-[120%] font-extrabold mb-4 sm:mb-0">

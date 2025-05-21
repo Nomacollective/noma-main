@@ -7,7 +7,7 @@ import { FaqsSlider } from "@/components/contact-us/FaqsSlider";
 import SocialConnect from "@/components/contact-us/SocialConnect";
 import { getFaqs } from "@/lib/api";
 import Link from "next/link";
-import React, { useEffect } from "react";
+import React from "react";
 
 export const getServerSideProps = async () => {
   const faqs = await getFaqs();
@@ -20,17 +20,6 @@ export const getServerSideProps = async () => {
 };
 
 const ContactUs = ({ faqs }) => {
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://link.jbenquet.com/js/form_embed.js";
-    script.async = true;
-    document.body.appendChild(script);
-
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
-
   return (
     <Layout>
       <PageSEO title="Noma - Contact-us" />
@@ -46,8 +35,25 @@ const ContactUs = ({ faqs }) => {
       </h4>
       <FaqsSlider faqs={faqs?.faqCollection?.items} />
       {/* <ConnectWithUs /> */}
-      <div className="h-[400px] bg-[#ECECFD] flex justify-center items-center">
-        <div id="embed-form-container"></div>
+      <div className="h-[400px] bg-[#ECECFD]">
+        <iframe
+          src="https://link.jbenquet.com/widget/form/00dE96FQ6mW7pPN6oRpe"
+          className="w-full h-full border-none rounded-[36px]"
+          id="inline-00dE96FQ6mW7pPN6oRpe"
+          data-layout="{'id':'INLINE'}"
+          data-trigger-type="alwaysShow"
+          data-trigger-value=""
+          data-activation-type="alwaysActivated"
+          data-activation-value=""
+          data-deactivation-type="neverDeactivate"
+          data-deactivation-value=""
+          data-form-name="contact us"
+          data-height="400"
+          data-layout-iframe-id="inline-00dE96FQ6mW7pPN6oRpe"
+          data-form-id="00dE96FQ6mW7pPN6oRpe"
+          title="contact us"
+        ></iframe>
+        <script src="https://link.jbenquet.com/js/form_embed.js"></script>
       </div>
       <SocialConnect />
     </Layout>

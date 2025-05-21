@@ -10,7 +10,7 @@ import AnimateHeight from "react-animate-height";
 import { BLOCKS } from "@contentful/rich-text-types";
 import { Children, useState } from "react";
 import Image from "next/image";
-import React, { useEffect } from "react";
+import React from "react";
 
 export const getServerSideProps = async () => {
   const preferredPartners = await getAllPreferredPartners();
@@ -36,17 +36,6 @@ const getCategoryLineColor = (category) => {
 }
 
 const PreferredPartners = ({ preferredPartners }) => {
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://link.jbenquet.com/js/form_embed.js";
-    script.async = true;
-    document.body.appendChild(script);
-
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
-
   const groupedPartners = groupBy(preferredPartners, "category");
 
   return (
@@ -153,9 +142,23 @@ const PreferredPartners = ({ preferredPartners }) => {
           <h4 className="font-Montserrat my-4 font-extrabold text-3xl text-center px-3 pt-10">
             Want to share your product with our community? Contact us below
           </h4>
-          <div className="flex justify-center items-center">
-            <div id="embed-form-container"></div>
-          </div>
+          <iframe
+            src="https://link.jbenquet.com/widget/form/00dE96FQ6mW7pPN6oRpe"
+            className="w-full h-full border-none rounded-[40px]"
+            id="inline-00dE96FQ6mW7pPN6oRpe"
+            data-layout="{'id':'INLINE'}"
+            data-trigger-type="alwaysShow"
+            data-trigger-value=""
+            data-activation-type="alwaysActivated"
+            data-activation-value=""
+            data-deactivation-type="neverDeactivate"
+            data-deactivation-value=""
+            data-form-name="contact us"
+            data-height="500"
+            data-layout-iframe-id="inline-00dE96FQ6mW7pPN6oRpe"
+            data-form-id="00dE96FQ6mW7pPN6oRpe"
+            title="contact us"
+          ></iframe>
           <div className="h-[500px] bg-[#ECECFD] 2xl:-mt-16 -mt-10 -z-20"></div>
         </div>
       </div>

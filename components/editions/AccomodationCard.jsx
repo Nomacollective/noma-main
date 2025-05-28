@@ -34,11 +34,12 @@ const AccomodationCard = ({ item }) => {
         </p>
       </div>
       <div className="bg-[#ADADAD] w-full h-px"></div>
-      <div className="flex items-center justify-between gap-2 5">
-        <p className="text-[#313131] text-sm sm:text-base font-Montserrat font-bold leading-normal max-sm:order-2">
-          From ${item.price}
-        </p>
-        <button
+      <div className="flex items-center justify-between gap-2.5">
+      <p className="text-[#313131] text-sm sm:text-base font-Montserrat font-bold leading-normal max-sm:order-2">
+        From ${item.price}
+      </p>
+
+      <button
           type="submit"
           className={`w-[153px] sm:w-[183px] h-[33px] ${
             zeroSpots ? "bg-[#666666]" : "bg-[#ff9500]"
@@ -60,7 +61,7 @@ const AccomodationCard = ({ item }) => {
         >
           {zeroSpots ? "JOIN WAITLIST" : "BOOK YOUR TRIP"}
         </button>
-      </div>
+    </div>
     </div>
   );
 };

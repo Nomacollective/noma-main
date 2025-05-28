@@ -10,6 +10,7 @@ import AnimateHeight from "react-animate-height";
 import { BLOCKS } from "@contentful/rich-text-types";
 import { Children, useState } from "react";
 import Image from "next/image";
+import React from "react";
 
 export const getServerSideProps = async () => {
   const preferredPartners = await getAllPreferredPartners();
@@ -36,6 +37,7 @@ const getCategoryLineColor = (category) => {
 
 const PreferredPartners = ({ preferredPartners }) => {
   const groupedPartners = groupBy(preferredPartners, "category");
+
   return (
     <Layout>
       <PageSEO title="Noma - Preferred Partners" />
@@ -135,6 +137,7 @@ const PreferredPartners = ({ preferredPartners }) => {
             }
           )}
         </div>{" "}
+          {/* Embedded Form Container */}
         <div className="grid grid-col h-[450px] bg-[#ECECFD]">
           <h4 className="font-Montserrat my-4 font-extrabold text-3xl text-center px-3 pt-10">
             Want to share your product with our community? Contact us below
@@ -156,7 +159,6 @@ const PreferredPartners = ({ preferredPartners }) => {
             data-form-id="00dE96FQ6mW7pPN6oRpe"
             title="contact us"
           ></iframe>
-          <script src="https://link.jbenquet.com/js/form_embed.js"></script>
           <div className="h-[500px] bg-[#ECECFD] 2xl:-mt-16 -mt-10 -z-20"></div>
         </div>
       </div>

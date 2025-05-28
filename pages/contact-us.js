@@ -7,6 +7,7 @@ import { FaqsSlider } from "@/components/contact-us/FaqsSlider";
 import SocialConnect from "@/components/contact-us/SocialConnect";
 import { getFaqs } from "@/lib/api";
 import Link from "next/link";
+import React from "react";
 
 export const getServerSideProps = async () => {
   const faqs = await getFaqs();

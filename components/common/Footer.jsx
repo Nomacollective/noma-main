@@ -1,7 +1,10 @@
 import Link from "next/link";
-import React, { useEffect } from "react";
+import dynamic from "next/dynamic"; // ⬅️ IMPORTANT for dynamic import
 import { FooterLine } from "./Icons";
 import Image from "next/image";
+
+// Dynamically import EmbeddedFormFooter with SSR disabled
+const EmbeddedFormFooter = dynamic(() => import("./EmbeddFormFooter"), { ssr: false });
 
 const socialLinks = [
   {
@@ -37,17 +40,6 @@ const socialLinks = [
 ];
 
 const Footer = () => {
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://link.jbenquet.com/js/form_embed.js";
-    script.async = true;
-    document.body.appendChild(script);
-
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
-
   return (
     <div>
       <div className='bg-cover bg-no-repeat bg-center mt-[-100px] bg-[url("/img/foterupperlayer.png")] h-[14vh] w-full ' />
@@ -55,73 +47,15 @@ const Footer = () => {
         <h1 className="text-center flex justify-center sm:text-5xl text-2xl font-bold p-1 text-[#FFFFFF]">
           Let’s Stay Connected
         </h1>
-        <div className="bg-[#666666] h-[250px]">
-          <iframe
-            src="https://link.jbenquet.com/widget/form/SO8up6ErSbXX2VnWL3BX"
-            // style="width:100%;height:100%;border:none;border-radius:36px"
-            width="100%"
-            id="inline-SO8up6ErSbXX2VnWL3BX"
-            data-layout="{'id':'INLINE'}"
-            data-trigger-type="alwaysShow"
-            data-trigger-value=""
-            data-activation-type="alwaysActivated"
-            data-activation-value=""
-            data-deactivation-type="neverDeactivate"
-            data-deactivation-value=""
-            data-form-name="Footer"
-            data-height="400"
-            data-layout-iframe-id="inline-SO8up6ErSbXX2VnWL3BX"
-            data-form-id="SO8up6ErSbXX2VnWL3BX"
-            title="Footer"
-          ></iframe>
-          <script src="https://link.jbenquet.com/js/form_embed.js"></script>
-        </div>
-        <div className="py-4 sm:flex sm:flex-col sm:justify-center sm:items-center mt-4">
-          {/* <p className="text-white text-center font-sergio-trendy text-2xl sm:text-4xl leading-[120%] font-extrabold mb-4 sm:mb-0">
-            Sign up for our mailer
-          </p>
-          <div className="mb-4 sm:mb-8">
-            <div className="sm:hidden flex justify-between items-center gap-3">
-              <input
-                type="text"
-                placeholder="Name"
-                className=" px-4 py-2 border rounded-full text-gray-700 focus:outline-none focus:border-blue-500 max-w-[550px] w-full"
-              />
-              <input
-                type="text"
-                placeholder="Last name"
-                className=" px-4 py-2 border rounded-full text-gray-700 focus:outline-none focus:border-blue-500 max-w-[550px] w-full"
-              />
-            </div>
-            <div className="flex justify-center gap-2 mt-2">
-              <input
-                type="text"
-                placeholder="Email"
-                className=" px-4 py-2 border rounded-full text-gray-700 focus:outline-none focus:border-blue-500 max-w-[550px] w-full"
-              />
-              <button
-                onClick={handleOpenModal}
-                className="hidden sm:flex p-2 max-w-[141px] w-full h-[42px] items-center justify-center bg-main-orange rounded-[28px] text-white text-base font-extrabold leading-normal hover:text-main-orange hover:bg-transparent transition duration-300 ease-in-out  border border-main-orange"
-              >
-                LET'S CONNECT
-              </button>
-            </div>
-            <p className="text-xs mt-2 px-2" style={{ color: "#C4C4C4" }}>
-              Submitting this forms means you opt in to receive communication
-              from us and read about our latest updates. You can unsubscribe at
-              any time.
-            </p>{" "}
-          </div>
-          <button
-            onClick={handleOpenModal}
-            className="flex sm:hidden m-auto p-2 w-[182px] h-[42px] items-center justify-center bg-main-orange rounded-[28px] text-white text-base font-extrabold leading-normal hover:text-main-orange hover:bg-transparent transition duration-300 ease-in-out  border border-main-orange mb-6"
-          >
-            SUBMIT
-          </button> */}
 
-          <span className=" max-w-full block sm:hidden py-6">
+        {/* ✅ Dynamically loaded iframe component */}
+        <EmbeddedFormFooter />
+
+        <div className="py-4 sm:flex sm:flex-col sm:justify-center sm:items-center mt-4">
+          <span className="max-w-full block sm:hidden py-6">
             <FooterLine />
           </span>
+
           <div className="sm:pl-0 sm:flex sm:justify-around sm:w-full max-w-[1000px]">
             <div className="column-uno text-white -mt-8 hidden sm:block">
               <Link href="/">
@@ -129,6 +63,7 @@ const Footer = () => {
                   src="/img/high-res-logo.png"
                   width={150}
                   className="-ml-3"
+                  alt="Noma Collective Logo"
                 />
               </Link>
               <div className="flex gap-2 mb-2 -mt-8">
@@ -157,12 +92,14 @@ const Footer = () => {
                 BOOK A CALL
               </Link>
             </div>
-            <div className="column-dos hidden sm:flex flex-col text-white order-1 sm:order-1 ">
+
+            <div className="column-dos hidden sm:flex flex-col text-white order-1 sm:order-1">
               <Link href="/faqs">FAQ</Link>
               <Link href="/terms-conditions">TERMS & CONDITIONS</Link>
               <Link href="/privacy-policy">PRIVACY POLICY</Link>
               <Link href="/contact-us">CONTACT US</Link>
             </div>
+
             <div className="sm:hidden flex justify-between">
               <div className="column-dos flex flex-col text-white mb-2 order-2 sm:order-1 text-right sm:text-center">
                 <Link href="/location">LOCATIONS</Link>
@@ -175,7 +112,7 @@ const Footer = () => {
                   BOOK A CALL
                 </Link>
               </div>
-              <div className="column-dos flex flex-col text-white order-1 sm:order-1 ">
+              <div className="column-dos flex flex-col text-white order-1 sm:order-1">
                 <Link href="/faqs">FAQ</Link>
                 <Link href="/terms-conditions">TERMS & CONDITIONS</Link>
                 <Link href="/privacy-policy">PRIVACY POLICY</Link>
@@ -199,7 +136,6 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      {/* <SignUpModal isClose={handleCloseModal} isOpen={isModalOpen} /> */}
     </div>
   );
 };

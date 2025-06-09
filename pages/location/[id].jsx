@@ -49,25 +49,19 @@ function formatDateRange(startDate, endDate) {
 }
 
 export const CustomText = ({ text }) => {
-  // Split the text by commas and parentheses
   const parts = text?.split(/([,()])/);
 
   return (
     <span>
       {parts.map((part, index) => {
-        // Check if the part is a comma or parenthesis
         if (part === "," || part === "(" || part === ")") {
           return (
-            <span
-              key={index + "custom-text"}
-              className="font-serif font-extrabold"
-            >
+            <span key={index + "custom-text"} className="font-serif font-extrabold">
               {part}
             </span>
           );
         }
-        // Otherwise, render the part with the default font
-        return <span>{part}</span>;
+        return <span key={index}>{part}</span>;
       })}
     </span>
   );

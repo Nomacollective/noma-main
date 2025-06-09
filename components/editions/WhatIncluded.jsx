@@ -3,6 +3,7 @@ import { getWhatsIncludedImage } from "../common/Helper";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { BLOCKS } from "@contentful/rich-text-types";
 import Image from "next/image";
+import { getAllEditions } from "@/lib/api";
 
 const getStylesWhatsIncludedImage = (title) => {
   if (
@@ -17,21 +18,43 @@ const getStylesWhatsIncludedImage = (title) => {
   return "";
 };
 
-const WhatIncluded = ({ d, items }) => {
+const WhatIncluded = ({ d, items, location }) => {
   const [showForm, setShowForm] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
-  const [isIframeLoading, setIsIframeLoading] = useState(true); // Spinner state
-  const [isFormSuccess, setIsFormSuccess] = useState(false); // Success state
+  const [isIframeLoading, setIsIframeLoading] = useState(true);
+  const [isFormSuccess, setIsFormSuccess] = useState(false);
+  const [showPdfButton, setShowPdfButton] = useState(false);
 
-  // Reset form after 30 seconds after submission
+  useEffect(() => {
+    const fetchEditions = async () => {
+      try {
+        const res = await getAllEditions();
+        const editions = res?.contentTypeLocationCollection?.items || [];
+  
+        const match = editions.some(({ city, country }) => {
+          const lowerLocation = location?.toLowerCase() || "";
+          return (
+            city?.toLowerCase() && lowerLocation.includes(city.toLowerCase()) ||
+            country?.toLowerCase() && lowerLocation.includes(country.toLowerCase())
+          );
+        });
+  
+        setShowPdfButton(match);
+      } catch (error) {
+        console.error("Failed to fetch editions:", error);
+      }
+    };
+  
+    fetchEditions();
+  }, [location]);
+
   useEffect(() => {
     if (formSubmitted) {
       const timer = setTimeout(() => {
         setShowForm(false);
         setFormSubmitted(false);
-        setIsFormSuccess(false); // Reset success flag too
-      }, 30000); // 30 seconds
-
+        setIsFormSuccess(false);
+      }, 30000);
       return () => clearTimeout(timer);
     }
   }, [formSubmitted]);
@@ -45,7 +68,7 @@ const WhatIncluded = ({ d, items }) => {
               {documentToReactComponents(d, {
                 renderNode: {
                   [BLOCKS.PARAGRAPH]: (node, children) => (
-                    <p className="m-0">{children}</p> // Remove default p margins
+                    <div className="m-0">{children}</div>
                   ),
                 },
               })}
@@ -58,8 +81,8 @@ const WhatIncluded = ({ d, items }) => {
                 className="md:max-w-[370px] max-w-[250px] w-full py-2 md:py-4 rounded-full bg-[#FC5B67] border-[2px] border-[#FC5B67] hover:bg-transparent transition duration-300 ease-in-out text-[#F7F7F7] font-Montserrat lg:text-[32px] md:text-2xl text-base font-extrabold leading-normal hover:text-[#FC5B67]"
                 onClick={() => {
                   setShowForm(true);
-                  setIsIframeLoading(true); // Reset loading spinner
-                  setIsFormSuccess(false);  // Reset success view
+                  setIsIframeLoading(true);
+                  setIsFormSuccess(false);
                 }}
               >
                 GET STARTED
@@ -82,7 +105,7 @@ const WhatIncluded = ({ d, items }) => {
 
             {/* Form Embed */}
             {showForm && (
-              <div className="bg-[#F7F7F7] p-8 rounded-3xl shadow-md w-full max-w-[500px] mt-4 mx-auto relative min-h-[200px]">
+              <div className="bg-[#F7F7F7] p-8 rounded-3xl shadow-md w-full max-w-[500px] mt-4 mx-auto relative min-h-[220px]">
                 {isIframeLoading && (
                   <div className="absolute inset-0 flex justify-center items-center bg-white rounded-3xl z-10">
                     <div className="w-12 h-12 border-4 border-[#FC5B67] border-t-transparent rounded-full animate-spin"></div>
@@ -96,7 +119,7 @@ const WhatIncluded = ({ d, items }) => {
                     border: "none",
                     borderRadius: "36px",
                     display: isIframeLoading ? "none" : "block",
-                    transition: "height 0.3s ease-in-out", // Smooth height transition
+                    transition: "height 0.3s ease-in-out",
                   }}
                   id="inline-5DhwvsBVdiF5zlwzXGtS"
                   data-layout='{"id":"INLINE"}'
@@ -113,11 +136,11 @@ const WhatIncluded = ({ d, items }) => {
                   title="Download PDF"
                   onLoad={() => {
                     if (formSubmitted) {
-                      setIsFormSuccess(true); // Second load -> success screen
+                      setIsFormSuccess(true);
                     } else {
-                      setFormSubmitted(true); // First load -> form loaded
+                      setFormSubmitted(true); 
                     }
-                    setIsIframeLoading(false); // Remove spinner
+                    setIsIframeLoading(false);
                   }}
                 ></iframe>
                 <script src="https://link.jbenquet.com/js/form_embed.js"></script>

@@ -156,6 +156,7 @@ const Editions = ({ location }) => {
       <WhatIncluded
         d={locationMapped?.description2}
         items={locationMapped?.whatsIncluded}
+        location={locationMapped}
       />
       {!!locationMapped?.manager && (
         <ProfileMeet manager={locationMapped?.manager} />

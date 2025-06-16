@@ -31,12 +31,16 @@ const WhatIncluded = ({ d, items, location }) => {
         const res = await getAllEditions();
         const editions = res?.contentTypeLocationCollection?.items || [];
   
+        // Normalize the location input to a lowercase string
+        const lowerLocation =
+          typeof location === "string"
+            ? location.toLowerCase()
+            : `${location?.city || ""}, ${location?.country || ""}`.toLowerCase();
+  
         const match = editions.some(({ city, country }) => {
-          const lowerLocation = location?.toLowerCase() || "";
-          return (
-            city?.toLowerCase() && lowerLocation.includes(city.toLowerCase()) ||
-            country?.toLowerCase() && lowerLocation.includes(country.toLowerCase())
-          );
+          const cityMatch = city?.toLowerCase() && lowerLocation.includes(city.toLowerCase());
+          const countryMatch = country?.toLowerCase() && lowerLocation.includes(country.toLowerCase());
+          return cityMatch || countryMatch;
         });
   
         setShowPdfButton(match);

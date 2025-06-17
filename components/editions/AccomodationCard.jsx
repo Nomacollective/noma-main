@@ -4,8 +4,8 @@ import AccomodationCardBtns from "./AccomodationCardBtns";
 
 const AccomodationCard = ({ item, location }) => {
   const zeroSpots = item?.spotsLeft === 0;
-  const isColumbia = location?.heading?.toLowerCase()?.includes("colombia");
-  const showContactTeamNoma = zeroSpots && isColumbia;
+  const isColombia = location?.heading?.toLowerCase()?.includes("colombia");
+  const showContactTeamNoma = zeroSpots && isColombia;
 
   return (
     <div className="mx-auto w-[328px] cursor-pointer hover:scale-[1.02] transition duration-300 ease-in-out flex flex-col gap-2 max-sm:px-2 max-sm:py-4">
@@ -47,9 +47,9 @@ const AccomodationCard = ({ item, location }) => {
         </p>
 
         {showContactTeamNoma ? (
-          <div className="w-[153px] sm:w-[183px] h-[33px] bg-[#666666] rounded-2xl text-[#F4F1E6] text-center font-Montserrat text-sm sm:text-base font-extrabold leading-[33px] border border-[#666666] max-sm:order-1">
+          <p className="text-[#666666] font-Montserrat text-sm sm:text-base font-extrabold leading-normal max-sm:order-1">
             CONTACT TEAM NOMA
-          </div>
+          </p>
         ) : (
           <button
             type="submit"

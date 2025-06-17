@@ -162,7 +162,7 @@ const Editions = ({ location }) => {
         <ProfileMeet manager={locationMapped?.manager} />
       )}
       <HighLights highlights={locationMapped?.highlights} />
-      <Accomodation accomodation={locationMapped?.accomodation || []} />
+      <Accomodation accomodation={locationMapped?.accomodation || []} location={locationMapped} />
       {locationMapped?.guestGallery?.length > 0 && (
         <div className="mt-[85px]">
           <GuestGallery guestGallery={locationMapped?.guestGallery} />

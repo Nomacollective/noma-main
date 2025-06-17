@@ -109,7 +109,7 @@ const Editions = ({ location }) => {
     description2: location?.contentTypeLocation?.description2?.json,
     hero: location?.contentTypeLocation?.heroImage?.url,
     whatsIncluded: location?.contentTypeLocation?.facilitiesCollection?.items,
-    manager: location?.contentTypeLocation?.managerCollection?.items?.[0],
+    manager: location?.contentTypeLocation?.managerCollection?.items || [],
     highlights: location?.contentTypeLocation?.highlightsCollection?.items,
     accomodation:
       location?.contentTypeLocation?.accomodationsCollection?.items.sort(

@@ -3,38 +3,47 @@ import React from "react";
 import { FaciltiesIcons } from "../common/Icons";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
-const ProfileMeet = ({ manager }) => {
+const ProfileMeet = ({ managers = [] }) => {
+  if (!managers.length) return null;
+
   return (
-    <div className="bg-[#F4F1E6] my-4">
-      <div className="max-w-[779px] w-full mx-auto pt-4 max-sm:pb-8 sm:py-6 xl:px-0 px-4">
-        <div className="flex gap-4 items-center sm:hidden">
+    <div className="bg-[#F4F1E6] my-4 py-8">
+      <div className="max-w-[1100px] w-full mx-auto px-4 xl:px-0">
+        <div className="flex gap-4 items-center mb-6 sm:hidden">
           <FaciltiesIcons />
-          {/* <p className="text-[#313131] font-Montserrat text-base font-extrabold  ">
-            {/* Management and Host */}
-          {/* </p> */} 
         </div>
-        <div className=" flex max-sm:flex-col justify-center xl:justify-end gap-1 sm:gap-8 md:gap-[68px] items-center max-sm:mt-[38px]">
-          <div className="max-w-[265px] w-full">
-            <h1 className="text-[#313131] font-Montserrat text-xl sm:text-[32px] font-extrabold leading-normal max-sm:text-center">
-              Meet {manager?.name}
-            </h1>
-            <p className="text-[#313131] font-Montserrat text-sm sm:text-base font-normal leading-normal">
-              Your local Community Manager
-            </p>
-            <Image
-              src={manager?.profileImage?.url}
-              height={247}
-              width={249}
-              className="pt-4 rounded-full object-fill"
-              alt={`Noma Collective community manager - ${manager?.name}`}
-            />
-          </div>
-          <div className="sm:max-w-[298px] w-full flex flex-col gap-2 sm:gap-4 text-center text-[#313131] text-sm sm:text-base font-normal font-Montserrat leading-normal">
-            {documentToReactComponents(manager?.description?.json)}
-          </div>
+
+        <div className="grid gap-12 md:grid-cols-2">
+          {managers.map((manager, index) => (
+            <div
+              key={manager?.sys?.id || index}
+              className="flex flex-col sm:flex-row gap-6 items-center"
+            >
+              <div className="max-w-[265px] w-full text-center sm:text-left">
+                <h1 className="text-[#313131] font-Montserrat text-xl sm:text-[32px] font-extrabold leading-normal">
+                  Meet {manager?.name}
+                </h1>
+                <p className="text-[#313131] font-Montserrat text-sm sm:text-base font-normal leading-normal">
+                  Your local Community Manager
+                </p>
+                <Image
+                  src={manager?.profileImage?.url}
+                  height={247}
+                  width={249}
+                  className="pt-4 rounded-full object-fill mx-auto sm:mx-0"
+                  alt={`Noma Collective community manager - ${manager?.name}`}
+                />
+              </div>
+
+              <div className="sm:max-w-[298px] w-full flex flex-col gap-2 sm:gap-4 text-center sm:text-left text-[#313131] text-sm sm:text-base font-normal font-Montserrat leading-normal">
+                {documentToReactComponents(manager?.description?.json)}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>
   );
 };
+
 export default ProfileMeet;

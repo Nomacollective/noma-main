@@ -109,7 +109,7 @@ const Editions = ({ location }) => {
     description2: location?.contentTypeLocation?.description2?.json,
     hero: location?.contentTypeLocation?.heroImage?.url,
     whatsIncluded: location?.contentTypeLocation?.facilitiesCollection?.items,
-    manager: location?.contentTypeLocation?.managerCollection?.items?.[0],
+    manager: location?.contentTypeLocation?.managerCollection?.items || [],
     highlights: location?.contentTypeLocation?.highlightsCollection?.items,
     accomodation:
       location?.contentTypeLocation?.accomodationsCollection?.items.sort(
@@ -158,8 +158,8 @@ const Editions = ({ location }) => {
         items={locationMapped?.whatsIncluded}
         location={locationMapped}
       />
-      {!!locationMapped?.manager && (
-        <ProfileMeet manager={locationMapped?.manager} />
+      {!!locationMapped?.manager?.length && (
+        <ProfileMeet managers={locationMapped.manager} />
       )}
       <HighLights highlights={locationMapped?.highlights} />
       <Accomodation accomodation={locationMapped?.accomodation || []} location={locationMapped} />

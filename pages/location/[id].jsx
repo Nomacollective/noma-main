@@ -158,8 +158,8 @@ const Editions = ({ location }) => {
         items={locationMapped?.whatsIncluded}
         location={locationMapped}
       />
-      {!!locationMapped?.manager && (
-        <ProfileMeet manager={locationMapped?.manager} />
+      {!!locationMapped?.manager?.length && (
+        <ProfileMeet managers={locationMapped.manager} />
       )}
       <HighLights highlights={locationMapped?.highlights} />
       <Accomodation accomodation={locationMapped?.accomodation || []} location={locationMapped} />

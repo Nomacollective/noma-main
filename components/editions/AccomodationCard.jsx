@@ -4,7 +4,7 @@ import AccomodationCardBtns from "./AccomodationCardBtns";
 
 const AccomodationCard = ({ item, location }) => {
   const zeroSpots = item?.spotsLeft === 0;
-  const isColumbia = location?.heading?.toLowerCase()?.includes("columbia");
+  const isColumbia = location?.heading?.toLowerCase()?.includes("colombia");
   const showContactTeamNoma = zeroSpots && isColumbia;
 
   return (

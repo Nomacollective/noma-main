@@ -102,7 +102,7 @@ const WhatIncluded = ({ d, items, location }) => {
             {!showForm && showPdfButton && (
               <button
                 type="button"
-                className="md:max-w-[370px] max-w-[250px] w-full py-2 md:py-4 rounded-full bg-[#FF9500] border-[2px] border-[#FF9500] hover:bg-transparent transition duration-300 ease-in-out text-[#F7F7F7] font-Montserrat lg:text-[32px] md:text-2xl text-base font-extrabold leading-normal hover:text-[#FC5B67]"
+                className="md:max-w-[370px] max-w-[250px] w-full px-6 py-2 md:py-4 rounded-full bg-[#FF9500] border-[2px] border-[#FF9500] hover:bg-transparent transition duration-300 ease-in-out text-[#F7F7F7] font-Montserrat lg:text-[32px] md:text-2xl text-base font-extrabold leading-normal hover:text-[#FC5B67]"
                 onClick={() => {
                   setShowForm(true);
                   setIsIframeLoading(true);

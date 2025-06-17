@@ -26,7 +26,8 @@ const ProfileMeet = ({ managers = [] }) => {
                 <p className="text-[#313131] font-Montserrat text-sm sm:text-base font-normal leading-normal">
                   Your local Community Manager
                 </p>
-                <div className="w-[247px] h-[247px] rounded-full overflow-hidden mx-auto sm:mx-0 pt-4">
+
+                <div className="w-[247px] h-[247px] rounded-full overflow-hidden mx-auto sm:mx-0">
                   <Image
                     src={manager?.profileImage?.url}
                     alt={`Noma Collective community manager - ${manager?.name}`}

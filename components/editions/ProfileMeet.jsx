@@ -6,6 +6,8 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 const ProfileMeet = ({ managers = [] }) => {
   if (!managers.length) return null;
 
+  const isSingle = managers.length === 1;
+
   return (
     <div className="bg-[#F4F1E6] my-4 py-8">
       <div className="max-w-[1100px] w-full mx-auto px-4 xl:px-0">
@@ -13,7 +15,11 @@ const ProfileMeet = ({ managers = [] }) => {
           <FaciltiesIcons />
         </div>
 
-        <div className="grid gap-12 md:grid-cols-2">
+        <div
+          className={`grid gap-12 ${
+            isSingle ? "place-items-center" : "md:grid-cols-2"
+          }`}
+        >
           {managers.map((manager, index) => (
             <div
               key={manager?.sys?.id || index}

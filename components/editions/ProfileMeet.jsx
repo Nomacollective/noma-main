@@ -47,7 +47,7 @@ const ProfileMeet = ({ managers = [] }) => {
               </div>
 
               {/* Right section: Description */}
-              <div className="sm:max-w-[298px] w-full flex flex-col gap-2 sm:gap-4 text-left text-[#313131] text-sm sm:text-base font-normal font-Montserrat leading-normal">
+              <div className="sm:max-w-[298px] w-full flex flex-col gap-2 sm:gap-4 text-left text-[#313131] text-sm sm:text-base font-normal font-Montserrat leading-normal pt-12">
                 {documentToReactComponents(manager?.description?.json)}
               </div>
             </div>

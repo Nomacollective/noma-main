@@ -1011,27 +1011,27 @@ export const featured = [
 export const Carmelcardmap = [
   {
     img: "/img/guest-galler-2.png",
-    name: "Sachit Michra",
-    numberOfTrips: "1 edition done",
+    name: "Sachit",
+    numberOfTrips: "1 Edition",
     jobTitle: "PM at a startup",
     paragraph:
       "Logistically, Noma handles things extremely well. The communication, accommodation, and excursions were impeccable and professionally handled. But more than that, this was an incredibly well curated experience of connection, friendship, and adventure. And that was in no small part thanks to our extremely reliable and friendly community manager, Mariela, who set the tone for the whole trip. I will never forget my Noma experience and you can be sure I'll be booking another.",
   },
   {
     img: "/img/Michele_Khan.jpg",
-    name: "Michele Khan",
-    numberOfTrips: "2 edition done",
+    name: "Michele",
+    numberOfTrips: "2 Editions",
     jobTitle: "Research Manager",
     paragraph:
       "I had an absolutely amazing time in Antigua. The accommodations were lovely, spacious and clean! The best part, by far, was our Noma crew. We had a blast and everything was so well organized and thought out. From family dinners, crazy weekend adventures (including hiking a volcano and releasing baby sea turtles into the ocean), to cozy nights in, I had an incredible time and met some of the coolest people. I can say that I made some wonderful, life-long friends as well.",
   },
   {
     img: "/img/Michelle_Jean.jpg",
-    name: "Michelle Jean",
-    numberOfTrips: "3 edition done",
-    jobTitle: "UI/ UX designer",
+    name: "Kylie",
+    numberOfTrips: "3 Editions",
+    jobTitle: "Editions Senior Manager",
     paragraph:
-      "I recently did two Noma trips (Guatemala and Panama) and these experiences changed my perspective on travel. It’s not just about visiting beautiful places, but most importantly the connections you make along the way. Traveling with Noma gives you community and a more authentic traveling experience. There was a perfect balance of work, free time, and planned activities for the group. I highly recommend booking with Noma for your next trip!",
+      "Had my first experience with Noma Collective in Barcelona, and I'm so happy I did it! It was such a great experience, and I got to meet new people to travel with. Everyone on the Noma team was so helpful, kind, and fun—especially Leo, our community manager. She made every event feel so special and planned so many fun activities. Can't wait until the next trip!",
   },
 ];
 export const whatWeOfferCardData3 = [

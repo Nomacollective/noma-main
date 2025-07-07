@@ -23,6 +23,7 @@ const WhatIncluded = ({ d, items, location }) => {
   const [isIframeLoading, setIsIframeLoading] = useState(true);
   const [isFormSuccess, setIsFormSuccess] = useState(false);
   const [showPdfButton, setShowPdfButton] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const fetchEditions = async () => {
@@ -47,7 +48,6 @@ const WhatIncluded = ({ d, items, location }) => {
         ].map((loc) => loc.toLowerCase());
 
         const heading = location?.heading?.toLowerCase() || "";
-
         const isLocationAllowed = allowedLocations.some((loc) =>
           heading.includes(loc)
         );
@@ -62,6 +62,15 @@ const WhatIncluded = ({ d, items, location }) => {
   }, [location]);
 
   useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
     if (formSubmitted) {
       const timer = setTimeout(() => {
         setShowForm(false);
@@ -71,6 +80,49 @@ const WhatIncluded = ({ d, items, location }) => {
       return () => clearTimeout(timer);
     }
   }, [formSubmitted]);
+
+  const renderIframe = (
+    <div className="bg-[#F7F7F7] p-4 rounded-3xl shadow-md w-full max-w-[500px] mt-4 mx-auto relative min-h-[220px]">
+      {isIframeLoading && (
+        <div className="absolute inset-0 flex justify-center items-center bg-white rounded-3xl z-10">
+          <div className="w-12 h-12 border-4 border-[#FC5B67] border-t-transparent rounded-full animate-spin"></div>
+        </div>
+      )}
+      <iframe
+        src="https://link.jbenquet.com/widget/form/5DhwvsBVdiF5zlwzXGtS"
+        style={{
+          width: "100%",
+          height: isFormSuccess ? "260px" : "575px",
+          border: "none",
+          borderRadius: "36px",
+          display: isIframeLoading ? "none" : "block",
+          transition: "height 0.3s ease-in-out",
+        }}
+        id="inline-5DhwvsBVdiF5zlwzXGtS"
+        data-layout='{"id":"INLINE"}'
+        data-trigger-type="alwaysShow"
+        data-trigger-value=""
+        data-activation-type="alwaysActivated"
+        data-activation-value=""
+        data-deactivation-type="neverDeactivate"
+        data-deactivation-value=""
+        data-form-name="Download PDF"
+        data-height="575"
+        data-layout-iframe-id="inline-5DhwvsBVdiF5zlwzXGtS"
+        data-form-id="5DhwvsBVdiF5zlwzXGtS"
+        title="Download PDF"
+        onLoad={() => {
+          if (formSubmitted) {
+            setIsFormSuccess(true);
+          } else {
+            setFormSubmitted(true);
+          }
+          setIsIframeLoading(false);
+        }}
+      ></iframe>
+      <script src="https://link.jbenquet.com/js/form_embed.js"></script>
+    </div>
+  );
 
   return (
     <div className="bg-[#FFDA7F]">
@@ -102,8 +154,7 @@ const WhatIncluded = ({ d, items, location }) => {
             {!showForm && showPdfButton && (
               <button
                 type="button"
-                className="md:max-w-[402px] max-w-[250px] w-full px-6 py-2 md:py-4 rounded-full bg-[#FF9500] border-[2px] border-[#FF9500] hover:bg-transparent transition duration-300 ease-in-out text-[#F7F7F7]
-                 font-Montserrat lg:text-[32px] md:text-2xl text-base font-extrabold leading-normal hover:text-[#FC5B67] whitespace-nowrap"
+                className="md:max-w-[402px] max-w-[250px] w-full px-6 py-2 md:py-4 rounded-full bg-[#FF9500] border-[2px] border-[#FF9500] hover:bg-transparent transition duration-300 ease-in-out text-[#F7F7F7] font-Montserrat lg:text-[32px] md:text-2xl text-base font-extrabold leading-normal hover:text-[#FC5B67] whitespace-nowrap"
                 onClick={() => {
                   setShowForm(true);
                   setIsIframeLoading(true);
@@ -113,57 +164,16 @@ const WhatIncluded = ({ d, items, location }) => {
                 FREE LOCATION PDF
               </button>
             )}
-          </div>
 
-          {showForm && (
-            <div className="bg-[#F7F7F7] p-8 rounded-3xl shadow-md w-full max-w-[500px] mt-4 mx-auto relative min-h-[220px]">
-              {isIframeLoading && (
-                <div className="absolute inset-0 flex justify-center items-center bg-white rounded-3xl z-10">
-                  <div className="w-12 h-12 border-4 border-[#FC5B67] border-t-transparent rounded-full animate-spin"></div>
-                </div>
-              )}
-              <iframe
-                src="https://link.jbenquet.com/widget/form/5DhwvsBVdiF5zlwzXGtS"
-                style={{
-                  width: "100%",
-                  height: isFormSuccess ? "200px" : "519px",
-                  border: "none",
-                  borderRadius: "36px",
-                  display: isIframeLoading ? "none" : "block",
-                  transition: "height 0.3s ease-in-out",
-                }}
-                id="inline-5DhwvsBVdiF5zlwzXGtS"
-                data-layout='{"id":"INLINE"}'
-                data-trigger-type="alwaysShow"
-                data-trigger-value=""
-                data-activation-type="alwaysActivated"
-                data-activation-value=""
-                data-deactivation-type="neverDeactivate"
-                data-deactivation-value=""
-                data-form-name="Download PDF"
-                data-height="519"
-                data-layout-iframe-id="inline-5DhwvsBVdiF5zlwzXGtS"
-                data-form-id="5DhwvsBVdiF5zlwzXGtS"
-                title="Download PDF"
-                onLoad={() => {
-                  if (formSubmitted) {
-                    setIsFormSuccess(true);
-                  } else {
-                    setFormSubmitted(true);
-                  }
-                  setIsIframeLoading(false);
-                }}
-              ></iframe>
-              <script src="https://link.jbenquet.com/js/form_embed.js"></script>
-            </div>
-          )}
+            {showForm && !isMobile && renderIframe}
+          </div>
         </div>
 
         <div className="w-full sm:max-w-[417px] mx-auto sm:px-0 px-4">
           <h1 className="text-[#313131] font-Montserrat text-2xl sm:text-[32px] font-extrabold leading-normal max-md:text-center">
             What's included
           </h1>
-          <div className="flex flex-col gap-4 sm:gap-5 mt-2 sm:mt-4">
+          <div className="flex flex-col gap-4 sm:gap-5 mt-2 sm:mt-4 pb-[30px]">
             {items.map((item, index) => (
               <div
                 key={index}
@@ -191,6 +201,36 @@ const WhatIncluded = ({ d, items, location }) => {
                 </div>
               </div>
             ))}
+          </div>
+
+          <div className="flex flex-col justify-center items-center gap-2 sm:hidden">
+            <button
+              type="button"
+              className="md:max-w-[370px] max-w-[250px] w-full py-2 md:py-4 rounded-full bg-[#FC5B67] border-[2px] border-[#FC5B67] hover:bg-transparent transition duration-300 ease-in-out text-[#F7F7F7] font-Montserrat lg:text-[32px] md:text-2xl text-base font-extrabold leading-normal hover:text-[#FC5B67]"
+              onClick={() => {
+                setShowForm(true);
+                setIsIframeLoading(true);
+                setIsFormSuccess(false);
+              }}
+            >
+              GET STARTED
+            </button>
+
+            {!showForm && showPdfButton && (
+              <button
+                type="button"
+                className="md:max-w-[402px] max-w-[250px] w-full px-6 py-2 md:py-4 rounded-full bg-[#FF9500] border-[2px] border-[#FF9500] hover:bg-transparent transition duration-300 ease-in-out text-[#F7F7F7] font-Montserrat lg:text-[32px] md:text-2xl text-base font-extrabold leading-normal hover:text-[#FC5B67] whitespace-nowrap"
+                onClick={() => {
+                  setShowForm(true);
+                  setIsIframeLoading(true);
+                  setIsFormSuccess(false);
+                }}
+              >
+                FREE LOCATION PDF
+              </button>
+            )}
+
+            {showForm && isMobile && renderIframe}
           </div>
         </div>
       </div>

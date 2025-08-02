@@ -142,11 +142,12 @@ const WhatIncluded = ({ d, items, location }) => {
             <button
               type="button"
               className="md:max-w-[370px] max-w-[250px] w-full py-2 md:py-4 rounded-full bg-[#FC5B67] border-[2px] border-[#FC5B67] hover:bg-transparent transition duration-300 ease-in-out text-[#F7F7F7] font-Montserrat lg:text-[32px] md:text-2xl text-base font-extrabold leading-normal hover:text-[#FC5B67]"
-              onClick={() => {
-                setShowForm(true);
-                setIsIframeLoading(true);
-                setIsFormSuccess(false);
-              }}
+              onClick={() =>
+                window.open(
+                  "https://lp.noma-collective.com/schedule-your-meeting-page",
+                  "_self"
+                )
+              }
             >
               GET STARTED
             </button>
@@ -207,11 +208,12 @@ const WhatIncluded = ({ d, items, location }) => {
             <button
               type="button"
               className="md:max-w-[370px] max-w-[250px] w-full py-2 md:py-4 rounded-full bg-[#FC5B67] border-[2px] border-[#FC5B67] hover:bg-transparent transition duration-300 ease-in-out text-[#F7F7F7] font-Montserrat lg:text-[32px] md:text-2xl text-base font-extrabold leading-normal hover:text-[#FC5B67]"
-              onClick={() => {
-                setShowForm(true);
-                setIsIframeLoading(true);
-                setIsFormSuccess(false);
-              }}
+              onClick={() =>
+                window.open(
+                  "https://lp.noma-collective.com/schedule-your-meeting-page",
+                  "_self"
+                )
+              }
             >
               GET STARTED
             </button>

@@ -81,7 +81,6 @@ const HighLights = ({ highlights }) => {
               clickable: true,
             }}
             // paginationType="bullets"
-            paginationClickable={true}
             modules={[Scrollbar]}
             className="mySwiper w-full"
             ref={swiperRef}

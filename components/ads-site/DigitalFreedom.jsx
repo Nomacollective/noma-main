@@ -9,25 +9,29 @@ const DigitalFreedom = () => {
     <section className="bg-[#BBE4D7] py-12">
     <div className="grid 2xl:grid-cols-2 xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 gap-10 max-w-[1450px] px-4 w-full mx-auto">
       <div className="col-span-1">
-        <iframe
-          src="https://link.jbenquet.com/widget/form/H7JLnG7Yp5NzB9ZvQdKX"
-          // style="width:100%;height:100%;border:none;border-radius:36px"
-          id="inline-H7JLnG7Yp5NzB9ZvQdKX"
-          data-layout="{'id':'INLINE'}"
-          data-trigger-type="alwaysShow"
-          data-trigger-value=""
-          data-activation-type="alwaysActivated"
-          data-activation-value=""
-          data-deactivation-type="neverDeactivate"
-          data-deactivation-value=""
-          data-form-name="Noma Collective Booking Form 2"
-          data-height="1628"
-          data-layout-iframe-id="inline-H7JLnG7Yp5NzB9ZvQdKX"
-          data-form-id="H7JLnG7Yp5NzB9ZvQdKX"
-          title="Noma Collective Booking Form 2"
-          width="100%"
-        ></iframe>
-        <script src="https://link.jbenquet.com/js/form_embed.js"></script>
+      <iframe
+        src="https://link.jbenquet.com/widget/form/JVWdPPzhmaA7isrR4974"
+        style={{
+          width: "100%",
+          height: "100%",
+          border: "none",
+          borderRadius: "36px",
+        }}
+        id="inline-JVWdPPzhmaA7isrR4974"
+        data-layout='{"id":"INLINE"}'
+        data-trigger-type="alwaysShow"
+        data-trigger-value=""
+        data-activation-type="alwaysActivated"
+        data-activation-value=""
+        data-deactivation-type="neverDeactivate"
+        data-deactivation-value=""
+        data-form-name="Ads Noma Collective Booking Form 2 (how to nomad)"
+        data-height="1628"
+        data-layout-iframe-id="inline-JVWdPPzhmaA7isrR4974"
+        data-form-id="JVWdPPzhmaA7isrR4974"
+        title="Ads Noma Collective Booking Form 2 (how to nomad)"
+      ></iframe>
+      <script src="https://link.jbenquet.com/js/form_embed.js"></script>
       </div>
 
       <div className="grid-span-2">

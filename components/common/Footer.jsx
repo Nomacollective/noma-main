@@ -79,16 +79,16 @@ const Footer = () => {
               </div>
             </div>
 
-            <div className="column-dos hidden sm:flex flex-col text-white mb-2 order-2 sm:order-1 text-right sm:text-center">
-              <Link href="/location">LOCATIONS</Link>
-              <Link href="/how-it-works">HOW IT WORKS</Link>
-              <Link href="/news">WHAT'S NEW</Link>
-              <Link
-                href="https://lp.noma-collective.com/schedule-your-meeting-page"
-                className="font-bold"
-              >
-                BOOK A CALL
-              </Link>
+            <div className="column-dos hidden sm:flex flex-col text-white mb-2 order-2 sm:order-1 text-left">
+                <Link href="/location">LOCATIONS</Link>
+                <Link href="/how-it-works">HOW IT WORKS</Link>
+                <Link href="/code-of-conduct">CODE OF CONDUCT</Link>
+                <Link
+                  href="https://lp.noma-collective.com/schedule-your-meeting-page"
+                  className="font-bold"
+                >
+                  BOOK A CALL
+                </Link>
             </div>
 
             <div className="column-dos hidden sm:flex flex-col text-white order-1 sm:order-1">
@@ -102,7 +102,7 @@ const Footer = () => {
               <div className="column-dos flex flex-col text-white mb-2 order-2 sm:order-1 text-right sm:text-center">
                 <Link href="/location">LOCATIONS</Link>
                 <Link href="/how-it-works">HOW IT WORKS</Link>
-                <Link href="/news">WHAT'S NEW</Link>
+                <Link href="/code-of-conduct">CODE OF CONDUCT</Link>
                 <Link
                   href="https://lp.noma-collective.com/schedule-your-meeting-page"
                   className="font-bold"

@@ -85,7 +85,7 @@ export const whatWeOfferCardData = [
   {
     heading: "Plug & Play",
     src: "/img/plugandplay-card-img.jpg",
-    text: "Our carefully curated Editions seamlessly blend remote work with endless adventure. Our beautiful locations are equipped with reliable Wi-Fi and co-working spaces. Be inspired by your surroundings and never miss a meeting - ensuring that work-from-anywhere is as efficient as it is picturesque.",
+    text: "Our carefully curated Editions seamlessly blend remote work with endless adventure. Our beautiful locations are equipped with reliable Wi-Fi and working spaces. Be inspired by your surroundings and never miss a meeting - ensuring that work-from-anywhere is as efficient as it is picturesque.",
   },
   {
     heading: "Support",
@@ -903,7 +903,7 @@ export const whatWeOfferCardData2 = [
   {
     heading: "Plug & Play",
     src: "/img/Aesthetic-Modern3.png",
-    text: "Our carefully curated Editions seamlessly blend remote work with endless adventure. Our beautiful locations are equipped with reliable Wi-Fi and co-working spaces. Be inspired by your surroundings and never miss a meeting - ensuring that work-from-anywhere is as efficient as it is picturesque.",
+    text: "Our carefully curated Editions seamlessly blend remote work with endless adventure. Our beautiful locations are equipped with reliable Wi-Fi and working spaces. Be inspired by your surroundings and never miss a meeting - ensuring that work-from-anywhere is as efficient as it is picturesque.",
   },
   {
     heading: "Support",
@@ -1048,7 +1048,7 @@ export const whatWeOfferCardData3 = [
   {
     heading: "Plug & Play",
     src: "/img/Aesthetic-Modern3.png",
-    text: "Our carefully curated Editions seamlessly blend remote work with endless adventure. Our beautiful locations are equipped with reliable Wi-Fi and co-working spaces. Be inspired by your surroundings and never miss a meeting - ensuring that work-from-anywhere is as efficient as it is picturesque.",
+    text: "Our carefully curated Editions seamlessly blend remote work with endless adventure. Our beautiful locations are equipped with reliable Wi-Fi and working spaces. Be inspired by your surroundings and never miss a meeting - ensuring that work-from-anywhere is as efficient as it is picturesque.",
   },
   {
     heading: "Support",
@@ -1160,7 +1160,7 @@ export const suggestedLocationsData = [
     ],
     cardText: "Bocas Del Toro, <br /> Panama",
     detailText:
-      "Escape to Bocas Del Toro, Panama a stunning archipelago featuring stunning beaches and tropical rainforests. You'll live in breathtaking eco-friendly domes in the heart of the tropical jungle, the perfect location to recharge as a team. This resort is purpose-built for nomads and its dedicated co-working space is designed to ensure a productive and motivating work environment.",
+      "Escape to Bocas Del Toro, Panama a stunning archipelago featuring stunning beaches and tropical rainforests. You'll live in breathtaking eco-friendly domes in the heart of the tropical jungle, the perfect location to recharge as a team. This resort is purpose-built for nomads and its dedicated working space is designed to ensure a productive and motivating work environment.",
     chartsData: [
       {
         id: 0,

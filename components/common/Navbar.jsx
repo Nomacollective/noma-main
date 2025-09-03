@@ -103,6 +103,12 @@ const Navbar = () => {
                   >
                     Preferred Partners
                   </Link> */}
+                  <Link
+                    href="/bundles"
+                    className="hover:font-bold duration-300"
+                  >
+                    Bundles
+                  </Link>
                   <Link href="/faqs" className="hover:font-bold duration-300">
                     FAQs
                   </Link>

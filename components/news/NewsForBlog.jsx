@@ -81,16 +81,18 @@ const NewsForBlog = ({ blogs }) => {
           ))}
         </div>
       </div>
-      <div className="!bg-main-red">
-        <NewsSection
-          blogs={{
-            blogCollection: {
-              items: highlightedBlogs,
-            },
-          }}
-          highlighted
-        />
-      </div>
+      {search.trim() === "" && (
+        <div className="!bg-main-red">
+          <NewsSection
+            blogs={{
+              blogCollection: {
+                items: highlightedBlogs,
+              },
+            }}
+            highlighted
+          />
+        </div>
+      )}
       <FeatureBlog blogs={bs} />
     </>
   );

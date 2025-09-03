@@ -161,13 +161,13 @@ const TermsConditions = () => {
 
         <h2>Refunds and Dispute Resolution with Location Partners</h2>
         <p>
-          In the event of a dispute with our location partner
-          (e.g., accommodation provider), we will not be liable for issuing
-          refunds until the dispute has been fully resolved. Refunds will
-          only be processed once we have received the corresponding funds back
-          from the location partner. We will make every reasonable effort to
-          expedite the resolution process, but delays may occur based on the
-          policies of the location partner involved.
+          In the event of a dispute with our location partner (e.g.,
+          accommodation provider), we will not be liable for issuing refunds
+          until the dispute has been fully resolved. Refunds will only be
+          processed once we have received the corresponding funds back from the
+          location partner. We will make every reasonable effort to expedite the
+          resolution process, but delays may occur based on the policies of the
+          location partner involved.
         </p>
 
         <h2>Visa, Passport and Health Requirements</h2>
@@ -249,18 +249,19 @@ const TermsConditions = () => {
 
         <h2>Room Sharing Option:</h2>
         <p>
-          For guests selecting the room sharing option available on some of our Editions,
-          you can coordinate with a friend to book separately, with each of you taking
-          one bed in the shared room. If you don’t have a personally chosen roommate,
-          Noma Collective will assign a roommate at random from others who selected this
-          same room option. Roommates are assigned randomly, and while we strive to pair
-          guests based on sex (male with male, female with female), there is a possibility
-          of co-ed room assignments.
+          For guests selecting the room sharing option available on some of our
+          Editions, you can coordinate with a friend to book separately, with
+          each of you taking one bed in the shared room. If you don’t have a
+          personally chosen roommate, Noma Collective will assign a roommate at
+          random from others who selected this same room option. Roommates are
+          assigned randomly, and while we strive to pair guests based on sex
+          (male with male, female with female), there is a possibility of co-ed
+          room assignments.
         </p>
 
         <p>
-          If you have any questions or preferences, feel free to discuss them with
-          a Noma team member during your pre-trip call.
+          If you have any questions or preferences, feel free to discuss them
+          with a Noma team member during your pre-trip call.
         </p>
 
         <h2>Events Beyond Our Reasonable Control</h2>
@@ -326,8 +327,15 @@ const TermsConditions = () => {
         <p>
           All guests staying with us are expected to conduct themselves in an
           orderly and acceptable manner and not to disrupt the enjoyment of
-          other guests. If in our opinion, or in the opinion of any other person
-          in authority, your behaviour or that of any member of your party is
+          other guests{" "}
+          <a
+            href="/code-of-conduct"
+            style={{ color: "#3B82F6", textDecoration: "underline" }}
+          >
+            [Read Our Code Of Conduct]
+          </a>
+          . If in our opinion, or in the opinion of any other person in
+          authority, your behaviour or that of any member of your party is
           causing or is likely to cause distress, danger or unreasonable
           annoyance to any of our other guests or any third party or damage to
           property, or to cause a delay or diversion to transportation, we
@@ -358,10 +366,15 @@ const TermsConditions = () => {
 
         <h2>Payment Terms</h2>
         <p>
-          To confirm your participation in an Edition, a non-refundable deposit of 50% of the total trip cost, as specified in your booking link, is required at the time of reservation. The remaining balance must be paid in full no later than 60 days prior to the trip start date. Failure to complete payment by this deadline, despite email reminders, will result in the automatic cancellation of your booking, and your spot may be made available for rebooking. No exceptions will be granted.
+          To confirm your participation in an Edition, a non-refundable deposit
+          of 50% of the total trip cost, as specified in your booking link, is
+          required at the time of reservation. The remaining balance must be
+          paid in full no later than 60 days prior to the trip start date.
+          Failure to complete payment by this deadline, despite email reminders,
+          will result in the automatic cancellation of your booking, and your
+          spot may be made available for rebooking. No exceptions will be
+          granted.
         </p>
-
-
       </div>
     </Layout>
   );

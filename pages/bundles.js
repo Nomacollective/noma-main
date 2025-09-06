@@ -59,9 +59,12 @@ const Bundles = () => {
 
       {/* SECOND HERO SECTION */}
       <section className="bg-[#FDF6E9] py-4 md:py-20 px-4 md:px-6 w-full mx-auto">
-        <div className=" font-Montserrat flex flex-col items-center md:flex-row md:items-start justify-between gap-10">
+        <div className=" font-Montserrat flex flex-col items-center md:flex-row md:items-start">
           {/* Text Block */}
-          <div className="md:w-1/2 text-center md:text-left pt-10 md:pt-16 md:pl-16">
+          <div
+            className="md:w-1/2 text-center md:text-left pt-10 md:pt-16"
+            style={{ paddingLeft: "10rem" }}
+          >
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-4 font-display">
               Your Ticket To
               <br />
@@ -82,7 +85,10 @@ const Bundles = () => {
           </div>
 
           {/* Hero Image */}
-          <div className="md:w-1/2 relative pt-12 -ml-0 md:-ml-8">
+          <div
+            className="md:w-1/2 relative pt-12 -ml-0 md:-ml-16"
+            style={{ marginLeft: "-8rem" }}
+          >
             <Image
               src="/img/bundle.png"
               alt="Bundles Hero Image"
@@ -106,19 +112,28 @@ const Bundles = () => {
           How It Works
         </h2>
 
-        <p className="font-semibold text-base mb-4 max-w-xl mx-auto text-carbon-Black">
+        <p
+          className="font-semibold text-base mb-4 mx-auto text-carbon-Black"
+          style={{ maxWidth: "41rem" }}
+        >
           Save as you go – the more trips you book at once, the bigger your
           total savings.
         </p>
-        <p className="text-sm mb-3 max-w-xl mx-auto text-carbon-Black">
+        <p
+          className="text-sm mb-3 mx-auto text-carbon-Black"
+          style={{ maxWidth: "41rem" }}
+        >
           Let us put our mathematician brain on for a second to break down how
           our Bundles work.
         </p>
-        <p className="text-sm mb-3 max-w-xl mx-auto text-carbon-Black">
+        <p
+          className="text-sm mb-3 mx-auto text-carbon-Black "
+          style={{ maxWidth: "41rem" }}
+        >
           Each trip unlocks a specific discount e.g. booking three trips will
           save you $200.
         </p>
-        <p className="text-sm max-w-xl mx-auto text-carbon-Black">
+        <p className="text-sm mx-auto text-carbon-Black">
           BUT, our Bundles are cumulative, so let’s say you want to book 6 trips
           at once, you would unlock a $350 discount PLUS the discounts from trip
           2, 3, 4 and 5!
@@ -148,18 +163,24 @@ const Bundles = () => {
         </div>
 
         {/* SHARED CONTAINER */}
-        <div className=" font-Montserrat bg-[#FFFDF4] mt-6 px-4 py-4 pb-8 md:px-8 md:py-8 max-w-xl mx-auto rounded-3xl shadow flex flex-col items-center">
+        <div
+          className=" font-Montserrat bg-[#FFFDF4] mt-6 px-4 py-4 pb-8 md:px-8 md:py-8 mx-auto rounded-3xl shadow flex flex-col items-center"
+          style={{ width: "68rem" }}
+        >
           {/* DESKTOP PILLS (ONLY VISIBLE ON MD+) */}
           <div className="hidden md:flex flex-wrap justify-center gap-4 mb-4">
             <div className="bg-[#FFD9D9] text-black font-semibold px-4 py-2 rounded-full text-sm">
               2 trips ($150)
             </div>
+            <div className="text-black font-bold text-lg px-8">+</div>
             <div className="bg-[#C5F0E0] text-black font-semibold px-4 py-2 rounded-full text-sm">
               3 trips ($200)
             </div>
+            <div className="text-black font-bold text-lg px-8">+</div>
             <div className="bg-[#C7D7FF] text-black font-semibold px-4 py-2 rounded-full text-sm">
               4 trips ($250)
             </div>
+            <div className="text-black font-bold text-lg px-8">+</div>
             <div className="bg-[#FFDA00] text-black font-semibold px-4 py-2 rounded-full text-sm">
               5 trips ($300)
             </div>
@@ -173,7 +194,7 @@ const Bundles = () => {
           </p>
 
           {/* Alumni bonus */}
-          <p className="mt-4 font-semibold text-sm max-w-lg mx-auto text-black md:font-semibold font-bold font-Montserrat">
+          <p className="mt-4 font-semibold text-sm max-w-lg md:max-w-[46rem] mx-auto text-black md:font-semibold font-bold font-Montserrat">
             PLUS – if you’re an alumni, you’ll still get that
             <span className="md:bg-[#FF7A84] md:text-white text-[#FF7A84] md:px-2 md:py-1 md:rounded-full mx-1">
               alumni discount
@@ -183,7 +204,7 @@ const Bundles = () => {
         </div>
 
         {/* Fine print */}
-        <p className="text-xs text-gray-600 italic max-w-md mx-auto mt-6 leading-relaxed">
+        <p className="text-[0.50rem] text-gray-600 italic max-w-[67rem] mx-auto mt-6 leading-relaxed">
           Editions must all be booked at the same time to claim Bundle discount.
           If no accommodation is live, a $500 deposit will be required. Requests
           to transfer deposits to other Editions is possible with no extra
@@ -361,10 +382,10 @@ const Bundles = () => {
                 3 trip - $200
               </span>
             </div>
-            <p className="text-sm font-semibold mb-2">
+            <p className="text-sm font-semibold mb-2 mt-[2rem] mb-[1rem]">
               Total savings if you complete the Bundle
             </p>
-            <p className="text-white text-xl font-bold bg-[#FF7A84] py-2 rounded-full">
+            <p className="text-white text-xl font-bold bg-[#FF7A84] py-2 rounded-full w-[6rem] mx-auto">
               $350
             </p>
           </div>
@@ -379,7 +400,7 @@ const Bundles = () => {
               You remembered you’ve got free will and now you’re making the most
               of it by working from anywhere you want.
             </p>
-            <p className="font-semibold mb-2">Savings</p>
+            <p className="font-semibold mb-2 mt-[2.25rem]">Savings</p>
             <div className="flex flex-wrap justify-center gap-2 mb-4">
               <span className="bg-white px-4 py-1 rounded-full text-sm">
                 4 trip - $250
@@ -391,10 +412,10 @@ const Bundles = () => {
                 6 trip - $350
               </span>
             </div>
-            <p className="text-sm font-semibold mb-2">
+            <p className="text-sm font-semibold mb-[1rem] mt-[2rem]">
               Total savings if you complete the Bundle
             </p>
-            <p className="text-white text-xl font-bold bg-[#FF7A84] py-2 rounded-full">
+            <p className="text-white text-xl font-bold bg-[#FF7A84] py-2 rounded-full w-[6rem] mx-auto">
               $1,250
             </p>
           </div>
@@ -428,7 +449,7 @@ const Bundles = () => {
             <p className="text-sm font-semibold mb-2">
               Total savings if you complete the Bundle
             </p>
-            <p className="text-white text-xl font-bold bg-[#FF7A84] py-2 rounded-full">
+            <p className="text-white text-xl font-bold bg-[#FF7A84] py-2 rounded-full w-[6rem] mx-auto">
               $3,000
             </p>
           </div>

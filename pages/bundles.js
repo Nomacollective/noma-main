@@ -100,7 +100,15 @@ const Bundles = () => {
         </div>
 
         <div className="flex justify-center mt-10">
-          <button className=" font-Montserrat px-8 py-3 bg-[#FC5B67] hover:bg-[#e24e5a] text-white font-bold text-lg rounded-full transition-all shadow-lg">
+          <button
+            className=" font-Montserrat px-8 py-3 bg-[#FC5B67] hover:bg-[#e24e5a] text-white font-bold text-lg rounded-full transition-all shadow-lg"
+            onClick={() =>
+              window.open(
+                "https://lp.noma-collective.com/schedule-your-meeting-page",
+                "_self"
+              )
+            }
+          >
             SECURE YOUR BUNDLE
           </button>
         </div>
@@ -457,7 +465,15 @@ const Bundles = () => {
 
         {/* CTA */}
         <div className="flex justify-center mt-16 pb-8 px-4">
-          <button className=" font-Montserrat w-full max-w-md md:w-auto px-10 py-4 bg-[#FF7A00] hover:bg-[#e96e00] text-white font-bold text-lg rounded-full transition-all shadow-lg">
+          <button
+            className=" font-Montserrat w-full max-w-md md:w-auto px-10 py-4 bg-[#FF7A00] hover:bg-[#e96e00] text-white font-bold text-lg rounded-full transition-all shadow-lg"
+            onClick={() =>
+              window.open(
+                "https://lp.noma-collective.com/schedule-your-meeting-page",
+                "_self"
+              )
+            }
+          >
             SECURE YOUR BUNDLE
           </button>
         </div>

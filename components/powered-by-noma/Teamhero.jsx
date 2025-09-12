@@ -5,7 +5,7 @@ const Teamhero = ({ text, btn }) => {
   return (
     <div
       className={classNames(
-        `bg-[url('/img/background-powered-by-noma.jpg')] bg-no-repeat bg-cover bg-center h-[450px] sm:h-[800px] flex flex-col justify-center items-center md:px-0 px-4`
+        `bg-[url('/img/background-powered-by-noma.jpg')] bg-no-repeat bg-cover bg-center h-[282px] sm:h-[582px] flex flex-col justify-center items-center md:px-0 px-4`
       )}
     >
       <img

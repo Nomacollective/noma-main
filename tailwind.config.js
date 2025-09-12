@@ -11,6 +11,8 @@ module.exports = {
         "sergio-trendy": ["sergio-trendy", "serif"],
         Montserrat: ["Montserrat", "sans-serif"],
         kurdis: ["Kurdis-ExtraWideSemiBold", "sans-serif"],
+        // 👇 Add this line to allow `font-display` to use sergio-trendy
+        display: ["sergio-trendy", "serif"],
       },
       colors: {
         "main-orange": "#FF9500",

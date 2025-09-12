@@ -34,6 +34,9 @@ const Sidebar = () => {
       </button>
       {showInfoDropdown && (
         <div className="px-9 py-4 w-full bg-white rounded shadow-2xl z-50 flex items-start flex-col justify-center gap-4 text-md text-[#313131] font-Montserrat leading-normal">
+          <Link href="/bundles" className="hover:font-bold duration-300">
+            Bundles
+          </Link>
           <Link href="/team-retreats" className="hover:font-bold duration-300">
             Team retreats
           </Link>

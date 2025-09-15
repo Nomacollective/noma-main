@@ -214,7 +214,7 @@ const Bundles = ({ locations }) => {
       </section>
 
       {/* BUNDLE TYPES */}
-      <section className="pt-1 pb-16 px-4 md:px-0 bg-[#FDF6E9] w-full mx-auto">
+      <section className="pt-1 pb-4 px-4 md:px-0 bg-[#FDF6E9] w-full mx-auto">
         <div className="relative mb-12">
           {/* Flower (hide on mobile) */}
           <div className="absolute left-0 -mt-1 hidden md:block">
@@ -474,7 +474,7 @@ const Bundles = ({ locations }) => {
       <section className="pt-1 pb-16 px-4 md:px-0 bg-[#FDF6E9] w-full mx-auto">
         <div className="relative mb-12">
 
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold font-display text-black text-center pt-16">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold font-display text-black text-center">
            Featured Editions Section
           </h2>
         </div>

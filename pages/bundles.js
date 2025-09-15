@@ -2,8 +2,20 @@ import Image from "next/image";
 import Layout from "@/components/common/Layout";
 import PageSEO from "@/components/common/PageSEO";
 import { useRef } from "react";
+import Button  from "@/components/common/CommonButton";
+import FeaturedEditionSectionSlider from "@/components/home/FeaturedEditionSectionSlider";
+import { getFeaturedEditions } from "@/lib/api";
 
-const Bundles = () => {
+export async function getServerSideProps() {
+  const locations = await getFeaturedEditions();
+  return {
+    props: {
+      locations: locations?.contentTypeLocationCollection?.items || [],
+    },
+  };
+}
+
+const Bundles = ({ locations }) => {
   const carouselRef = useRef(null);
 
   const scrollCarousel = (direction) => {
@@ -455,6 +467,24 @@ const Bundles = () => {
           >
             SECURE YOUR BUNDLE
           </button>
+        </div>
+      </section>
+
+      {/*Feature Editions*/}
+      <section className="pt-1 pb-16 px-4 md:px-0 bg-[#FDF6E9] w-full mx-auto">
+        <div className="relative mb-12">
+
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold font-display text-black text-center pt-16">
+           Featured Editions Section
+          </h2>
+        </div>
+
+        <FeaturedEditionSectionSlider locations={locations} />
+        {/* CTA */}
+        <div className="flex justify-center mt-16 pb-8 px-4">
+          <div className="block">
+            <Button text="SEE ALL TRIPS" link="/location" />
+          </div>
         </div>
       </section>
     </Layout>

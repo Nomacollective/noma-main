@@ -55,8 +55,8 @@ export default function Home({ locations, blogs }) {
       </div>
       <div className="sm:max-w-[900px] w-full mx-auto pb-3 sm:pb-0">
         <Subheading
-          paragraph="Your remote work, done differently. We curate extraordinary 2-4 week
-          trips for remote workers, building a community of like-minded
+          paragraph="Your remote work, done differently. We curate extraordinary 3-4 week
+          trips for digital nomads, building a network society of like-minded
           professionals. Whether you work fully remotely or you can take time
           away from the office, why not embrace the world with us, and redefine
           your work-life balance."

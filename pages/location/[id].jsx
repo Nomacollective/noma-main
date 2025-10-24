@@ -115,6 +115,7 @@ const Editions = ({ location }) => {
       location?.contentTypeLocation?.accomodationsCollection?.items.sort(
         (a, b) => a?.price - b?.price
       ),
+    accomodationsCollection: location?.contentTypeLocation?.accomodationsCollection,
     guestGallery:
       location?.contentTypeLocation?.guestgalleryCollection?.items || [],
     alumniReviews: location?.contentTypeLocation?.alumniReviewCollection?.items,

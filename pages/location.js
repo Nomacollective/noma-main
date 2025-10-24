@@ -10,6 +10,7 @@ import { getAllEditions } from "@/lib/api";
 import { useRouter } from "next/router";
 import { useMemo, useState } from "react";
 import uniq from "lodash/uniq";
+import { getLocationById } from "@/lib/api";
 
 export const getLocationCardColor = (color) => {
   const color_map = {
@@ -158,10 +159,25 @@ const locations = ({ locations }) => {
     typeFilter,
   ]);
 
-  const onSurpriseMeClick = () => {
-    const ids = locationItems.map((item) => item.sys.id);
-    const randomId = Math.floor(Math.random() * ids.length);
-    router.push(`/location/${ids[randomId]}`);
+  const onSurpriseMeClick = async () => {
+    // Randomly select one item from locationItems
+    const randomIndex = Math.floor(Math.random() * locationItems.length);
+    const randomLocation = locationItems[randomIndex];
+
+    try {
+      // Fetch full location data
+      const locationData = await getLocationById({
+        locationId: randomLocation.sys.id,
+      });
+      if (locationData.contentTypeLocation.accomodationsCollection.items[0].spotsLeft > 0) {
+        // Redirect to the location page
+        router.push(`/location/${randomLocation.sys.id}`);
+      } else {
+        onSurpriseMeClick();
+      }
+    } catch (error) {
+      console.error("Failed to fetch random location:", error);
+    }
   };
 
   return (

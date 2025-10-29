@@ -6,9 +6,8 @@ const AccomodationCard = ({ item, location }) => {
   const zeroSpots = item?.spotsLeft === 0;
   const contactTeamNomaLocation = location?.heading?.toLowerCase()?.includes("colombia") || 
     location?.heading?.toLowerCase()?.includes("egypt");
-  
-  const showContactTeamNoma = zeroSpots && contactTeamNomaLocation;
-  
+
+  const showContactTeamNoma = contactTeamNomaLocation;
 
   return (
     <div className="mx-auto w-[328px] cursor-pointer hover:scale-[1.02] transition duration-300 ease-in-out flex flex-col gap-2 max-sm:px-2 max-sm:py-4">

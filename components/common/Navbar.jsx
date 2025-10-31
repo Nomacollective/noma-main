@@ -109,6 +109,12 @@ const Navbar = () => {
                   >
                     Bundles
                   </Link>
+                   <Link
+                    href="/remote-life"
+                    className="hover:font-bold duration-300"
+                  >
+                    Stages of Remote Life
+                  </Link>
                   <Link href="/faqs" className="hover:font-bold duration-300">
                     FAQs
                   </Link>

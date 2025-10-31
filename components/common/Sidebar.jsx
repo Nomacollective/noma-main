@@ -37,6 +37,9 @@ const Sidebar = () => {
           <Link href="/bundles" className="hover:font-bold duration-300">
             Bundles
           </Link>
+           <Link href="/remote-life" className="hover:font-bold duration-300">
+            Stages of Remote Life
+          </Link>
           <Link href="/team-retreats" className="hover:font-bold duration-300">
             Team retreats
           </Link>

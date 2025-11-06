@@ -43,7 +43,7 @@ const Navbar = () => {
           </button>
         </div>
       </div>
-      <div className="flex items-center justify-between gap-6 max-lg:hidden">
+      <div className="hidden lg:flex items-center justify-between gap-6">
         {/* Logo */}
         <div className="mr-12">
           <Link href="/">

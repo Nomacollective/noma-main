@@ -2,7 +2,7 @@ import Image from "next/image";
 import Layout from "@/components/common/Layout";
 import PageSEO from "@/components/common/PageSEO";
 import { useRef } from "react";
-import Button  from "@/components/common/CommonButton";
+import Button from "@/components/common/CommonButton";
 import FeaturedEditionSectionSlider from "@/components/home/FeaturedEditionSectionSlider";
 import { getFeaturedEditions } from "@/lib/api";
 
@@ -73,10 +73,7 @@ const Bundles = ({ locations }) => {
       <section className="bg-[#FDF6E9] py-4 md:py-20 px-4 md:px-6 w-full mx-auto">
         <div className=" font-Montserrat flex flex-col items-center md:flex-row md:items-start">
           {/* Text Block */}
-          <div
-            className="md:w-1/2 text-center md:text-left pt-10 md:pt-16"
-            style={{ paddingLeft: "10rem" }}
-          >
+          <div className="md:w-1/2 text-center md:text-left pt-10 md:pt-16 md:pl-[10rem]">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-4 font-display">
               Your Ticket To
               <br />
@@ -97,10 +94,7 @@ const Bundles = ({ locations }) => {
           </div>
 
           {/* Hero Image */}
-          <div
-            className="md:w-1/2 relative pt-12 -ml-0 md:-ml-16"
-            style={{ marginLeft: "-8rem" }}
-          >
+          <div className="md:w-1/2 relative pt-12 md:-ml-[8rem]">
             <Image
               src="/img/bundle.png"
               alt="Bundles Hero Image"
@@ -183,10 +177,7 @@ const Bundles = ({ locations }) => {
         </div>
 
         {/* SHARED CONTAINER */}
-        <div
-          className=" font-Montserrat bg-[#FFFDF4] mt-6 px-4 py-4 pb-8 md:px-8 md:py-8 mx-auto rounded-3xl shadow flex flex-col items-center"
-          style={{ width: "68rem" }}
-        >
+        <div className="font-Montserrat bg-[#FFFDF4] mt-6 px-4 py-4 pb-8 md:px-8 md:py-8 mx-auto rounded-3xl shadow flex flex-col items-center w-full max-w-[68rem]">
           {/* DESKTOP PILLS (ONLY VISIBLE ON MD+) */}
           <div className="hidden md:flex flex-wrap justify-center gap-4 mb-4">
             <div className="bg-[#FFD9D9] text-black font-semibold px-4 py-2 rounded-full text-sm">
@@ -494,9 +485,8 @@ const Bundles = ({ locations }) => {
       {/*Feature Editions*/}
       <section className="pt-1 pb-16 px-4 md:px-0 bg-[#FDF6E9] w-full mx-auto">
         <div className="relative mb-12">
-
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold font-display text-black text-center">
-           Featured Editions Section
+            Featured Editions Section
           </h2>
         </div>
 

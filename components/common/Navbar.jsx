@@ -43,7 +43,7 @@ const Navbar = () => {
           </button>
         </div>
       </div>
-      <div className="flex items-center justify-between gap-6 max-lg:hidden">
+      <div className="hidden lg:flex items-center justify-between gap-6">
         {/* Logo */}
         <div className="mr-12">
           <Link href="/">
@@ -60,10 +60,10 @@ const Navbar = () => {
 
             {/* Info dropdown */}
 
-            <div>
+            <div className="relative">
               <button
                 onMouseEnter={() => setShowInfoDropdown(!showInfoDropdown)}
-                className="flex items-center justify-center gap-[10px] group relative"
+                className="flex items-center justify-center gap-[10px] group"
               >
                 <span
                   className={`text-sm lg:text-base text-[#313131] font-Montserrat leading-normal hidden md:block group-hover:font-bold ${
@@ -80,10 +80,11 @@ const Navbar = () => {
                   <FaqsIcons />
                 </div>
               </button>
+
               {showInfoDropdown && (
                 <div
-                  onMouseLeave={() => setShowInfoDropdown(!showInfoDropdown)}
-                  className="absolute -bottom-[180px] right-[280px] p-4 w-[200px] bg-[#F4F1E6] rounded-lg drop-shadow-[0_0_15px_rgba(0,0,0,0.25)] z-40 flex items-start flex-col justify-center gap-4 text-base text-[#313131] font-Montserrat leading-normal"
+                  onMouseLeave={() => setShowInfoDropdown(false)}
+                  className="absolute top-[calc(100%+12px)] right-[-20px] p-4 w-[200px] bg-[#F4F1E6] rounded-lg shadow-lg z-50 flex flex-col gap-4 text-base text-[#313131] font-Montserrat leading-normal"
                 >
                   <Link
                     href="/powered-by-noma"
@@ -97,19 +98,13 @@ const Navbar = () => {
                   >
                     Team retreats
                   </Link>
-                  {/* <Link
-                    href="/preferred-partners"
-                    className="hover:font-bold duration-300"
-                  >
-                    Preferred Partners
-                  </Link> */}
                   <Link
                     href="/bundles"
                     className="hover:font-bold duration-300"
                   >
                     Bundles
                   </Link>
-                   <Link
+                  <Link
                     href="/remote-life"
                     className="hover:font-bold duration-300"
                   >

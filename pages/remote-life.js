@@ -153,7 +153,7 @@ const RemoteLife = ({ locations }) => {
       <div className="bg-[#F4F1E6] py-12 px-4 sm:px-12">
         <div className="pb-16 px-4 font-Montserrat text-center relative">
           <div className="relative flex items-center justify-center">
-            <div className="absolute ipad:left-[4rem] left-[-1.5rem] top-[22%] sm:left-[4rem] sm:top-1/2 md:left-[-2rem] lg:left-[24rem] -translate-y-1/2">
+            <div className="absolute ipad:left-[4rem] left-[-1.5rem] top-[22%] sm:left-[4rem] sm:top-1/2 md:left-[-2rem] lg:left-[24rem] -translate-y-1/2 z-0">
               <Image
                 src="/img/yellow-flower.svg"
                 alt="Yellow flower"
@@ -163,11 +163,11 @@ const RemoteLife = ({ locations }) => {
                 className="inline-block"
               />
             </div>
-            <p className="font-Montserrat text-md font-bold text-carbon-Black text-[1.5rem]">
+            <p className="font-Montserrat text-md font-bold text-carbon-Black text-[1.5rem] relative z-10">
               Let’s dive into the
             </p>
           </div>
-          <h1 className="text-4xl md:text-5xl font-display leading-tight text-carbon-Black pt-4 md:pt-[1rem]">
+          <h1 className="text-4xl md:text-5xl font-display leading-tight text-carbon-Black pt-4 md:pt-[1rem] relative z-10">
             7 Stages of Remote Life
           </h1>
         </div>
@@ -299,7 +299,7 @@ const RemoteLife = ({ locations }) => {
         </div>
 
         {/* Fine print */}
-        <p className="text-center text-[0.75rem] text-gray-600 max-w-[67rem] mx-auto mt-6 leading-relaxed">
+        <p className="text-center text-[0.75rem] text-gray-600 max-w-[67rem] mx-auto mt-6 leading-relaxed font-Montserrat pb-6">
           Remote Life is bigger than your job or the passport stamps you
           collect. It’s not about being untethered, it’s about building new
           forms of stability, belonging to a movement and putting down roots in
@@ -337,7 +337,7 @@ const RemoteLife = ({ locations }) => {
         </section>
 
         {/* Fine print */}
-        <p className="text-center text-[0.75rem] text-gray-600 max-w-[67rem] mx-auto mt-6 leading-relaxed">
+        <p className="text-center text-[0.75rem] text-gray-600 max-w-[67rem] mx-auto mt-6 leading-relaxed font-Montserrat">
           No matter what stage you’re at in your remote life, Noma is always
           here to guide you on your journey. Book in a call with one of our
           Edition Advisors to discuss your ideal location and answer any
@@ -348,7 +348,8 @@ const RemoteLife = ({ locations }) => {
       {/* CTA */}
       <div className="flex justify-center mb-[7rem]">
         <button
-          className="px-10 py-4 bg-[#3DAA8D] hover:bg-[#e24e5a] text-white font-bold text-lg rounded-full transition-all shadow-lg"
+          className="px-10 py-2 bg-[#3DAA8D] hover:bg-[#e24e5a] text-white font-bold
+           text-2xl rounded-full transition-all shadow-lg uppercase"
           onClick={() =>
             window.open(
               "https://lp.noma-collective.com/schedule-your-meeting-page",

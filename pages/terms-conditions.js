@@ -287,12 +287,17 @@ const TermsConditions = () => {
           without regard to its conflicts of laws. Neither the United Nations
           Convention on the International Sale of Goods, nor the Uniform
           Computer Information Transactions Act shall apply to this Agreement.
+          <br></br>
+          <br></br>
           If a dispute arises from or relates to any bookings made with Noma
           Collective, and if the dispute cannot be settled through direct
           discussions, the parties agree as a condition precedent to any legal
           action, they will attend mediation administered by the American
           Arbitration Association under its Commercial Mediation Procedures
-          before resorting to arbitration. The parties further agree that any
+          before resorting to arbitration.
+          <br></br>
+          <br></br>
+          The parties further agree that any
           unresolved controversy or claim arising out of or relating to these
           Booking Conditions, any breach thereof, or any dispute related to any
           bookings made with Noma Collective shall be settled by arbitration

@@ -8,7 +8,7 @@ import Script from "next/script";
 export default function App({ Component, pageProps }) {
   return (
     <>
-      <Script id="trengo-chatbot" strategy="beforeInteractive">
+      {/* <Script id="trengo-chatbot" strategy="beforeInteractive">
         {`
           window.Trengo = window.Trengo || {};
           window.Trengo.key = 'FsP7tqsrJ3mf4VdDMISR';
@@ -20,7 +20,7 @@ export default function App({ Component, pageProps }) {
               d.getElementsByTagName('head')[0].appendChild(script);
           }(document));
         `}
-      </Script>
+      </Script> */}
 
       <Component {...pageProps} />
     </>

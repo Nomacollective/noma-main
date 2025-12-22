@@ -12,7 +12,7 @@ import { Children, useState } from "react";
 import Image from "next/image";
 import React from "react";
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const preferredPartners = await getAllPreferredPartners();
   return {
     props: {
@@ -20,6 +20,8 @@ export const getServerSideProps = async () => {
         preferredPartners?.preferredPartnersCollection?.items || [],
       title: "Preferred Partners",
     },
+    // Revalidate every 6 hours
+    revalidate: 21600,
   };
 };
 

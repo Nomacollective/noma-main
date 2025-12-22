@@ -65,7 +65,7 @@ const locations = ({ locations }) => {
   const [typeFilter, setTypeFilter] = useState("");
 
   const [locationItems, setLocationItems] = useState(
-    locations.contentTypeLocationCollection.items
+    locations?.contentTypeLocationCollection?.items || []
   );
 
   const continentFilterItems = useMemo(() => {
@@ -160,23 +160,46 @@ const locations = ({ locations }) => {
   ]);
 
   const onSurpriseMeClick = async () => {
-    // Randomly select one item from locationItems
-    const randomIndex = Math.floor(Math.random() * locationItems.length);
-    const randomLocation = locationItems[randomIndex];
+    // Check if we have any locations available
+    if (!locationItems || locationItems.length === 0) {
+      console.warn('No locations available for Surprise Me feature');
+      // Redirect to the location page to show all available options
+      router.push('/location');
+      return;
+    }
 
-    try {
-      // Fetch full location data
-      const locationData = await getLocationById({
-        locationId: randomLocation.sys.id,
-      });
-      if (locationData.contentTypeLocation.accomodationsCollection.items[0].spotsLeft > 0) {
-        // Redirect to the location page
+    // Filter locations that already have spots available from the data we already have
+    const availableLocations = locationItems.filter(location => {
+      // Check if we have accommodation data and spots available
+      const accommodations = location.accomodationsCollection?.items;
+      return accommodations && accommodations.length > 0 && accommodations.some(acc => acc.spotsLeft > 0);
+    });
+
+    if (availableLocations.length === 0) {
+      // If no locations have spots available, just pick a random one anyway
+      const randomIndex = Math.floor(Math.random() * locationItems.length);
+      const randomLocation = locationItems[randomIndex];
+      
+      // Double-check that the location exists and has required data
+      if (randomLocation && randomLocation.sys && randomLocation.sys.id) {
         router.push(`/location/${randomLocation.sys.id}`);
       } else {
-        onSurpriseMeClick();
+        console.warn('Selected location is missing required data, redirecting to location page');
+        router.push('/location');
       }
-    } catch (error) {
-      console.error("Failed to fetch random location:", error);
+      return;
+    }
+
+    // Randomly select from available locations (no API call needed!)
+    const randomIndex = Math.floor(Math.random() * availableLocations.length);
+    const randomLocation = availableLocations[randomIndex];
+    
+    // Double-check that the location exists and has required data
+    if (randomLocation && randomLocation.sys && randomLocation.sys.id) {
+      router.push(`/location/${randomLocation.sys.id}`);
+    } else {
+      console.warn('Selected available location is missing required data, redirecting to location page');
+      router.push('/location');
     }
   };
 
@@ -214,6 +237,7 @@ const locations = ({ locations }) => {
           setSearchInput={setSearchInput}
           onSurpriseMeClick={onSurpriseMeClick}
           continentFilterItems={continentFilterItems}
+          hasLocations={locationItems && locationItems.length > 0}
         />
       </div>
       <TimeZoneSwiper locations={filteredItems} />

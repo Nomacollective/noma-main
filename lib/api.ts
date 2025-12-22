@@ -14,14 +14,17 @@ const FEATURED_EDITIONS = `
         }
         city
         country
+        continent
         startDate
         endDate
         locationCardColor
         timeZone
         temperature
+        tripType
         accomodationsCollection {
           items {
             price
+            spotsLeft
           }
         }
       }
@@ -77,6 +80,7 @@ const GET_ALL_EDITIONS = `
         accomodationsCollection {
           items {
             price
+            spotsLeft
           }
         }
       }
@@ -264,47 +268,120 @@ const GET_ALL_PREFERRED_PARTNERS = `
   }
 }`;
 
+// Simple in-memory cache to reduce redundant API calls
+const cache = new Map();
+const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
+
 async function fetchGraphQL(query, preview = false) {
-  return fetch(
-    `https://graphql.contentful.com/content/v1/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID}`,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        // Switch the Bearer token depending on whether the fetch is supposed to retrieve live
-        // Contentful content or draft content
-        Authorization: `Bearer ${
-          preview
-            ? process.env.NEXT_PUBLIC_CONTENTFUL_PREVIEW_ACCESS_TOKEN
-            : process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN
-        }`,
-      },
-      body: JSON.stringify({ query }),
-      // Associate all fetches for articles with an "articles" cache tag so content can
-      // be revalidated or updated from Contentful on publish
-      // next: { tags: ["articles"] },
+  // Create cache key from query and preview flag
+  const cacheKey = `${query}-${preview}`;
+  const now = Date.now();
+  
+  // Check if we have a cached result that's still valid
+  if (cache.has(cacheKey)) {
+    const { data, timestamp } = cache.get(cacheKey);
+    if (now - timestamp < CACHE_DURATION) {
+      return data;
     }
-  ).then((response) => response.json());
+    // Remove expired cache entry
+    cache.delete(cacheKey);
+  }
+  
+  try {
+    const result = await fetch(
+      `https://graphql.contentful.com/content/v1/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          // Switch the Bearer token depending on whether the fetch is supposed to retrieve live
+          // Contentful content or draft content
+          Authorization: `Bearer ${
+            preview
+              ? process.env.NEXT_PUBLIC_CONTENTFUL_PREVIEW_ACCESS_TOKEN
+              : process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN
+          }`,
+        },
+        body: JSON.stringify({ query }),
+        // Associate all fetches for articles with an "articles" cache tag so content can
+        // be revalidated or updated from Contentful on publish
+        // next: { tags: ["articles"] },
+      }
+    ).then((response) => {
+      console.log('Contentful API Response Status:', response.status);
+      if (response.status === 429) {
+        console.error('🚨 CONTENTFUL API LIMIT EXCEEDED! Status 429 - Too Many Requests');
+      }
+      return response.json();
+    });
+    
+    // Log the result to see what we're getting from Contentful
+    console.log('Contentful API Result:', result);
+    
+    // Check for rate limit errors
+    if (result.errors) {
+      console.error('Contentful API Errors:', result.errors);
+      result.errors.forEach(error => {
+        if (error.message.includes('rate limit') || error.message.includes('quota')) {
+          console.error('🚨 RATE LIMIT ERROR DETECTED:', error.message);
+        }
+      });
+    }
+    
+    // Only cache successful responses
+    if (result && !result.errors) {
+      cache.set(cacheKey, { data: result, timestamp: now });
+    }
+    
+    // Clean up old cache entries periodically
+    if (cache.size > 100) {
+      const entries = Array.from(cache.entries());
+      entries.forEach(([key, { timestamp }]) => {
+        if (now - timestamp > CACHE_DURATION) {
+          cache.delete(key);
+        }
+      });
+    }
+    
+    return result;
+  } catch (error) {
+    console.error('GraphQL fetch error:', error);
+    // Return a basic error structure that won't break the app
+    return { data: null, errors: [{ message: error.message }] };
+  }
 }
+
+// Export fetchGraphQL for use in other files
+export { fetchGraphQL };
 
 export const getFeaturedEditions = async () => {
   const data = await fetchGraphQL(FEATURED_EDITIONS);
-  return data?.data;
+  
+  // If API is rate limited, return fallback data
+  if (!data?.data || data.errors) {
+    console.warn('🚨 Using fallback data - Contentful API may be rate limited');
+    return {
+      contentTypeLocationCollection: { items: [] },
+      homeWhatWeOfferCollection: { items: [] }
+    };
+  }
+  
+  return data?.data || { contentTypeLocationCollection: { items: [] }, homeWhatWeOfferCollection: { items: [] } };
 };
 
 export const getAllEditions = async () => {
   const data = await fetchGraphQL(GET_ALL_EDITIONS);
-  return data?.data;
+  return data?.data || { contentTypeLocationCollection: { items: [] } };
 };
 
 export const getFaqs = async () => {
   const data = await fetchGraphQL(GET_FAQS);
-  return data?.data;
+  return data?.data || { faqCollection: { items: [] } };
 };
 
 export const getAllBlogs = async () => {
   const data = await fetchGraphQL(GET_ALL_BLOGSS);
-  return data?.data;
+  return data?.data || { blogCollection: { items: [] } };
 };
 
 interface Sys {
@@ -360,20 +437,20 @@ export const getLocationById = async ({
   locationId: string;
 }) => {
   const data = await fetchGraphQL(GET_LOCATION_BY_ID(locationId));
-  return data?.data;
+  return data?.data || { contentTypeLocation: null };
 };
 
 export const getBlogById = async ({ blogId }: { blogId: string }) => {
   const data = await fetchGraphQL(GET_BLOG_BY_ID(blogId));
-  return data?.data;
+  return data?.data || { blog: null };
 };
 
 export const getAllFaqs = async () => {
   const data = await fetchGraphQL(GET_ALL_FAQS);
-  return data?.data;
+  return data?.data || { faqsPageFaqCollection: { items: [] } };
 };
 
 export const getAllPreferredPartners = async () => {
   const data = await fetchGraphQL(GET_ALL_PREFERRED_PARTNERS);
-  return data?.data;
+  return data?.data || { preferredPartnersCollection: { items: [] } };
 };

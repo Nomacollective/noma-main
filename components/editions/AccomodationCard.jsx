@@ -49,9 +49,11 @@ const AccomodationCard = ({ item, location }) => {
         </p>
 
         {showContactTeamNoma ? (
-          <p className="text-[#666666] font-Montserrat text-sm sm:text-base font-extrabold leading-normal max-sm:order-1">
-            CONTACT TEAM NOMA
-          </p>
+          <a href="mailto:info@noma-collective.com">
+            <button className="text-[#666666] font-Montserrat text-sm sm:text-base font-extrabold leading-normal max-sm:order-1 hover:text-[#ff9500] transition duration-300 ease-in-out cursor-pointer">
+              CONTACT TEAM NOMA
+            </button>
+          </a>
         ) : (
           <button
             type="submit"

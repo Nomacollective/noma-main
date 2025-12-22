@@ -25,6 +25,9 @@ export const monthNames = [
 ];
 
 export default function FeaturedEditionSectionSlider({ locations }) {
+  // Add debugging to see what data we're receiving
+  console.log('FeaturedEditionSectionSlider received locations:', locations);
+  
   const locationsMapped = locations
     ?.map((l) => {
       const start = l?.startDate?.split("T")[0];
@@ -49,15 +52,17 @@ export default function FeaturedEditionSectionSlider({ locations }) {
         description: l?.country,
         date: `${formattedStartDate} - ${endDayMonth} ${endYear}`,
         days: days,
-        price: Math.min(
-          ...l?.accomodationsCollection?.items?.map((i) => i?.price)
-        ),
+        price: l?.accomodationsCollection?.items?.length > 0 
+          ? Math.min(...l.accomodationsCollection.items.map((i) => i?.price).filter(price => price != null))
+          : 0,
         img: [{ src: l?.heroImage?.url }],
         locationColor: l?.locationCardColor,
       };
     })
     .filter((item) => item?.endDate && new Date(item.endDate) > new Date())
     .sort((a, b) => new Date(a.startDate) - new Date(b.startDate));
+
+  console.log('Mapped and filtered locations:', locationsMapped);
 
   const swiperRef = useRef(null);
 
@@ -79,57 +84,56 @@ export default function FeaturedEditionSectionSlider({ locations }) {
           <SliderLeftArrowIcon />
         </button>
       </div>
-      <Swiper
-        scrollbar={{
-          hide: false,
-        }}
-        navigation={{
-          prevEl: ".prev-btn",
-          nextEl: ".next-btn",
-        }}
-        breakpoints={{
-          10: {
-            slidesPerView: 1,
-            spaceBetween: 20,
-          },
-          // 430: {
-          //   slidesPerView: 1.2,
-          //   spaceBetween: 20,
-          // },
-          // 540: {
-          //   slidesPerView: 1.5,
-          //   spaceBetween: 20,
-          // },
-          // 640: {
-          //   slidesPerView: 1.5,
-          //   spaceBetween: 20,
-          // },
-          768: {
-            slidesPerView: 2,
-            spaceBetween: 40,
-          },
-          1024: {
-            slidesPerView: 2.7,
-            spaceBetween: 50,
-          },
-          1280: {
-            slidesPerView: 3,
-            spaceBetween: 50,
-          },
-        }}
-        slidesPerView={3}
-        modules={[Scrollbar]}
-        className="mySwiper h-[552px] w-full"
-        ref={swiperRef}
-      >
-        {locationsMapped.map((item, index) => (
-          <SwiperSlide key={index}>
-            <Link href={`/location/${item.id}`}>
-              <FeaturedEditionCard item={item} value={index} key={index} />
-            </Link>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+      
+      {locationsMapped && locationsMapped.length > 0 ? (
+        <Swiper
+          scrollbar={{
+            hide: false,
+          }}
+          navigation={{
+            prevEl: ".prev-btn",
+            nextEl: ".next-btn",
+          }}
+          breakpoints={{
+            10: {
+              slidesPerView: 1,
+              spaceBetween: 20,
+            },
+            768: {
+              slidesPerView: 2,
+              spaceBetween: 40,
+            },
+            1024: {
+              slidesPerView: 2.7,
+              spaceBetween: 50,
+            },
+            1280: {
+              slidesPerView: 3,
+              spaceBetween: 50,
+            },
+          }}
+          slidesPerView={3}
+          modules={[Scrollbar]}
+          className="mySwiper h-[552px] w-full"
+          ref={swiperRef}
+        >
+          {locationsMapped.map((item, index) => (
+            <SwiperSlide key={index}>
+              <Link href={`/location/${item.id}`}>
+                <FeaturedEditionCard item={item} value={index} key={index} />
+              </Link>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      ) : (
+        <div className="w-full h-[552px] flex items-center justify-center">
+          <div className="text-center">
+            <p className="text-gray-500 text-lg mb-4">No featured locations available at the moment</p>
+            <p className="text-gray-400 text-sm">Check back soon for new destinations!</p>
+          </div>
+        </div>
+      )}
+      
       <div className="next-btn hidden sm:block -mt-28" onClick={goNext}>
         <button type="submit">
           <SliderRightArrowIcon />

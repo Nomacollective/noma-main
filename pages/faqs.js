@@ -4,7 +4,7 @@ import PageSEO from "@/components/common/PageSEO";
 import FaqsWrapper from "@/components/home/faqs-expand/FaqsWrapper";
 import { getAllFaqs } from "@/lib/api";
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const faqs = await getAllFaqs();
   return {
     props: {
@@ -18,6 +18,8 @@ export const getServerSideProps = async () => {
           return orderA - orderB;
         }) || [],
     },
+    // Revalidate every hour
+    revalidate: 3600,
   };
 };
 

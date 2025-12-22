@@ -5,13 +5,15 @@ import NewsForBlog from "@/components/news/NewsForBlog";
 import { getAllBlogs } from "@/lib/api";
 import React from "react";
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const blogs = await getAllBlogs();
   return {
     props: {
       title: "What's New",
       blogs: blogs || [],
     },
+    // Revalidate every 30 minutes for news content
+    revalidate: 1800,
   };
 };
 

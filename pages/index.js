@@ -28,7 +28,12 @@ export const getServerSideProps = async () => {
 };
 
 export default function Home({ locations, blogs }) {
-  const locationItems = locations.contentTypeLocationCollection.items;
+  const locationItems = locations?.contentTypeLocationCollection?.items || [];
+  
+  // Debug logging to see what data we're receiving
+  console.log('Home page received locations:', locations);
+  console.log('Location items:', locationItems);
+  
   return (
     <Layout>
       <PageSEO title="Home" />

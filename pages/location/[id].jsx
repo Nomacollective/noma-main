@@ -68,31 +68,90 @@ export const CustomText = ({ text }) => {
 };
 
 export const getServerSideProps = async ({ params }) => {
-  let location;
-  const idPattern = /^[a-zA-Z0-9]+$/;
-  if (idPattern.test(params.id)) {
-    location = await getLocationById({ locationId: params.id });
-  } else {
-    const city = params.id.substring(0, params.id.length - 12);
-    const monthRegex = /-(\w{3})-\d{1,2}-\d{4}$/;
-    const month = params.id.match(monthRegex)[1];
-    const startDayRegex = /-(\d{1,2})-\d{4}$/;
-    const startDay = Number(params.id.match(startDayRegex)[1]);
-    const year = params.id.match(/-\d{4}$/)[0].slice(1);
-    location = await getLocationByCity(
-      { city: city },
-      { month: month, year: year, startDay: startDay }
-    );
+  try {
+    let location;
+    const idPattern = /^[a-zA-Z0-9]+$/;
+    
+    if (idPattern.test(params.id)) {
+      location = await getLocationById({ locationId: params.id });
+    } else {
+      const city = params.id.substring(0, params.id.length - 12);
+      const monthRegex = /-(\w{3})-\d{1,2}-\d{4}$/;
+      const monthMatch = params.id.match(monthRegex);
+      const startDayRegex = /-(\d{1,2})-\d{4}$/;
+      const startDayMatch = params.id.match(startDayRegex);
+      const yearMatch = params.id.match(/-\d{4}$/);
+      
+      if (!monthMatch || !startDayMatch || !yearMatch) {
+        console.error('Invalid URL format for location');
+        return {
+          notFound: true,
+        };
+      }
+      
+      const month = monthMatch[1];
+      const startDay = Number(startDayMatch[1]);
+      const year = yearMatch[0].slice(1);
+      
+      location = await getLocationByCity(
+        { city: city },
+        { month: month, year: year, startDay: startDay }
+      );
+    }
+    
+    // Check if location data was successfully retrieved
+    if (!location || !location.contentTypeLocation) {
+      console.error('Location not found or API unavailable');
+      return {
+        notFound: true,
+      };
+    }
+    
+    return {
+      props: {
+        location,
+      },
+    };
+  } catch (error) {
+    console.error('Error in getServerSideProps:', error);
+    return {
+      notFound: true,
+    };
   }
-  return {
-    props: {
-      location,
-    },
-  };
 };
 
 const Editions = ({ location }) => {
+  // Handle case where location data is not available
+  if (!location?.contentTypeLocation) {
+    return (
+      <Layout>
+        <PageSEO title="Location Not Found" />
+        <div className="min-h-screen flex items-center justify-center">
+          <div className="text-center">
+            <h1 className="text-4xl font-bold text-carbon-Black mb-4">Location Not Available</h1>
+            <p className="text-lg text-gray-600 mb-6">
+              This location is currently unavailable. This might be due to:
+            </p>
+            <ul className="text-left text-gray-600 mb-6 max-w-md mx-auto">
+              <li>• The location has been removed or updated</li>
+              <li>• Temporary service unavailability</li>
+              <li>• Invalid location URL</li>
+            </ul>
+            <button
+              onClick={() => window.location.href = '/location'}
+              className="bg-main-orange text-white px-6 py-3 rounded-full font-bold hover:bg-orange-600 transition duration-300"
+            >
+              View All Locations
+            </button>
+          </div>
+        </div>
+      </Layout>
+    );
+  }
+
   const locationMapped = {
+    id: location?.contentTypeLocation?.sys?.id,
+    city: location?.contentTypeLocation?.city,
     timeZone: location?.contentTypeLocation?.timeZone,
     temperature: location?.contentTypeLocation?.temperature,
     heading: `${location?.contentTypeLocation?.city}, ${location?.contentTypeLocation?.country}`,
@@ -169,7 +228,7 @@ const Editions = ({ location }) => {
           <GuestGallery guestGallery={locationMapped?.guestGallery} />
         </div>
       )}
-      <CardSlider alumniReviews={locationMapped?.alumniReviews} />
+      <CardSlider alumniReviews={locationMapped?.alumniReviews} location={locationMapped} />
     </Layout>
   );
 };

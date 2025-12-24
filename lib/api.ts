@@ -416,19 +416,42 @@ export const getLocationByCity = async (
   { city }: { city: string },
   { month, year, startDay }: { month: string; year: string; startDay: number }
 ) => {
-  const locationIdResponse = await fetchGraphQL(
-    GET_ID_BY_CITY(city.replace("-", " "))
-  );
-  const filteredId = filterByMonth(
-    { data: locationIdResponse.data.contentTypeLocationCollection.items },
-    { month, year, startDay }
-  )[0].sys.id;
-
-  const dataResponse = await fetchGraphQL(GET_LOCATION_BY_ID(filteredId));
-
-  const data = dataResponse.data;
-
-  return data;
+  try {
+    const locationIdResponse = await fetchGraphQL(
+      GET_ID_BY_CITY(city.replace("-", " "))
+    );
+    
+    // Check if we got valid data
+    if (!locationIdResponse?.data?.contentTypeLocationCollection?.items) {
+      console.error('No location data received from Contentful API');
+      return { contentTypeLocation: null };
+    }
+    
+    const filteredLocations = filterByMonth(
+      { data: locationIdResponse.data.contentTypeLocationCollection.items },
+      { month, year, startDay }
+    );
+    
+    // Check if filtering returned any results
+    if (!filteredLocations || filteredLocations.length === 0) {
+      console.error('No locations found matching the specified date criteria');
+      return { contentTypeLocation: null };
+    }
+    
+    // Check if the first result has the required sys.id
+    if (!filteredLocations[0]?.sys?.id) {
+      console.error('Location found but missing sys.id');
+      return { contentTypeLocation: null };
+    }
+    
+    const filteredId = filteredLocations[0].sys.id;
+    const dataResponse = await fetchGraphQL(GET_LOCATION_BY_ID(filteredId));
+    
+    return dataResponse?.data || { contentTypeLocation: null };
+  } catch (error) {
+    console.error('Error in getLocationByCity:', error);
+    return { contentTypeLocation: null };
+  }
 };
 
 export const getLocationById = async ({

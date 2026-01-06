@@ -10,7 +10,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation } from "swiper";
 SwiperCore.use([Navigation]);
 
-const HighLights = ({ highlights }) => {
+const HighLights = ({ highlights, location }) => {
   const swiperRef = useRef(null);
 
   // const goNext = () => {
@@ -30,7 +30,7 @@ const HighLights = ({ highlights }) => {
       <div className="max-w-[1110px] pb-8 sm:pb-[97px] pt-8 w-full mx-auto px-4 xl:px-0">
         <h2 className="flex items-center pb-4 sm:pb-8 text-center justify-center gap-4 text-[32px] text-[#313131] font-extrabold font-Montserrat">
           <span>
-            <FaciltiesIcons />
+            <FaciltiesIcons location={location?.heading} />
           </span>
           Highlights
         </h2>

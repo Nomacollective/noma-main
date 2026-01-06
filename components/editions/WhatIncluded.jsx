@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getWhatsIncludedImage } from "../common/Helper";
+import { getWhatsIncludedImage, renderOutdoorIcon } from "../common/Helper";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { BLOCKS } from "@contentful/rich-text-types";
 import Image from "next/image";
@@ -180,13 +180,20 @@ const WhatIncluded = ({ d, items, location }) => {
                 key={index}
                 className="max-w-[417px] w-full mx-auto rounded-[70px] bg-[#F4F1E6] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.10)] flex items-center gap-1 h-[60px]"
               >
-                <Image
-                  src={getWhatsIncludedImage(item?.title)}
-                  width={56}
-                  height={56}
-                  alt={item.title}
-                  className={`max-sm:w-12 max-sm:h-12 rounded-full ${getStylesWhatsIncludedImage(item?.title)}`}
-                />
+                {/* Conditional icon rendering for Honduras */}
+                {(location?.heading?.toLowerCase().includes('honduras') || location?.heading?.toLowerCase().includes('monserrat')) ? (
+                  <div className="w-14 h-14 max-sm:w-12 max-sm:h-12 rounded-full bg-white shadow-md flex items-center justify-center ml-1">
+                    {renderOutdoorIcon(getWhatsIncludedImage(item?.title, location?.heading))}
+                  </div>
+                ) : (
+                  <Image
+                    src={getWhatsIncludedImage(item?.title)}
+                    width={56}
+                    height={56}
+                    alt={item.title}
+                    className={`max-sm:w-12 max-sm:h-12 rounded-full ${getStylesWhatsIncludedImage(item?.title)}`}
+                  />
+                )}
                 <div className="flex-col justify-center align-middle items-middle">
                   <p className="text-[#313131] h-5 font-Montserrat text-[10px] sm:text-sm md:text-base font-bold leading-normal">
                     {item.title}

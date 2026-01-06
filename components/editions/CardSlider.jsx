@@ -10,18 +10,27 @@ import ProfileData from "./ProfileData";
 const ReactPlayer = dynamic(() => import("react-player"), { ssr: false });
 
 export default function CardSlider({alumniReviews, location}) {
-  // Check if this is the Belize location
+  // Check if this is the Belize or Honduras location
   const isBelizeLocation = location?.heading?.toLowerCase()?.includes('belize') || 
                           location?.city?.toLowerCase()?.includes('belize') ||
                           location?.id === '2hSGUsxMvlOeqDxQ9hugop'; // Specific Belize location ID
+
+  const isHondurasLocation = location?.heading?.toLowerCase()?.includes('honduras') || 
+                            location?.city?.toLowerCase()?.includes('honduras');
+
+  // Show video for both Belize and Honduras locations
+  const shouldShowVideo = isBelizeLocation || isHondurasLocation;
 
   return (
     <div className="w-full sm:bg-[#F4F1E6] pb-[120px] bg-[#FFDA7F]">
       <div className="max-w-[1120px] w-full mx-auto px-4 xl:px-4 sm:pt-[29px] pt-4">
         
-        {/* Video Testimonial Section - Only for Belize */}
-        {isBelizeLocation && (
+        {/* Video Testimonial Section - For Belize and Honduras */}
+        {shouldShowVideo && (
           <div className="mb-8">
+            <h3 className="text-center text-2xl sm:text-3xl font-bold font-Montserrat text-carbon-Black mb-6">
+              Watch Our Community Stories
+            </h3>
             <div className="max-w-[800px] mx-auto">
               <div className="relative aspect-video rounded-2xl overflow-hidden shadow-lg">
                 <ReactPlayer
@@ -41,13 +50,21 @@ export default function CardSlider({alumniReviews, location}) {
                   }}
                 />
               </div>
+              <p className="text-center text-sm text-gray-600 mt-3 font-Montserrat">
+                Belize Family Edition Testimonials
+              </p>
             </div>
           </div>
         )}
 
-        {/* Written Testimonials Slider - Only show if NOT Belize or if no video */}
-        {!isBelizeLocation && alumniReviews && alumniReviews.length > 0 && (
+        {/* Written Testimonials Slider - Only show if NOT Belize/Honduras */}
+        {!shouldShowVideo && alumniReviews && alumniReviews.length > 0 && (
           <>
+            <div className="mb-4">
+              <h3 className="text-center text-2xl sm:text-3xl font-bold font-Montserrat text-carbon-Black mb-6">
+                What Our Alumni Say
+              </h3>
+            </div>
             
             <Swiper
               scrollbar={{

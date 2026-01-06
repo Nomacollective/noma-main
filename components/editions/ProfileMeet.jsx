@@ -3,7 +3,7 @@ import React from "react";
 import { FaciltiesIcons } from "../common/Icons";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
-const ProfileMeet = ({ managers = [] }) => {
+const ProfileMeet = ({ managers = [], location }) => {
   if (!managers.length) return null;
 
   const isSingle = managers.length === 1;
@@ -12,7 +12,7 @@ const ProfileMeet = ({ managers = [] }) => {
     <div className="bg-[#F4F1E6] my-4 py-8">
       <div className="max-w-[1100px] w-full mx-auto px-4 xl:px-0">
         <div className="flex gap-4 items-center mb-6 sm:hidden">
-          <FaciltiesIcons />
+          <FaciltiesIcons location={location?.heading} />
         </div>
 
         <div

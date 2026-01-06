@@ -547,7 +547,13 @@ export const heroBtnData = [
   },
 ];
 
-export const getWhatsIncludedImage = (title) => {
+export const getWhatsIncludedImage = (title, location) => {
+  // Use outdoor icons for Honduras/Monserrat Summer Camp
+  if (location?.toLowerCase().includes('honduras') || location?.toLowerCase().includes('monserrat')) {
+    return getOutdoorIncludedIcon(title);
+  }
+  
+  // Default icons for other locations
   if (title?.toLowerCase().includes("yoga")) {
     return "/img/what-included-1.png";
   }
@@ -595,6 +601,50 @@ export const getWhatsIncludedImage = (title) => {
   if (title?.toLowerCase().includes("other inclusions")) {
     return "/img/what-included-10.png";
   }
+};
+
+// New function for outdoor/camping themed icons (returns SVG components)
+export const getOutdoorIncludedIcon = (title) => {
+  const titleLower = title?.toLowerCase() || "";
+  
+  if (titleLower.includes("campfire") || titleLower.includes("fire")) {
+    return "campfire";
+  }
+  
+  if (titleLower.includes("hiking") || titleLower.includes("trek") || titleLower.includes("walk")) {
+    return "hiking";
+  }
+  
+  if (titleLower.includes("wifi") || titleLower.includes("internet") || titleLower.includes("working") || titleLower.includes("workspace") || titleLower.includes("coworking")) {
+    return "coworking";
+  }
+  
+  if (titleLower.includes("swimming") || titleLower.includes("pool") || titleLower.includes("water")) {
+    return "swimming";
+  }
+  
+  if (titleLower.includes("community") || titleLower.includes("group") || titleLower.includes("social")) {
+    return "community";
+  }
+  
+  if (titleLower.includes("tent") || titleLower.includes("accommodation") || titleLower.includes("camping")) {
+    return "tent";
+  }
+  
+  if (titleLower.includes("mountain") || titleLower.includes("nature") || titleLower.includes("outdoor")) {
+    return "mountain";
+  }
+  
+  if (titleLower.includes("weather") || titleLower.includes("sun") || titleLower.includes("sunny")) {
+    return "sun";
+  }
+  
+  if (titleLower.includes("cloud") || titleLower.includes("sky")) {
+    return "cloud";
+  }
+  
+  // Default fallback
+  return "tent";
 };
 
 export const IncludedCardData = [
@@ -1304,3 +1354,157 @@ export const suggestedLocationsData = [
     ],
   },
 ];
+
+// Function to render outdoor SVG icons for Honduras
+export const renderOutdoorIcon = (iconType) => {
+  switch (iconType) {
+    case "campfire":
+      return (
+        <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+          <path d="M21 8C21 8 18 12 18 16C18 18.2091 19.7909 20 22 20C24.2091 20 26 18.2091 26 16C26 12 23 8 21 8Z" fill="#FF6B35"/>
+          <path d="M21 12C21 12 19 14 19 16C19 17.1046 19.8954 18 21 18C22.1046 18 23 17.1046 23 16C23 14 21 12 21 12Z" fill="#FFD23F"/>
+          <rect x="8" y="32" width="26" height="2" fill="#8B4513"/>
+          <rect x="6" y="34" width="30" height="2" fill="#8B4513"/>
+        </svg>
+      );
+    case "hiking":
+      return (
+        <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+          <circle cx="21" cy="8" r="3" fill="#313131"/>
+          <path d="M18 14L20 12H24L26 14V20L24 28H22L20 24L18 28H16L18 20V14Z" fill="#313131"/>
+          <path d="M14 30L18 26L20 28L16 32L14 30Z" fill="#313131"/>
+          <path d="M28 32L24 28L26 26L30 30L28 32Z" fill="#313131"/>
+          <path d="M12 18L16 14L18 16L14 20L12 18Z" stroke="#8B4513" strokeWidth="2" strokeLinecap="round"/>
+        </svg>
+      );
+    case "wifi-camp":
+      return (
+        <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+          <path d="M21 6L9 30H33L21 6Z" stroke="#313131" strokeWidth="2" fill="none"/>
+          <path d="M21 6V30" stroke="#313131" strokeWidth="2"/>
+          <path d="M15 22H27" stroke="#313131" strokeWidth="2"/>
+          <path d="M18 12C19.5 10.5 22.5 10.5 24 12" stroke="#00C851" strokeWidth="2" strokeLinecap="round"/>
+          <path d="M19 14C19.5 13.5 22.5 13.5 23 14" stroke="#00C851" strokeWidth="2" strokeLinecap="round"/>
+          <circle cx="21" cy="16" r="1" fill="#00C851"/>
+        </svg>
+      );
+    case "coworking":
+    case "working":
+    case "workspace":
+      return (
+        <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+          {/* Laptop base */}
+          <rect x="8" y="22" width="26" height="16" rx="2" stroke="#313131" strokeWidth="2" fill="none"/>
+          {/* Laptop screen */}
+          <rect x="10" y="8" width="22" height="16" rx="1" stroke="#313131" strokeWidth="2" fill="none"/>
+          {/* Screen content */}
+          <rect x="12" y="10" width="18" height="12" fill="#F0F0F0"/>
+          {/* WiFi signals */}
+          <path d="M15 18C16 17 18 17 19 18" stroke="#00C851" strokeWidth="1.5" strokeLinecap="round"/>
+          <path d="M16 19C16.5 18.5 17.5 18.5 18 19" stroke="#00C851" strokeWidth="1.5" strokeLinecap="round"/>
+          <circle cx="17" cy="20" r="0.8" fill="#00C851"/>
+          {/* Keyboard indicator */}
+          <line x1="12" y1="26" x2="30" y2="26" stroke="#313131" strokeWidth="1"/>
+          <line x1="14" y1="28" x2="28" y2="28" stroke="#313131" strokeWidth="1"/>
+          <line x1="16" y1="30" x2="26" y2="30" stroke="#313131" strokeWidth="1"/>
+        </svg>
+      );
+    case "swimming":
+      return (
+        <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+          <circle cx="15" cy="10" r="3" fill="#313131"/>
+          <path d="M12 16C12 16 15 14 18 16C21 18 24 16 27 18C30 20 33 18 36 20" stroke="#4A90E2" strokeWidth="2" strokeLinecap="round"/>
+          <path d="M6 24C6 24 9 22 12 24C15 26 18 24 21 26C24 28 27 26 30 28C33 30 36 28 39 30" stroke="#4A90E2" strokeWidth="2" strokeLinecap="round"/>
+          <path d="M6 30C6 30 9 28 12 30C15 32 18 30 21 32C24 34 27 32 30 34C33 36 36 34 39 36" stroke="#4A90E2" strokeWidth="2" strokeLinecap="round"/>
+        </svg>
+      );
+    case "community":
+      return (
+        <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+          <circle cx="15" cy="12" r="4" fill="#313131"/>
+          <circle cx="27" cy="12" r="4" fill="#313131"/>
+          <circle cx="21" cy="20" r="4" fill="#313131"/>
+          <path d="M8 32C8 28 11 25 15 25C19 25 22 28 22 32" stroke="#313131" strokeWidth="2" fill="none"/>
+          <path d="M20 32C20 28 23 25 27 25C31 25 34 28 34 32" stroke="#313131" strokeWidth="2" fill="none"/>
+          <path d="M14 36C14 32 17 29 21 29C25 29 28 32 28 36" stroke="#313131" strokeWidth="2" fill="none"/>
+        </svg>
+      );
+    case "tent":
+      return (
+        <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+          <path d="M21 6L9 36H33L21 6Z" stroke="#313131" strokeWidth="2" strokeLinejoin="round" fill="none"/>
+          <path d="M21 6V36" stroke="#313131" strokeWidth="2"/>
+          <path d="M15 26H27" stroke="#313131" strokeWidth="2"/>
+        </svg>
+      );
+    case "mountain":
+      return (
+        <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+          <path d="M2 36L12 16L20 24L26 18L40 36H2Z" stroke="#313131" strokeWidth="2" strokeLinejoin="round" fill="none"/>
+        </svg>
+      );
+    case "sun":
+      return (
+        <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+          <circle cx="21" cy="21" r="8" stroke="#313131" strokeWidth="2" fill="none"/>
+          <path d="M21 3V9M21 33V39M39 21H33M9 21H3M33.9497 8.05025L29.4853 12.5147M12.5147 29.4853L8.05025 33.9497M33.9497 33.9497L29.4853 29.4853M12.5147 12.5147L8.05025 8.05025" stroke="#313131" strokeWidth="2" strokeLinecap="round"/>
+        </svg>
+      );
+    case "cloud":
+      return (
+        <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+          <path d="M32 20C32 15.5817 28.4183 12 24 12C21.0545 12 18.4773 13.6364 17.0667 16.0727C16.7152 16 16.3636 16 16 16C11.5817 16 8 19.5817 8 24C8 28.4183 11.5817 32 16 32H32C35.3137 32 38 29.3137 38 26C38 22.6863 35.3137 20 32 20Z" stroke="#313131" strokeWidth="2" strokeLinejoin="round" fill="none"/>
+        </svg>
+      );
+    default:
+      return (
+        <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+          <path d="M21 6L9 36H33L21 6Z" stroke="#313131" strokeWidth="2" strokeLinejoin="round" fill="none"/>
+          <path d="M21 6V36" stroke="#313131" strokeWidth="2"/>
+          <path d="M15 26H27" stroke="#313131" strokeWidth="2"/>
+        </svg>
+      );
+  }
+};
+
+// Honduras-specific progress data
+export const hondurasProgressCardsData = [
+  {
+    title: "Outdoor Adventures",
+    img: "/img/outdoor-adventures.png",
+    value: "90%",
+    color: "#4A90E2",
+  },
+  {
+    title: "Nature & Wildlife",
+    img: "/img/nature-wildlife.png",
+    value: "85%",
+    color: "#80CEB7",
+  },
+  {
+    title: "Community & Social",
+    img: "/img/community-social.png",
+    value: "95%",
+    color: "#FF6B35",
+  },
+  {
+    title: "Wellness & Fitness",
+    img: "/img/wellness-fitness.png",
+    value: "75%",
+    color: "#8196CC",
+  },
+  {
+    title: "Skills & Learning",
+    img: "/img/skills-learning.png",
+    value: "70%",
+    color: "#FFD23F",
+  },
+];
+
+// Function to get progress data based on location
+export const getProgressCardsData = (location) => {
+  if (location?.toLowerCase().includes('honduras') || location?.toLowerCase().includes('monserrat')) {
+    return hondurasProgressCardsData;
+  }
+  return progressCardsData;
+};

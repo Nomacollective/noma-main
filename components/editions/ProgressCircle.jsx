@@ -1,7 +1,7 @@
 import Image from "next/image";
 import "react-circular-progressbar/dist/styles.css";
 import React from "react";
-import { progressCardsData } from "../common/Helper";
+import { progressCardsData, getProgressCardsData } from "../common/Helper";
 import { CircularProgressbarWithChildren } from "react-circular-progressbar";
 
 const getValueOfCircle = (
@@ -10,8 +10,35 @@ const getValueOfCircle = (
   wellnessAndRelaxation,
   natureAndWildlife,
   activityAndFitness,
-  nightlifeAndPartying
+  nightlifeAndPartying,
+  // Honduras-specific parameters
+  outdoorAdventures,
+  natureWildlife,
+  communitySocial,
+  wellnessFitness,
+  skillsLearning,
+  location
 ) => {
+  // Honduras-specific values
+  if (location?.toLowerCase().includes('honduras') || location?.toLowerCase().includes('monserrat')) {
+    if (title === "Outdoor Adventures") {
+      return { value: `${outdoorAdventures || 90}%` };
+    }
+    if (title === "Nature & Wildlife") {
+      return { value: `${natureWildlife || 85}%` };
+    }
+    if (title === "Community & Social") {
+      return { value: `${communitySocial || 95}%` };
+    }
+    if (title === "Wellness & Fitness") {
+      return { value: `${wellnessFitness || 75}%` };
+    }
+    if (title === "Skills & Learning") {
+      return { value: `${skillsLearning || 70}%` };
+    }
+  }
+
+  // Default values for other locations
   if (title === "Foodie Heaven") {
     return { value: `${foodieHaven}%` };
   }
@@ -41,6 +68,13 @@ const ProgressCircle = ({
   natureAndWildlife,
   activityAndFitness,
   nightlifeAndPartying,
+  // Honduras-specific props
+  outdoorAdventures,
+  natureWildlife,
+  communitySocial,
+  wellnessFitness,
+  skillsLearning,
+  location,
 }) => {
   // const strokeWidth = 2;
   // const radius = (size - strokeWidth) / 2;
@@ -48,7 +82,7 @@ const ProgressCircle = ({
   // const offset = circumference - (progress / 100) * circumference;
   return (
     <article className="bg-[#ECECFD] flex gap-2 items-center justify-center pt-4 pb-[29px] w-full sm:gap-6 md:gap-8 lg:gap-12 xl:gap-[67px] px-4 xl:px-0">
-      {progressCardsData
+      {getProgressCardsData(location?.heading)
         .map((v) => ({
           ...v,
           ...getValueOfCircle(
@@ -57,7 +91,13 @@ const ProgressCircle = ({
             wellnessAndRelaxation,
             natureAndWildlife,
             activityAndFitness,
-            nightlifeAndPartying
+            nightlifeAndPartying,
+            outdoorAdventures,
+            natureWildlife,
+            communitySocial,
+            wellnessFitness,
+            skillsLearning,
+            location?.heading
           ),
         }))
         .map((item, index) => (

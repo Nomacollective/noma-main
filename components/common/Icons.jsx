@@ -966,3 +966,29 @@ export const CommunityIcon = () => {
     </svg>
   );
 };
+
+export const ESimIcon = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="42"
+      height="42"
+      viewBox="0 0 42 42"
+      fill="none"
+    >
+      {/* SIM card outline */}
+      <rect x="12" y="8" width="18" height="26" rx="2" stroke="#313131" strokeWidth="2" fill="none"/>
+      {/* SIM card notch */}
+      <path d="M18 8L18 12L22 12L22 8" stroke="#313131" strokeWidth="2" fill="#313131"/>
+      {/* Circuit pattern */}
+      <rect x="16" y="16" width="10" height="8" rx="1" stroke="#313131" strokeWidth="1.5" fill="none"/>
+      <rect x="18" y="18" width="6" height="4" rx="0.5" stroke="#313131" strokeWidth="1" fill="none"/>
+      {/* Signal waves */}
+      <path d="M8 20C9 19 11 19 12 20" stroke="#00C851" strokeWidth="2" strokeLinecap="round"/>
+      <path d="M6 22C8 20 12 20 14 22" stroke="#00C851" strokeWidth="2" strokeLinecap="round"/>
+      <path d="M4 24C7 21 13 21 16 24" stroke="#00C851" strokeWidth="2" strokeLinecap="round"/>
+      {/* "e" for eSIM */}
+      <text x="20" y="30" fontSize="8" fill="#313131" fontFamily="Arial, sans-serif" fontWeight="bold">e</text>
+    </svg>
+  );
+};

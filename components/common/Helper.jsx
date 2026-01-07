@@ -554,6 +554,10 @@ export const getWhatsIncludedImage = (title, location) => {
   }
   
   // Default icons for other locations
+  if (title?.toLowerCase().includes("esim") || title?.toLowerCase().includes("sim") || title?.toLowerCase().includes("data")) {
+    return "/img/sim-card.png";
+  }
+  
   if (title?.toLowerCase().includes("yoga")) {
     return "/img/what-included-1.png";
   }
@@ -577,6 +581,7 @@ export const getWhatsIncludedImage = (title, location) => {
   if (title?.toLowerCase().includes("wifi")) {
     return "/img/what-included-6.png";
   }
+  
   if (title?.toLowerCase().includes("community")) {
     return "/img/what-included-9.png";
   }
@@ -601,6 +606,9 @@ export const getWhatsIncludedImage = (title, location) => {
   if (title?.toLowerCase().includes("other inclusions")) {
     return "/img/what-included-10.png";
   }
+  
+  // Default fallback
+  return "/img/what-included-1.png";
 };
 
 // New function for outdoor/camping themed icons (returns SVG components)
@@ -617,6 +625,10 @@ export const getOutdoorIncludedIcon = (title) => {
   
   if (titleLower.includes("wifi") || titleLower.includes("internet") || titleLower.includes("working") || titleLower.includes("workspace") || titleLower.includes("coworking")) {
     return "coworking";
+  }
+  
+  if (titleLower.includes("esim") || titleLower.includes("sim") || titleLower.includes("data")) {
+    return "esim";
   }
   
   if (titleLower.includes("swimming") || titleLower.includes("pool") || titleLower.includes("water")) {
@@ -1416,6 +1428,24 @@ export const renderOutdoorIcon = (iconType) => {
           <path d="M12 16C12 16 15 14 18 16C21 18 24 16 27 18C30 20 33 18 36 20" stroke="#4A90E2" strokeWidth="2" strokeLinecap="round"/>
           <path d="M6 24C6 24 9 22 12 24C15 26 18 24 21 26C24 28 27 26 30 28C33 30 36 28 39 30" stroke="#4A90E2" strokeWidth="2" strokeLinecap="round"/>
           <path d="M6 30C6 30 9 28 12 30C15 32 18 30 21 32C24 34 27 32 30 34C33 36 36 34 39 36" stroke="#4A90E2" strokeWidth="2" strokeLinecap="round"/>
+        </svg>
+      );
+    case "esim":
+      return (
+        <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+          {/* SIM card outline */}
+          <rect x="12" y="8" width="18" height="26" rx="2" stroke="#313131" strokeWidth="2" fill="none"/>
+          {/* SIM card notch */}
+          <path d="M18 8L18 12L22 12L22 8" stroke="#313131" strokeWidth="2" fill="#313131"/>
+          {/* Circuit pattern */}
+          <rect x="16" y="16" width="10" height="8" rx="1" stroke="#313131" strokeWidth="1.5" fill="none"/>
+          <rect x="18" y="18" width="6" height="4" rx="0.5" stroke="#313131" strokeWidth="1" fill="none"/>
+          {/* Signal waves */}
+          <path d="M8 20C9 19 11 19 12 20" stroke="#00C851" strokeWidth="2" strokeLinecap="round"/>
+          <path d="M6 22C8 20 12 20 14 22" stroke="#00C851" strokeWidth="2" strokeLinecap="round"/>
+          <path d="M4 24C7 21 13 21 16 24" stroke="#00C851" strokeWidth="2" strokeLinecap="round"/>
+          {/* "e" for eSIM */}
+          <text x="20" y="30" fontSize="8" fill="#313131" fontFamily="Arial, sans-serif" fontWeight="bold">e</text>
         </svg>
       );
     case "community":

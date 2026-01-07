@@ -5,6 +5,9 @@ import { BLOCKS } from "@contentful/rich-text-types";
 import Image from "next/image";
 
 const getStylesWhatsIncludedImage = (title) => {
+  if (title?.toLowerCase().includes("esim") || title?.toLowerCase().includes("sim")) {
+    return "p-1 rounded-full shadow-lg h-auto w-[36px]";
+  }
   if (
     title?.toLowerCase().includes("community") ||
     title?.toLowerCase().includes("adventure") ||
@@ -171,38 +174,38 @@ const WhatIncluded = ({ d, items, location }) => {
         </div>
 
         <div className="w-full sm:max-w-[417px] mx-auto sm:px-0 px-4">
-          <h1 className="text-[#313131] font-Montserrat text-2xl sm:text-[32px] font-extrabold leading-normal max-md:text-center">
+          <h1 className="text-[#313131] font-Montserrat text-xl sm:text-2xl font-extrabold leading-normal max-md:text-center">
             What's included
           </h1>
-          <div className="flex flex-col gap-4 sm:gap-5 mt-2 sm:mt-4 pb-[30px]">
+          <div className="flex flex-col gap-2 sm:gap-3 mt-2 sm:mt-3 pb-[20px]">
             {items.map((item, index) => (
               <div
                 key={index}
-                className="max-w-[417px] w-full mx-auto rounded-[70px] bg-[#F4F1E6] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.10)] flex items-center gap-1 h-[60px]"
+                className="max-w-[380px] w-full mx-auto rounded-[50px] bg-[#F4F1E6] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.10)] flex items-center gap-1 h-[50px]"
               >
                 {/* Conditional icon rendering for Honduras */}
                 {(location?.heading?.toLowerCase().includes('honduras') || location?.heading?.toLowerCase().includes('monserrat')) ? (
-                  <div className="w-14 h-14 max-sm:w-12 max-sm:h-12 rounded-full bg-white shadow-md flex items-center justify-center ml-1">
+                  <div className="w-11 h-11 max-sm:w-10 max-sm:h-10 rounded-full bg-white shadow-md flex items-center justify-center ml-1">
                     {renderOutdoorIcon(getWhatsIncludedImage(item?.title, location?.heading))}
                   </div>
                 ) : (
                   <Image
                     src={getWhatsIncludedImage(item?.title)}
-                    width={56}
-                    height={56}
+                    width={44}
+                    height={44}
                     alt={item.title}
-                    className={`max-sm:w-12 max-sm:h-12 rounded-full ${getStylesWhatsIncludedImage(item?.title)}`}
+                    className={`max-sm:w-10 max-sm:h-10 rounded-full ${getStylesWhatsIncludedImage(item?.title)}`}
                   />
                 )}
                 <div className="flex-col justify-center align-middle items-middle">
-                  <p className="text-[#313131] h-5 font-Montserrat text-[10px] sm:text-sm md:text-base font-bold leading-normal">
+                  <p className="text-[#313131] h-4 font-Montserrat text-[9px] sm:text-xs md:text-sm font-bold leading-normal">
                     {item.title}
                   </p>
                   <div className="flex flex-wrap gap-x-1 pr-2">
-                    <p className="text-[#313131] font-Montserrat text-[8px] sm:text-sm font-normal h-4">
+                    <p className="text-[#313131] font-Montserrat text-[7px] sm:text-xs font-normal h-3">
                       {item.description}
                     </p>
-                    <p className="text-[#ADADAD] font-Montserrat text-[8px] font-normal h-6">
+                    <p className="text-[#ADADAD] font-Montserrat text-[7px] font-normal h-4">
                       {item.description1}
                     </p>
                   </div>

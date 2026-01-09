@@ -549,6 +549,22 @@ export const heroBtnData = [
 
 export const getWhatsIncludedImage = (title, location) => {
   // Special cases: use PNG for specific items even in Noma Family
+  if (title?.toLowerCase().includes("airport") && title?.toLowerCase().includes("transfer")) {
+    return "/img/airport.png";
+  }
+  
+  if (title?.toLowerCase().includes("community") && title?.toLowerCase().includes("manager")) {
+    return "/img/men-dancing.png";
+  }
+  
+  if (title?.toLowerCase().includes("onsite") && (title?.toLowerCase().includes("bar") || title?.toLowerCase().includes("restaurant"))) {
+    return "/img/bar.png";
+  }
+  
+  if (title?.toLowerCase().includes("beach") && (title?.toLowerCase().includes("club") || title?.toLowerCase().includes("infinity") || title?.toLowerCase().includes("pool"))) {
+    return "/img/beach.png";
+  }
+  
   if (title?.toLowerCase().includes("gym") || title?.toLowerCase().includes("tennis") || title?.toLowerCase().includes("courts") || title?.toLowerCase().includes("fitness")) {
     return "/img/gym.png";
   }

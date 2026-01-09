@@ -8,6 +8,27 @@ const AccomodationCard = ({ item, location }) => {
     location?.heading?.toLowerCase()?.includes("egypt");
 
   const showContactTeamNoma = contactTeamNomaLocation;
+  
+  // Check if this is Honduras/family edition location
+  const isHondurasLocation = location?.heading?.toLowerCase()?.includes("honduras") || 
+    location?.city?.toLowerCase()?.includes("honduras") ||
+    location?.heading?.toLowerCase()?.includes("monserrat") ||
+    location?.city?.toLowerCase()?.includes("monserrat");
+
+  // Specific villa types that should show "APPLY NOW" in Honduras
+  const hondurasApplyNowVillas = [
+    "2-Bedroom Villa with Pool & ocean view (4 people)",
+    "4-Bedroom Villa with Pool & ocean view (6 guests)",
+    "Four-Bedroom Villa, each bedroom with",
+    "5-Bedroom Villa with Pool & ocean view (9 people – 5 beds)",
+    "Master Villa with Pool & ocean view (9 people – 5 beds)"
+  ];
+
+  // Check if current accommodation should show "APPLY NOW" button
+  const shouldShowApplyNow = isHondurasLocation && 
+    hondurasApplyNowVillas.some(villaTitle => 
+      item?.title?.includes(villaTitle) || item?.title?.startsWith(villaTitle.split("(")[0].trim())
+    );
 
   return (
     <div className="mx-auto w-[328px] cursor-pointer hover:scale-[1.02] transition duration-300 ease-in-out flex flex-col gap-2 max-sm:px-2 max-sm:py-4">
@@ -68,12 +89,14 @@ const AccomodationCard = ({ item, location }) => {
               window.open(
                 zeroSpots
                   ? "https://www.noma-collective-bookings.com/waitlist"
+                  : shouldShowApplyNow
+                  ? "https://noma-family-edition.carrd.co/"
                   : "https://lp.noma-collective.com/schedule-your-meeting-page",
                 "_self"
               )
             }
           >
-            {zeroSpots ? "JOIN WAITLIST" : "BOOK YOUR TRIP"}
+            {zeroSpots ? "JOIN WAITLIST" : shouldShowApplyNow ? "APPLY NOW" : "BOOK YOUR TRIP"}
           </button>
         )}
       </div>

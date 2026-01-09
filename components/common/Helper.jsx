@@ -548,8 +548,33 @@ export const heroBtnData = [
 ];
 
 export const getWhatsIncludedImage = (title, location) => {
-  // Use outdoor icons for Honduras/Monserrat Summer Camp
-  if (location?.toLowerCase().includes('honduras') || location?.toLowerCase().includes('monserrat')) {
+  // Special cases: use PNG for specific items even in Noma Family
+  if (title?.toLowerCase().includes("gym") || title?.toLowerCase().includes("tennis") || title?.toLowerCase().includes("courts") || title?.toLowerCase().includes("fitness")) {
+    return "/img/gym.png";
+  }
+  
+  if (title?.toLowerCase().includes("co work") || title?.toLowerCase().includes("cowork")) {
+    return "/img/cowork.png";
+  }
+  
+  if (title?.toLowerCase().includes("montessori") || title?.toLowerCase().includes("summer camp")) {
+    return "/img/summer-camp.png";
+  }
+  
+  if (title?.toLowerCase().includes("grocery") || title?.toLowerCase().includes("supermarket") || title?.toLowerCase().includes("shuttle")) {
+    return "/img/grocery-shuttle.png";
+  }
+  
+  if (title?.toLowerCase().includes("golf") || title?.toLowerCase().includes("course")) {
+    return "/img/golf.png";
+  }
+  
+  if (title?.toLowerCase().includes("esim") || title?.toLowerCase().includes("sim") || title?.toLowerCase().includes("data")) {
+    return "/img/sim-card.png";
+  }
+  
+  // Use outdoor icons for Noma Family
+  if (location?.toLowerCase().includes('noma family')) {
     return getOutdoorIncludedIcon(title);
   }
   
@@ -615,6 +640,46 @@ export const getWhatsIncludedImage = (title, location) => {
 export const getOutdoorIncludedIcon = (title) => {
   const titleLower = title?.toLowerCase() || "";
   
+  if (titleLower.includes("montessori") || titleLower.includes("summer camp") || titleLower.includes("camp")) {
+    return "tent";
+  }
+  
+  if (titleLower.includes("co work") || titleLower.includes("cowork") || titleLower.includes("working") || titleLower.includes("workspace")) {
+    return "coworking";
+  }
+  
+  if (titleLower.includes("airport") || titleLower.includes("transfer")) {
+    return "airport";
+  }
+  
+  if (titleLower.includes("supermarket") || titleLower.includes("shuttle")) {
+    return "shuttle";
+  }
+  
+  if (titleLower.includes("esim") || titleLower.includes("sim") || titleLower.includes("data")) {
+    return "esim";
+  }
+  
+  if (titleLower.includes("golf") || titleLower.includes("course")) {
+    return "golf";
+  }
+  
+  if (titleLower.includes("gym") || titleLower.includes("tennis") || titleLower.includes("courts") || titleLower.includes("fitness")) {
+    return "gym";
+  }
+  
+  if (titleLower.includes("community") || titleLower.includes("manager") || titleLower.includes("group") || titleLower.includes("social")) {
+    return "community";
+  }
+  
+  if (titleLower.includes("onsite") || titleLower.includes("bar") || titleLower.includes("restaurant")) {
+    return "campfire";
+  }
+  
+  if (titleLower.includes("beach") || titleLower.includes("pool") || titleLower.includes("swimming") || titleLower.includes("water") || titleLower.includes("infinity")) {
+    return "swimming";
+  }
+  
   if (titleLower.includes("campfire") || titleLower.includes("fire")) {
     return "campfire";
   }
@@ -623,20 +688,8 @@ export const getOutdoorIncludedIcon = (title) => {
     return "hiking";
   }
   
-  if (titleLower.includes("wifi") || titleLower.includes("internet") || titleLower.includes("working") || titleLower.includes("workspace") || titleLower.includes("coworking")) {
+  if (titleLower.includes("wifi") || titleLower.includes("internet")) {
     return "coworking";
-  }
-  
-  if (titleLower.includes("esim") || titleLower.includes("sim") || titleLower.includes("data")) {
-    return "esim";
-  }
-  
-  if (titleLower.includes("swimming") || titleLower.includes("pool") || titleLower.includes("water")) {
-    return "swimming";
-  }
-  
-  if (titleLower.includes("community") || titleLower.includes("group") || titleLower.includes("social")) {
-    return "community";
   }
   
   if (titleLower.includes("tent") || titleLower.includes("accommodation") || titleLower.includes("camping")) {
@@ -1446,6 +1499,59 @@ export const renderOutdoorIcon = (iconType) => {
           <path d="M4 24C7 21 13 21 16 24" stroke="#00C851" strokeWidth="2" strokeLinecap="round"/>
           {/* "e" for eSIM */}
           <text x="20" y="30" fontSize="8" fill="#313131" fontFamily="Arial, sans-serif" fontWeight="bold">e</text>
+        </svg>
+      );
+    case "airport":
+      return (
+        <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+          {/* Airplane body */}
+          <path d="M21 8L25 20H35L33 24H25L21 34L17 24H9L11 20H17L21 8Z" fill="#313131"/>
+          {/* Wings */}
+          <path d="M12 18L30 18" stroke="#313131" strokeWidth="3" strokeLinecap="round"/>
+          <path d="M15 26L27 26" stroke="#313131" strokeWidth="2" strokeLinecap="round"/>
+        </svg>
+      );
+    case "shuttle":
+      return (
+        <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+          {/* Bus body */}
+          <rect x="6" y="12" width="30" height="18" rx="3" stroke="#313131" strokeWidth="2" fill="none"/>
+          {/* Windows */}
+          <rect x="9" y="15" width="6" height="6" rx="1" fill="#87CEEB"/>
+          <rect x="18" y="15" width="6" height="6" rx="1" fill="#87CEEB"/>
+          <rect x="27" y="15" width="6" height="6" rx="1" fill="#87CEEB"/>
+          {/* Wheels */}
+          <circle cx="12" cy="32" r="3" stroke="#313131" strokeWidth="2" fill="none"/>
+          <circle cx="30" cy="32" r="3" stroke="#313131" strokeWidth="2" fill="none"/>
+          {/* Door */}
+          <rect x="15" y="22" width="3" height="8" stroke="#313131" strokeWidth="1" fill="none"/>
+        </svg>
+      );
+    case "golf":
+      return (
+        <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+          {/* Golf club */}
+          <path d="M15 8L16 32" stroke="#8B4513" strokeWidth="2" strokeLinecap="round"/>
+          <path d="M14 8L18 6L17 10L14 8Z" fill="#313131"/>
+          {/* Golf ball */}
+          <circle cx="25" cy="28" r="3" fill="#F5F5F5" stroke="#313131" strokeWidth="1"/>
+          <circle cx="24" cy="27" r="0.5" fill="#313131"/>
+          <circle cx="26" cy="27" r="0.5" fill="#313131"/>
+          <circle cx="25" cy="29" r="0.5" fill="#313131"/>
+          {/* Flag */}
+          <path d="M32 12L32 24" stroke="#313131" strokeWidth="2"/>
+          <path d="M32 12L38 15L32 18Z" fill="#FF6B35"/>
+        </svg>
+      );
+    case "gym":
+      return (
+        <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+          {/* Dumbbell */}
+          <rect x="6" y="18" width="6" height="6" rx="1" fill="#313131"/>
+          <rect x="30" y="18" width="6" height="6" rx="1" fill="#313131"/>
+          <rect x="12" y="20" width="18" height="2" fill="#313131"/>
+          <rect x="16" y="19" width="2" height="4" fill="#313131"/>
+          <rect x="24" y="19" width="2" height="4" fill="#313131"/>
         </svg>
       );
     case "community":

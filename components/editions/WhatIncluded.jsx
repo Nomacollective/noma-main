@@ -183,11 +183,30 @@ const WhatIncluded = ({ d, items, location }) => {
                 key={index}
                 className="max-w-[380px] w-full mx-auto rounded-[50px] bg-[#F4F1E6] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.10)] flex items-center gap-1 h-[50px]"
               >
-                {/* Conditional icon rendering for Honduras */}
-                {(location?.heading?.toLowerCase().includes('honduras') || location?.heading?.toLowerCase().includes('monserrat')) ? (
-                  <div className="w-11 h-11 max-sm:w-10 max-sm:h-10 rounded-full bg-white shadow-md flex items-center justify-center ml-1">
-                    {renderOutdoorIcon(getWhatsIncludedImage(item?.title, location?.heading))}
-                  </div>
+                {/* Conditional icon rendering for Noma Family */}
+                {(location?.heading?.toLowerCase().includes('noma family') && 
+                  !getWhatsIncludedImage(item?.title, location?.heading).includes('.png')) ? (
+                  // Check if item should have white circle or not
+                  (item?.title?.toLowerCase().includes("airport") || 
+                   item?.title?.toLowerCase().includes("transfer") ||
+                   item?.title?.toLowerCase().includes("community") ||
+                   item?.title?.toLowerCase().includes("manager") ||
+                   item?.title?.toLowerCase().includes("onsite") ||
+                   item?.title?.toLowerCase().includes("bar") ||
+                   item?.title?.toLowerCase().includes("restaurant") ||
+                   item?.title?.toLowerCase().includes("beach") ||
+                   item?.title?.toLowerCase().includes("pool") ||
+                   item?.title?.toLowerCase().includes("infinity")) ? (
+                    // No white circle for these items
+                    <div className="w-11 h-11 max-sm:w-10 max-sm:h-10 flex items-center justify-center ml-1">
+                      {renderOutdoorIcon(getWhatsIncludedImage(item?.title, location?.heading))}
+                    </div>
+                  ) : (
+                    // White circle for other SVG items
+                    <div className="w-11 h-11 max-sm:w-10 max-sm:h-10 rounded-full bg-white shadow-md flex items-center justify-center ml-1">
+                      {renderOutdoorIcon(getWhatsIncludedImage(item?.title, location?.heading))}
+                    </div>
+                  )
                 ) : (
                   <Image
                     src={getWhatsIncludedImage(item?.title)}

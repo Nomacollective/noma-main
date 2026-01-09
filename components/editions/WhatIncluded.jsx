@@ -28,6 +28,12 @@ const WhatIncluded = ({ d, items, location }) => {
   const [showPdfButton, setShowPdfButton] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
+  // Check if this is Honduras/family edition location
+  const isHondurasLocation = location?.heading?.toLowerCase()?.includes("honduras") || 
+    location?.city?.toLowerCase()?.includes("honduras") ||
+    location?.heading?.toLowerCase()?.includes("monserrat") ||
+    location?.city?.toLowerCase()?.includes("monserrat");
+
   useEffect(() => {
     const fetchEditions = async () => {
       try {
@@ -147,12 +153,14 @@ const WhatIncluded = ({ d, items, location }) => {
               className="md:max-w-[370px] max-w-[250px] w-full py-2 md:py-4 rounded-full bg-[#FC5B67] border-[2px] border-[#FC5B67] hover:bg-transparent transition duration-300 ease-in-out text-[#F7F7F7] font-Montserrat lg:text-[32px] md:text-2xl text-base font-extrabold leading-normal hover:text-[#FC5B67]"
               onClick={() =>
                 window.open(
-                  "https://lp.noma-collective.com/schedule-your-meeting-page",
-                  "_self"
+                  isHondurasLocation 
+                    ? "https://noma-family-edition.carrd.co/"
+                    : "https://lp.noma-collective.com/schedule-your-meeting-page",
+                  isHondurasLocation ? "_blank" : "_self"
                 )
               }
             >
-              GET STARTED
+              {isHondurasLocation ? "APPLY NOW" : "GET STARTED"}
             </button>
 
             {!showForm && showPdfButton && (
@@ -239,12 +247,14 @@ const WhatIncluded = ({ d, items, location }) => {
               className="md:max-w-[370px] max-w-[250px] w-full py-2 md:py-4 rounded-full bg-[#FC5B67] border-[2px] border-[#FC5B67] hover:bg-transparent transition duration-300 ease-in-out text-[#F7F7F7] font-Montserrat lg:text-[32px] md:text-2xl text-base font-extrabold leading-normal hover:text-[#FC5B67]"
               onClick={() =>
                 window.open(
-                  "https://lp.noma-collective.com/schedule-your-meeting-page",
-                  "_self"
+                  isHondurasLocation 
+                    ? "https://noma-family-edition.carrd.co/"
+                    : "https://lp.noma-collective.com/schedule-your-meeting-page",
+                  isHondurasLocation ? "_blank" : "_self"
                 )
               }
             >
-              GET STARTED
+              {isHondurasLocation ? "APPLY NOW" : "GET STARTED"}
             </button>
 
             {!showForm && showPdfButton && (

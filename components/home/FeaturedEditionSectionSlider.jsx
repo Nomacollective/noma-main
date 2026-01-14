@@ -53,7 +53,14 @@ export default function FeaturedEditionSectionSlider({ locations }) {
         date: `${formattedStartDate} - ${endDayMonth} ${endYear}`,
         days: days,
         price: l?.accomodationsCollection?.items?.length > 0 
-          ? Math.min(...l.accomodationsCollection.items.map((i) => i?.price).filter(price => price != null))
+          ? Math.min(...l.accomodationsCollection.items
+              .filter(i => {
+                // Exclude Children Summer Camp from price calculation
+                const title = i?.title?.toLowerCase() || '';
+                return !title.includes('summer camp') && !title.includes('children');
+              })
+              .map((i) => i?.price)
+              .filter(price => price != null))
           : 0,
         img: [{ src: l?.heroImage?.url }],
         locationColor: l?.locationCardColor,

@@ -182,8 +182,7 @@ const TermsConditions = () => {
 
         <h2>Cancellation Policy</h2>
         <p>
-          Any cancellation of reservations or portions of reservations MUST be
-          received in writing.
+          Any cancellation of reservations or portions of reservations MUST be received in writing by email.
         </p>
         <ul>
           Bookings made prior to August 19th, 2024:
@@ -226,7 +225,7 @@ const TermsConditions = () => {
         <h2>Changes by You & Transfer of Booking</h2>
         <p>
           If you wish to change any part of your booking arrangements after the
-          confirmation invoice has been issued, you must inform Noma as soon as
+          confirmation invoice has been issued, you must inform Noma by email as soon as
           possible.
         </p>
         <p>

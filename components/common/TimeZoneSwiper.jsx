@@ -71,7 +71,13 @@ const TimeZoneSwiper = ({ locations }) => {
       date: `${formattedStartDate} - ${endDayMonth} ${endYear}`,
       days: calculateDaysDifference(l.startDate, l.endDate),
       price: Math.min(
-        ...l?.accomodationsCollection?.items?.map((i) => i?.price)
+        ...l?.accomodationsCollection?.items
+          ?.filter(i => {
+            // Exclude Children Summer Camp from price calculation
+            const title = i?.title?.toLowerCase() || '';
+            return !title.includes('summer camp') && !title.includes('children');
+          })
+          ?.map((i) => i?.price)
       ),
       img: [{ src: l?.heroImage?.url }],
       locationColor: l?.locationCardColor,

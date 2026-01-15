@@ -14,11 +14,11 @@ const SocialConnect = () => {
   return (
     <div className="socials text-center">
       <h4 className="py-4 sm:pb-8 px-4 text-2xl sm:text-3xl font-bold font-Montserrat">
-       Wanna see what else we're about? Say hi on our socials!
+        Wanna see what else we're about? Say hi on our socials!
       </h4>
 
       <div className="text-white pt-4 sm:pt-8 pb-[100px] sm:pb-[150px]">
-        <div className="flex flex-wrap justify-center items-center gap-3 mb-2 ">
+        <div className="flex flex-wrap justify-center items-center gap-3 mb-2">
           <Link
             className="max-w-[70px] sm:max-w-[100px]"
             href="https://www.instagram.com/nomacollectivehq"
@@ -62,8 +62,23 @@ const SocialConnect = () => {
             <YoutubeIcon />
           </Link>
         </div>
-        <div className="py-8 sm:py-20">
-          <SocialMediaCardWapper />
+
+        {/* SnapWidget Embed (Horizontally Centered) */}
+        <div className="flex justify-center w-full overflow-x-auto mt-8 px-4">
+          <iframe
+            src="https://snapwidget.com/embed/1110872"
+            class="snapwidget-widget"
+            allowtransparency="true"
+            frameborder="0"
+            scrolling="no"
+            style={{
+              border: "none",
+              overflow: "hidden",
+              width: "980px",
+              height: "490px",
+            }}
+            title="Posts from Instagram"
+          ></iframe>
         </div>
       </div>
     </div>

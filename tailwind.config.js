@@ -7,10 +7,16 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        // Custom iPad Pro screen (1024px–1279px)
+        'ipad': {'min': '1024px', 'max': '1279px'},
+      },
       fontFamily: {
         "sergio-trendy": ["sergio-trendy", "serif"],
         Montserrat: ["Montserrat", "sans-serif"],
         kurdis: ["Kurdis-ExtraWideSemiBold", "sans-serif"],
+        // 👇 Add this line to allow `font-display` to use sergio-trendy
+        display: ["sergio-trendy", "serif"],
       },
       colors: {
         "main-orange": "#FF9500",

@@ -85,7 +85,7 @@ export const whatWeOfferCardData = [
   {
     heading: "Plug & Play",
     src: "/img/plugandplay-card-img.jpg",
-    text: "Our carefully curated Editions seamlessly blend remote work with endless adventure. Our beautiful locations are equipped with reliable Wi-Fi and co-working spaces. Be inspired by your surroundings and never miss a meeting - ensuring that work-from-anywhere is as efficient as it is picturesque.",
+    text: "Our carefully curated Editions seamlessly blend remote work with endless adventure. Our beautiful locations are equipped with reliable Wi-Fi and working spaces. Be inspired by your surroundings and never miss a meeting - ensuring that work-from-anywhere is as efficient as it is picturesque.",
   },
   {
     heading: "Support",
@@ -547,7 +547,58 @@ export const heroBtnData = [
   },
 ];
 
-export const getWhatsIncludedImage = (title) => {
+export const getWhatsIncludedImage = (title, location) => {
+  // Special cases: use PNG for specific items even in Noma Family
+  if (title?.toLowerCase().includes("airport") && title?.toLowerCase().includes("transfer")) {
+    return "/img/airport.png";
+  }
+  
+  if (title?.toLowerCase().includes("community") && title?.toLowerCase().includes("manager")) {
+    return "/img/men-dancing.png";
+  }
+  
+  if (title?.toLowerCase().includes("onsite") && (title?.toLowerCase().includes("bar") || title?.toLowerCase().includes("restaurant"))) {
+    return "/img/bar.png";
+  }
+  
+  if (title?.toLowerCase().includes("beach") && (title?.toLowerCase().includes("club") || title?.toLowerCase().includes("infinity") || title?.toLowerCase().includes("pool"))) {
+    return "/img/beach.png";
+  }
+  
+  if (title?.toLowerCase().includes("gym") || title?.toLowerCase().includes("tennis") || title?.toLowerCase().includes("courts") || title?.toLowerCase().includes("fitness")) {
+    return "/img/gym.png";
+  }
+  
+  if (title?.toLowerCase().includes("co work") || title?.toLowerCase().includes("cowork")) {
+    return "/img/cowork.png";
+  }
+  
+  if (title?.toLowerCase().includes("montessori") || title?.toLowerCase().includes("summer camp")) {
+    return "/img/summer-camp.png";
+  }
+  
+  if (title?.toLowerCase().includes("grocery") || title?.toLowerCase().includes("supermarket") || title?.toLowerCase().includes("shuttle")) {
+    return "/img/grocery-shuttle.png";
+  }
+  
+  if (title?.toLowerCase().includes("golf") || title?.toLowerCase().includes("course")) {
+    return "/img/golf.png";
+  }
+  
+  if (title?.toLowerCase().includes("esim") || title?.toLowerCase().includes("sim") || title?.toLowerCase().includes("data")) {
+    return "/img/sim-card.png";
+  }
+  
+  // Use outdoor icons for Noma Family
+  if (location?.toLowerCase().includes('noma family')) {
+    return getOutdoorIncludedIcon(title);
+  }
+  
+  // Default icons for other locations
+  if (title?.toLowerCase().includes("esim") || title?.toLowerCase().includes("sim") || title?.toLowerCase().includes("data")) {
+    return "/img/sim-card.png";
+  }
+  
   if (title?.toLowerCase().includes("yoga")) {
     return "/img/what-included-1.png";
   }
@@ -571,6 +622,7 @@ export const getWhatsIncludedImage = (title) => {
   if (title?.toLowerCase().includes("wifi")) {
     return "/img/what-included-6.png";
   }
+  
   if (title?.toLowerCase().includes("community")) {
     return "/img/what-included-9.png";
   }
@@ -595,6 +647,85 @@ export const getWhatsIncludedImage = (title) => {
   if (title?.toLowerCase().includes("other inclusions")) {
     return "/img/what-included-10.png";
   }
+  
+  // Default fallback
+  return "/img/what-included-1.png";
+};
+
+// New function for outdoor/camping themed icons (returns SVG components)
+export const getOutdoorIncludedIcon = (title) => {
+  const titleLower = title?.toLowerCase() || "";
+  
+  if (titleLower.includes("montessori") || titleLower.includes("summer camp") || titleLower.includes("camp")) {
+    return "tent";
+  }
+  
+  if (titleLower.includes("co work") || titleLower.includes("cowork") || titleLower.includes("working") || titleLower.includes("workspace")) {
+    return "coworking";
+  }
+  
+  if (titleLower.includes("airport") || titleLower.includes("transfer")) {
+    return "airport";
+  }
+  
+  if (titleLower.includes("supermarket") || titleLower.includes("shuttle")) {
+    return "shuttle";
+  }
+  
+  if (titleLower.includes("esim") || titleLower.includes("sim") || titleLower.includes("data")) {
+    return "esim";
+  }
+  
+  if (titleLower.includes("golf") || titleLower.includes("course")) {
+    return "golf";
+  }
+  
+  if (titleLower.includes("gym") || titleLower.includes("tennis") || titleLower.includes("courts") || titleLower.includes("fitness")) {
+    return "gym";
+  }
+  
+  if (titleLower.includes("community") || titleLower.includes("manager") || titleLower.includes("group") || titleLower.includes("social")) {
+    return "community";
+  }
+  
+  if (titleLower.includes("onsite") || titleLower.includes("bar") || titleLower.includes("restaurant")) {
+    return "campfire";
+  }
+  
+  if (titleLower.includes("beach") || titleLower.includes("pool") || titleLower.includes("swimming") || titleLower.includes("water") || titleLower.includes("infinity")) {
+    return "swimming";
+  }
+  
+  if (titleLower.includes("campfire") || titleLower.includes("fire")) {
+    return "campfire";
+  }
+  
+  if (titleLower.includes("hiking") || titleLower.includes("trek") || titleLower.includes("walk")) {
+    return "hiking";
+  }
+  
+  if (titleLower.includes("wifi") || titleLower.includes("internet")) {
+    return "coworking";
+  }
+  
+  if (titleLower.includes("tent") || titleLower.includes("accommodation") || titleLower.includes("camping")) {
+    return "tent";
+  }
+  
+  if (titleLower.includes("mountain") || titleLower.includes("nature") || titleLower.includes("outdoor")) {
+    return "mountain";
+  }
+  
+  if (titleLower.includes("weather") || titleLower.includes("sun") || titleLower.includes("sunny")) {
+    return "sun";
+  }
+  
+  if (titleLower.includes("cloud") || titleLower.includes("sky")) {
+    return "cloud";
+  }
+  
+  // Default fallback
+  return "tent";
 };
 
 export const IncludedCardData = [
@@ -903,7 +1034,7 @@ export const whatWeOfferCardData2 = [
   {
     heading: "Plug & Play",
     src: "/img/Aesthetic-Modern3.png",
-    text: "Our carefully curated Editions seamlessly blend remote work with endless adventure. Our beautiful locations are equipped with reliable Wi-Fi and co-working spaces. Be inspired by your surroundings and never miss a meeting - ensuring that work-from-anywhere is as efficient as it is picturesque.",
+    text: "Our carefully curated Editions seamlessly blend remote work with endless adventure. Our beautiful locations are equipped with reliable Wi-Fi and working spaces. Be inspired by your surroundings and never miss a meeting - ensuring that work-from-anywhere is as efficient as it is picturesque.",
   },
   {
     heading: "Support",
@@ -1011,27 +1142,27 @@ export const featured = [
 export const Carmelcardmap = [
   {
     img: "/img/guest-galler-2.png",
-    name: "Sachit Michra",
-    numberOfTrips: "1 edition done",
+    name: "Sachit",
+    numberOfTrips: "1 Edition",
     jobTitle: "PM at a startup",
     paragraph:
       "Logistically, Noma handles things extremely well. The communication, accommodation, and excursions were impeccable and professionally handled. But more than that, this was an incredibly well curated experience of connection, friendship, and adventure. And that was in no small part thanks to our extremely reliable and friendly community manager, Mariela, who set the tone for the whole trip. I will never forget my Noma experience and you can be sure I'll be booking another.",
   },
   {
     img: "/img/Michele_Khan.jpg",
-    name: "Michele Khan",
-    numberOfTrips: "2 edition done",
+    name: "Michele",
+    numberOfTrips: "2 Editions",
     jobTitle: "Research Manager",
     paragraph:
       "I had an absolutely amazing time in Antigua. The accommodations were lovely, spacious and clean! The best part, by far, was our Noma crew. We had a blast and everything was so well organized and thought out. From family dinners, crazy weekend adventures (including hiking a volcano and releasing baby sea turtles into the ocean), to cozy nights in, I had an incredible time and met some of the coolest people. I can say that I made some wonderful, life-long friends as well.",
   },
   {
     img: "/img/Michelle_Jean.jpg",
-    name: "Michelle Jean",
-    numberOfTrips: "3 edition done",
-    jobTitle: "UI/ UX designer",
+    name: "Kylie",
+    numberOfTrips: "3 Editions",
+    jobTitle: "Editions Senior Manager",
     paragraph:
-      "I recently did two Noma trips (Guatemala and Panama) and these experiences changed my perspective on travel. It’s not just about visiting beautiful places, but most importantly the connections you make along the way. Traveling with Noma gives you community and a more authentic traveling experience. There was a perfect balance of work, free time, and planned activities for the group. I highly recommend booking with Noma for your next trip!",
+      "Had my first experience with Noma Collective in Barcelona, and I'm so happy I did it! It was such a great experience, and I got to meet new people to travel with. Everyone on the Noma team was so helpful, kind, and fun—especially Leo, our community manager. She made every event feel so special and planned so many fun activities. Can't wait until the next trip!",
   },
 ];
 export const whatWeOfferCardData3 = [
@@ -1048,7 +1179,7 @@ export const whatWeOfferCardData3 = [
   {
     heading: "Plug & Play",
     src: "/img/Aesthetic-Modern3.png",
-    text: "Our carefully curated Editions seamlessly blend remote work with endless adventure. Our beautiful locations are equipped with reliable Wi-Fi and co-working spaces. Be inspired by your surroundings and never miss a meeting - ensuring that work-from-anywhere is as efficient as it is picturesque.",
+    text: "Our carefully curated Editions seamlessly blend remote work with endless adventure. Our beautiful locations are equipped with reliable Wi-Fi and working spaces. Be inspired by your surroundings and never miss a meeting - ensuring that work-from-anywhere is as efficient as it is picturesque.",
   },
   {
     heading: "Support",
@@ -1160,7 +1291,7 @@ export const suggestedLocationsData = [
     ],
     cardText: "Bocas Del Toro, <br /> Panama",
     detailText:
-      "Escape to Bocas Del Toro, Panama a stunning archipelago featuring stunning beaches and tropical rainforests. You'll live in breathtaking eco-friendly domes in the heart of the tropical jungle, the perfect location to recharge as a team. This resort is purpose-built for nomads and its dedicated co-working space is designed to ensure a productive and motivating work environment.",
+      "Escape to Bocas Del Toro, Panama a stunning archipelago featuring stunning beaches and tropical rainforests. You'll live in breathtaking eco-friendly domes in the heart of the tropical jungle, the perfect location to recharge as a team. This resort is purpose-built for nomads and its dedicated working space is designed to ensure a productive and motivating work environment.",
     chartsData: [
       {
         id: 0,
@@ -1304,3 +1435,228 @@ export const suggestedLocationsData = [
     ],
   },
 ];
+
+// Function to render outdoor SVG icons for Honduras
+export const renderOutdoorIcon = (iconType) => {
+  switch (iconType) {
+    case "campfire":
+      return (
+        <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+          <path d="M21 8C21 8 18 12 18 16C18 18.2091 19.7909 20 22 20C24.2091 20 26 18.2091 26 16C26 12 23 8 21 8Z" fill="#FF6B35"/>
+          <path d="M21 12C21 12 19 14 19 16C19 17.1046 19.8954 18 21 18C22.1046 18 23 17.1046 23 16C23 14 21 12 21 12Z" fill="#FFD23F"/>
+          <rect x="8" y="32" width="26" height="2" fill="#8B4513"/>
+          <rect x="6" y="34" width="30" height="2" fill="#8B4513"/>
+        </svg>
+      );
+    case "hiking":
+      return (
+        <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+          <circle cx="21" cy="8" r="3" fill="#313131"/>
+          <path d="M18 14L20 12H24L26 14V20L24 28H22L20 24L18 28H16L18 20V14Z" fill="#313131"/>
+          <path d="M14 30L18 26L20 28L16 32L14 30Z" fill="#313131"/>
+          <path d="M28 32L24 28L26 26L30 30L28 32Z" fill="#313131"/>
+          <path d="M12 18L16 14L18 16L14 20L12 18Z" stroke="#8B4513" strokeWidth="2" strokeLinecap="round"/>
+        </svg>
+      );
+    case "wifi-camp":
+      return (
+        <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+          <path d="M21 6L9 30H33L21 6Z" stroke="#313131" strokeWidth="2" fill="none"/>
+          <path d="M21 6V30" stroke="#313131" strokeWidth="2"/>
+          <path d="M15 22H27" stroke="#313131" strokeWidth="2"/>
+          <path d="M18 12C19.5 10.5 22.5 10.5 24 12" stroke="#00C851" strokeWidth="2" strokeLinecap="round"/>
+          <path d="M19 14C19.5 13.5 22.5 13.5 23 14" stroke="#00C851" strokeWidth="2" strokeLinecap="round"/>
+          <circle cx="21" cy="16" r="1" fill="#00C851"/>
+        </svg>
+      );
+    case "coworking":
+    case "working":
+    case "workspace":
+      return (
+        <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+          {/* Laptop base */}
+          <rect x="8" y="22" width="26" height="16" rx="2" stroke="#313131" strokeWidth="2" fill="none"/>
+          {/* Laptop screen */}
+          <rect x="10" y="8" width="22" height="16" rx="1" stroke="#313131" strokeWidth="2" fill="none"/>
+          {/* Screen content */}
+          <rect x="12" y="10" width="18" height="12" fill="#F0F0F0"/>
+          {/* WiFi signals */}
+          <path d="M15 18C16 17 18 17 19 18" stroke="#00C851" strokeWidth="1.5" strokeLinecap="round"/>
+          <path d="M16 19C16.5 18.5 17.5 18.5 18 19" stroke="#00C851" strokeWidth="1.5" strokeLinecap="round"/>
+          <circle cx="17" cy="20" r="0.8" fill="#00C851"/>
+          {/* Keyboard indicator */}
+          <line x1="12" y1="26" x2="30" y2="26" stroke="#313131" strokeWidth="1"/>
+          <line x1="14" y1="28" x2="28" y2="28" stroke="#313131" strokeWidth="1"/>
+          <line x1="16" y1="30" x2="26" y2="30" stroke="#313131" strokeWidth="1"/>
+        </svg>
+      );
+    case "swimming":
+      return (
+        <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+          <circle cx="15" cy="10" r="3" fill="#313131"/>
+          <path d="M12 16C12 16 15 14 18 16C21 18 24 16 27 18C30 20 33 18 36 20" stroke="#4A90E2" strokeWidth="2" strokeLinecap="round"/>
+          <path d="M6 24C6 24 9 22 12 24C15 26 18 24 21 26C24 28 27 26 30 28C33 30 36 28 39 30" stroke="#4A90E2" strokeWidth="2" strokeLinecap="round"/>
+          <path d="M6 30C6 30 9 28 12 30C15 32 18 30 21 32C24 34 27 32 30 34C33 36 36 34 39 36" stroke="#4A90E2" strokeWidth="2" strokeLinecap="round"/>
+        </svg>
+      );
+    case "esim":
+      return (
+        <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+          {/* SIM card outline */}
+          <rect x="12" y="8" width="18" height="26" rx="2" stroke="#313131" strokeWidth="2" fill="none"/>
+          {/* SIM card notch */}
+          <path d="M18 8L18 12L22 12L22 8" stroke="#313131" strokeWidth="2" fill="#313131"/>
+          {/* Circuit pattern */}
+          <rect x="16" y="16" width="10" height="8" rx="1" stroke="#313131" strokeWidth="1.5" fill="none"/>
+          <rect x="18" y="18" width="6" height="4" rx="0.5" stroke="#313131" strokeWidth="1" fill="none"/>
+          {/* Signal waves */}
+          <path d="M8 20C9 19 11 19 12 20" stroke="#00C851" strokeWidth="2" strokeLinecap="round"/>
+          <path d="M6 22C8 20 12 20 14 22" stroke="#00C851" strokeWidth="2" strokeLinecap="round"/>
+          <path d="M4 24C7 21 13 21 16 24" stroke="#00C851" strokeWidth="2" strokeLinecap="round"/>
+          {/* "e" for eSIM */}
+          <text x="20" y="30" fontSize="8" fill="#313131" fontFamily="Arial, sans-serif" fontWeight="bold">e</text>
+        </svg>
+      );
+    case "airport":
+      return (
+        <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+          {/* Airplane body */}
+          <path d="M21 8L25 20H35L33 24H25L21 34L17 24H9L11 20H17L21 8Z" fill="#313131"/>
+          {/* Wings */}
+          <path d="M12 18L30 18" stroke="#313131" strokeWidth="3" strokeLinecap="round"/>
+          <path d="M15 26L27 26" stroke="#313131" strokeWidth="2" strokeLinecap="round"/>
+        </svg>
+      );
+    case "shuttle":
+      return (
+        <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+          {/* Bus body */}
+          <rect x="6" y="12" width="30" height="18" rx="3" stroke="#313131" strokeWidth="2" fill="none"/>
+          {/* Windows */}
+          <rect x="9" y="15" width="6" height="6" rx="1" fill="#87CEEB"/>
+          <rect x="18" y="15" width="6" height="6" rx="1" fill="#87CEEB"/>
+          <rect x="27" y="15" width="6" height="6" rx="1" fill="#87CEEB"/>
+          {/* Wheels */}
+          <circle cx="12" cy="32" r="3" stroke="#313131" strokeWidth="2" fill="none"/>
+          <circle cx="30" cy="32" r="3" stroke="#313131" strokeWidth="2" fill="none"/>
+          {/* Door */}
+          <rect x="15" y="22" width="3" height="8" stroke="#313131" strokeWidth="1" fill="none"/>
+        </svg>
+      );
+    case "golf":
+      return (
+        <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+          {/* Golf club */}
+          <path d="M15 8L16 32" stroke="#8B4513" strokeWidth="2" strokeLinecap="round"/>
+          <path d="M14 8L18 6L17 10L14 8Z" fill="#313131"/>
+          {/* Golf ball */}
+          <circle cx="25" cy="28" r="3" fill="#F5F5F5" stroke="#313131" strokeWidth="1"/>
+          <circle cx="24" cy="27" r="0.5" fill="#313131"/>
+          <circle cx="26" cy="27" r="0.5" fill="#313131"/>
+          <circle cx="25" cy="29" r="0.5" fill="#313131"/>
+          {/* Flag */}
+          <path d="M32 12L32 24" stroke="#313131" strokeWidth="2"/>
+          <path d="M32 12L38 15L32 18Z" fill="#FF6B35"/>
+        </svg>
+      );
+    case "gym":
+      return (
+        <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+          {/* Dumbbell */}
+          <rect x="6" y="18" width="6" height="6" rx="1" fill="#313131"/>
+          <rect x="30" y="18" width="6" height="6" rx="1" fill="#313131"/>
+          <rect x="12" y="20" width="18" height="2" fill="#313131"/>
+          <rect x="16" y="19" width="2" height="4" fill="#313131"/>
+          <rect x="24" y="19" width="2" height="4" fill="#313131"/>
+        </svg>
+      );
+    case "community":
+      return (
+        <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+          <circle cx="15" cy="12" r="4" fill="#313131"/>
+          <circle cx="27" cy="12" r="4" fill="#313131"/>
+          <circle cx="21" cy="20" r="4" fill="#313131"/>
+          <path d="M8 32C8 28 11 25 15 25C19 25 22 28 22 32" stroke="#313131" strokeWidth="2" fill="none"/>
+          <path d="M20 32C20 28 23 25 27 25C31 25 34 28 34 32" stroke="#313131" strokeWidth="2" fill="none"/>
+          <path d="M14 36C14 32 17 29 21 29C25 29 28 32 28 36" stroke="#313131" strokeWidth="2" fill="none"/>
+        </svg>
+      );
+    case "tent":
+      return (
+        <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+          <path d="M21 6L9 36H33L21 6Z" stroke="#313131" strokeWidth="2" strokeLinejoin="round" fill="none"/>
+          <path d="M21 6V36" stroke="#313131" strokeWidth="2"/>
+          <path d="M15 26H27" stroke="#313131" strokeWidth="2"/>
+        </svg>
+      );
+    case "mountain":
+      return (
+        <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+          <path d="M2 36L12 16L20 24L26 18L40 36H2Z" stroke="#313131" strokeWidth="2" strokeLinejoin="round" fill="none"/>
+        </svg>
+      );
+    case "sun":
+      return (
+        <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+          <circle cx="21" cy="21" r="8" stroke="#313131" strokeWidth="2" fill="none"/>
+          <path d="M21 3V9M21 33V39M39 21H33M9 21H3M33.9497 8.05025L29.4853 12.5147M12.5147 29.4853L8.05025 33.9497M33.9497 33.9497L29.4853 29.4853M12.5147 12.5147L8.05025 8.05025" stroke="#313131" strokeWidth="2" strokeLinecap="round"/>
+        </svg>
+      );
+    case "cloud":
+      return (
+        <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+          <path d="M32 20C32 15.5817 28.4183 12 24 12C21.0545 12 18.4773 13.6364 17.0667 16.0727C16.7152 16 16.3636 16 16 16C11.5817 16 8 19.5817 8 24C8 28.4183 11.5817 32 16 32H32C35.3137 32 38 29.3137 38 26C38 22.6863 35.3137 20 32 20Z" stroke="#313131" strokeWidth="2" strokeLinejoin="round" fill="none"/>
+        </svg>
+      );
+    default:
+      return (
+        <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+          <path d="M21 6L9 36H33L21 6Z" stroke="#313131" strokeWidth="2" strokeLinejoin="round" fill="none"/>
+          <path d="M21 6V36" stroke="#313131" strokeWidth="2"/>
+          <path d="M15 26H27" stroke="#313131" strokeWidth="2"/>
+        </svg>
+      );
+  }
+};
+
+// Honduras-specific progress data
+export const hondurasProgressCardsData = [
+  {
+    title: "Outdoor Adventures",
+    img: "/img/outdoor-adventures.png",
+    value: "90%",
+    color: "#4A90E2",
+  },
+  {
+    title: "Nature & Wildlife",
+    img: "/img/nature-wildlife.png",
+    value: "85%",
+    color: "#80CEB7",
+  },
+  {
+    title: "Community & Social",
+    img: "/img/community-social.png",
+    value: "95%",
+    color: "#FF6B35",
+  },
+  {
+    title: "Wellness & Fitness",
+    img: "/img/wellness-fitness.png",
+    value: "75%",
+    color: "#8196CC",
+  },
+  {
+    title: "Skills & Learning",
+    img: "/img/skills-learning.png",
+    value: "70%",
+    color: "#FFD23F",
+  },
+];
+
+// Function to get progress data based on location
+export const getProgressCardsData = (location) => {
+  if (location?.toLowerCase().includes('honduras') || location?.toLowerCase().includes('monserrat')) {
+    return hondurasProgressCardsData;
+  }
+  return progressCardsData;
+};

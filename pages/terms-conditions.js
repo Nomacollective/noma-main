@@ -161,13 +161,13 @@ const TermsConditions = () => {
 
         <h2>Refunds and Dispute Resolution with Location Partners</h2>
         <p>
-          In the event of a dispute with our location partner
-          (e.g., accommodation provider), we will not be liable for issuing
-          refunds until the dispute has been fully resolved. Refunds will
-          only be processed once we have received the corresponding funds back
-          from the location partner. We will make every reasonable effort to
-          expedite the resolution process, but delays may occur based on the
-          policies of the location partner involved.
+          In the event of a dispute with our location partner (e.g.,
+          accommodation provider), we will not be liable for issuing refunds
+          until the dispute has been fully resolved. Refunds will only be
+          processed once we have received the corresponding funds back from the
+          location partner. We will make every reasonable effort to expedite the
+          resolution process, but delays may occur based on the policies of the
+          location partner involved.
         </p>
 
         <h2>Visa, Passport and Health Requirements</h2>
@@ -182,8 +182,7 @@ const TermsConditions = () => {
 
         <h2>Cancellation Policy</h2>
         <p>
-          Any cancellation of reservations or portions of reservations MUST be
-          received in writing.
+          Any cancellation of reservations or portions of reservations MUST be received in writing by email.
         </p>
         <ul>
           Bookings made prior to August 19th, 2024:
@@ -226,7 +225,7 @@ const TermsConditions = () => {
         <h2>Changes by You & Transfer of Booking</h2>
         <p>
           If you wish to change any part of your booking arrangements after the
-          confirmation invoice has been issued, you must inform Noma as soon as
+          confirmation invoice has been issued, you must inform Noma by email as soon as
           possible.
         </p>
         <p>
@@ -249,18 +248,19 @@ const TermsConditions = () => {
 
         <h2>Room Sharing Option:</h2>
         <p>
-          For guests selecting the room sharing option available on some of our Editions,
-          you can coordinate with a friend to book separately, with each of you taking
-          one bed in the shared room. If you don’t have a personally chosen roommate,
-          Noma Collective will assign a roommate at random from others who selected this
-          same room option. Roommates are assigned randomly, and while we strive to pair
-          guests based on sex (male with male, female with female), there is a possibility
-          of co-ed room assignments.
+          For guests selecting the room sharing option available on some of our
+          Editions, you can coordinate with a friend to book separately, with
+          each of you taking one bed in the shared room. If you don’t have a
+          personally chosen roommate, Noma Collective will assign a roommate at
+          random from others who selected this same room option. Roommates are
+          assigned randomly, and while we strive to pair guests based on sex
+          (male with male, female with female), there is a possibility of co-ed
+          room assignments.
         </p>
 
         <p>
-          If you have any questions or preferences, feel free to discuss them with
-          a Noma team member during your pre-trip call.
+          If you have any questions or preferences, feel free to discuss them
+          with a Noma team member during your pre-trip call.
         </p>
 
         <h2>Events Beyond Our Reasonable Control</h2>
@@ -281,11 +281,37 @@ const TermsConditions = () => {
 
         <h2>Jurisdiction and Applicable Law</h2>
         <p>
-          These Booking Conditions and any agreement to which they apply are
-          governed in all respects by the country in which the Property is
-          located. We both agree that any dispute, claim or other matter which
-          arises between us out of or in connection with your contract or
-          booking will be dealt with by the local governing body.
+          These Booking Conditions and any agreement to which they apply are to
+          be interpreted in accordance with the laws of the State of Florida
+          without regard to its conflicts of laws. Neither the United Nations
+          Convention on the International Sale of Goods, nor the Uniform
+          Computer Information Transactions Act shall apply to this Agreement.
+          <br></br>
+          <br></br>
+          If a dispute arises from or relates to any bookings made with Noma
+          Collective, and if the dispute cannot be settled through direct
+          discussions, the parties agree as a condition precedent to any legal
+          action, they will attend mediation administered by the American
+          Arbitration Association under its Commercial Mediation Procedures
+          before resorting to arbitration.
+          <br></br>
+          <br></br>
+          The parties further agree that any
+          unresolved controversy or claim arising out of or relating to these
+          Booking Conditions, any breach thereof, or any dispute related to any
+          bookings made with Noma Collective shall be settled by arbitration
+          administered by the American Arbitration Association in accordance
+          with its Commercial Arbitration Rules and judgment on the award
+          rendered by the arbitrator(s) may be entered in any court having
+          jurisdiction thereof. Claims shall be heard by a single arbitrator,
+          unless the claim amount exceeds $1,000,000.00, in which case the
+          dispute shall be heard by a panel of three arbitrators. The place of
+          arbitration shall be West Palm Beach, Florida, United States. The
+          arbitration shall be governed by the laws of the State of Florida. The
+          award of the arbitrator(s) shall be accompanied by a reasoned opinion.
+          Except as may be required by law, neither a party nor an arbitrator
+          may disclose the existence, content, or results of any arbitration
+          hereunder without the prior written consent of both parties.
         </p>
 
         <h2>Force Majeure</h2>
@@ -326,8 +352,15 @@ const TermsConditions = () => {
         <p>
           All guests staying with us are expected to conduct themselves in an
           orderly and acceptable manner and not to disrupt the enjoyment of
-          other guests. If in our opinion, or in the opinion of any other person
-          in authority, your behaviour or that of any member of your party is
+          other guests{" "}
+          <a
+            href="/code-of-conduct"
+            style={{ color: "#3B82F6", textDecoration: "underline" }}
+          >
+            [Read Our Code Of Conduct]
+          </a>
+          . If in our opinion, or in the opinion of any other person in
+          authority, your behaviour or that of any member of your party is
           causing or is likely to cause distress, danger or unreasonable
           annoyance to any of our other guests or any third party or damage to
           property, or to cause a delay or diversion to transportation, we
@@ -358,10 +391,15 @@ const TermsConditions = () => {
 
         <h2>Payment Terms</h2>
         <p>
-          To confirm your participation in an Edition, a non-refundable deposit of 50% of the total trip cost, as specified in your booking link, is required at the time of reservation. The remaining balance must be paid in full no later than 60 days prior to the trip start date. Failure to complete payment by this deadline, despite email reminders, will result in the automatic cancellation of your booking, and your spot may be made available for rebooking. No exceptions will be granted.
+          To confirm your participation in an Edition, a non-refundable deposit
+          of 50% of the total trip cost, as specified in your booking link, is
+          required at the time of reservation. The remaining balance must be
+          paid in full no later than 60 days prior to the trip start date.
+          Failure to complete payment by this deadline, despite email reminders,
+          will result in the automatic cancellation of your booking, and your
+          spot may be made available for rebooking. No exceptions will be
+          granted.
         </p>
-
-
       </div>
     </Layout>
   );

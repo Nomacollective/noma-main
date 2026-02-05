@@ -548,7 +548,7 @@ export const heroBtnData = [
 ];
 
 export const getWhatsIncludedImage = (title, location) => {
-  // Special cases: use PNG for specific items even in Noma Family
+  // Special cases: use PNG for specific items even in Honduras locations
   if (title?.toLowerCase().includes("airport") && title?.toLowerCase().includes("transfer")) {
     return "/img/airport.png";
   }
@@ -589,8 +589,8 @@ export const getWhatsIncludedImage = (title, location) => {
     return "/img/sim-card.png";
   }
   
-  // Use outdoor icons for Noma Family
-  if (location?.toLowerCase().includes('noma family')) {
+  // Use outdoor icons for Honduras specifically (not all Noma Family locations)
+  if (location?.toLowerCase().includes('honduras') || location?.toLowerCase().includes('monserrat')) {
     return getOutdoorIncludedIcon(title);
   }
   

@@ -134,23 +134,23 @@ const WhatIncluded = ({ d, items, location }) => {
   );
 
   return (
-    <div className="bg-[#FFDA7F]">
-      <div className="xl:px-0 sm:px-4 sm:pt-4 pb-8 mx-auto max-w-[950px] w-full flex max-md:flex-col gap-4 md:gap-6 lg:gap-9 xl:gap-[76px]">
-        <div className="sm:max-w-[457px] max-sm:bg-[#F4F1E6] flex flex-col justify-between w-full mx-auto pt-0 sm:pt-0">
-          <div className="sm:mb-0 mb-5 text-[#313131] text-center font-Montserrat text-lg md:text-xl font-normal !leading-5 pt-0 py-0 px-4">
+    <div className="bg-[#FFDA7F] max-sm:mx-0 max-sm:px-0 max-sm:w-full">
+      <div className="xl:px-0 sm:px-4 sm:pt-4 pb-8 mx-auto max-w-[950px] w-full flex max-md:flex-col gap-4 md:gap-6 lg:gap-9 xl:gap-[76px] max-sm:px-2 max-sm:gap-4 max-sm:flex-col max-sm:w-full max-sm:max-w-none">
+        <div className="sm:max-w-[457px] max-sm:bg-[#F4F1E6] max-sm:w-full flex flex-col justify-between w-full pt-0 sm:pt-0 max-sm:px-2 max-sm:py-4">
+          <div className="sm:mb-0 mb-3 text-[#313131] text-center font-Montserrat text-lg md:text-xl font-normal !leading-5 pt-0 py-0 px-4 max-sm:px-2 max-sm:text-sm max-sm:leading-4 max-sm:mb-2">
             {documentToReactComponents(d, {
               renderNode: {
-                [BLOCKS.PARAGRAPH]: (node, children) => (
+                [BLOCKS.PARAGRAPH]: (_, children) => (
                   <div className="m-0">{children}</div>
                 ),
               },
             })}
           </div>
 
-          <div className="flex flex-col justify-center items-center gap-2 pl-[42px] max-sm:hidden">
+          <div className="flex flex-col justify-center items-center gap-2 pl-[42px] max-sm:pl-0 max-sm:px-2">
             <button
               type="button"
-              className="md:max-w-[370px] max-w-[250px] w-full py-2 md:py-4 rounded-full bg-[#FC5B67] border-[2px] border-[#FC5B67] hover:bg-transparent transition duration-300 ease-in-out text-[#F7F7F7] font-Montserrat lg:text-[32px] md:text-2xl text-base font-extrabold leading-normal hover:text-[#FC5B67]"
+              className="md:max-w-[370px] max-w-[250px] w-full py-2 md:py-4 rounded-full bg-[#FC5B67] border-[2px] border-[#FC5B67] hover:bg-transparent transition duration-300 ease-in-out text-[#F7F7F7] font-Montserrat lg:text-[32px] md:text-2xl text-base font-extrabold leading-normal hover:text-[#FC5B67] max-sm:text-xs max-sm:py-2 max-sm:max-w-[180px]"
               onClick={() =>
                 window.open(
                   isHondurasLocation 
@@ -166,7 +166,7 @@ const WhatIncluded = ({ d, items, location }) => {
             {!showForm && showPdfButton && (
               <button
                 type="button"
-                className="md:max-w-[402px] max-w-[250px] w-full px-6 py-2 md:py-4 rounded-full bg-[#FF9500] border-[2px] border-[#FF9500] hover:bg-transparent transition duration-300 ease-in-out text-[#F7F7F7] font-Montserrat lg:text-[32px] md:text-2xl text-base font-extrabold leading-normal hover:text-[#FC5B67] whitespace-nowrap"
+                className="md:max-w-[402px] max-w-[250px] w-full px-6 py-2 md:py-4 rounded-full bg-[#FF9500] border-[2px] border-[#FF9500] hover:bg-transparent transition duration-300 ease-in-out text-[#F7F7F7] font-Montserrat lg:text-[32px] md:text-2xl text-base font-extrabold leading-normal hover:text-[#FC5B67] whitespace-nowrap max-sm:text-xs max-sm:py-2 max-sm:max-w-[180px] max-sm:px-2"
                 onClick={() => {
                   setShowForm(true);
                   setIsIframeLoading(true);
@@ -181,18 +181,21 @@ const WhatIncluded = ({ d, items, location }) => {
           </div>
         </div>
 
-        <div className="w-full sm:max-w-[417px] mx-auto sm:px-0 px-4">
-          <h1 className="text-[#313131] font-Montserrat text-xl sm:text-2xl font-extrabold leading-normal max-md:text-center">
+        <div className="w-full sm:max-w-[417px] sm:mx-auto max-sm:mx-0 sm:px-0 px-4 max-sm:px-0 max-sm:w-full max-sm:bg-[#FFDA7F] max-sm:py-4">
+          <h1 className="text-[#313131] font-Montserrat text-xl sm:text-2xl font-extrabold leading-normal max-md:text-center max-sm:text-lg">
             What's included
           </h1>
-          <div className="flex flex-col gap-2 sm:gap-3 mt-2 sm:mt-3 pb-[20px]">
+          <div className="flex flex-col gap-2 sm:gap-3 mt-2 sm:mt-3 pb-[20px] max-sm:w-full max-sm:px-1">
             {items.map((item, index) => (
               <div
                 key={index}
-                className="max-w-[380px] w-full mx-auto rounded-[50px] bg-[#F4F1E6] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.10)] flex items-center gap-1 h-[50px]"
+                className="sm:max-w-[380px] sm:mx-auto max-sm:w-full rounded-[50px] bg-[#F4F1E6] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.10)] flex items-center gap-1 h-[50px]"
               >
-                {/* Conditional icon rendering for Noma Family */}
-                {(location?.heading?.toLowerCase().includes('noma family') && 
+                {/* Conditional icon rendering for Honduras specifically */}
+                {((location?.heading?.toLowerCase().includes('honduras') || 
+                   location?.city?.toLowerCase().includes('honduras') ||
+                   location?.heading?.toLowerCase().includes('monserrat') ||
+                   location?.city?.toLowerCase().includes('monserrat')) && 
                   !getWhatsIncludedImage(item?.title, location?.heading).includes('.png')) ? (
                   // Check if item should have white circle or not
                   (item?.title?.toLowerCase().includes("airport") || 
@@ -217,7 +220,7 @@ const WhatIncluded = ({ d, items, location }) => {
                   )
                 ) : (
                   <Image
-                    src={getWhatsIncludedImage(item?.title)}
+                    src={getWhatsIncludedImage(item?.title, location?.heading)}
                     width={44}
                     height={44}
                     alt={item.title}
@@ -241,38 +244,7 @@ const WhatIncluded = ({ d, items, location }) => {
             ))}
           </div>
 
-          <div className="flex flex-col justify-center items-center gap-2 sm:hidden">
-            <button
-              type="button"
-              className="md:max-w-[370px] max-w-[250px] w-full py-2 md:py-4 rounded-full bg-[#FC5B67] border-[2px] border-[#FC5B67] hover:bg-transparent transition duration-300 ease-in-out text-[#F7F7F7] font-Montserrat lg:text-[32px] md:text-2xl text-base font-extrabold leading-normal hover:text-[#FC5B67]"
-              onClick={() =>
-                window.open(
-                  isHondurasLocation 
-                    ? "https://noma-family-edition.carrd.co/"
-                    : "https://lp.noma-collective.com/schedule-your-meeting-page",
-                  isHondurasLocation ? "_blank" : "_self"
-                )
-              }
-            >
-              {isHondurasLocation ? "APPLY NOW" : "GET STARTED"}
-            </button>
-
-            {!showForm && showPdfButton && (
-              <button
-                type="button"
-                className="md:max-w-[402px] max-w-[250px] w-full px-6 py-2 md:py-4 rounded-full bg-[#FF9500] border-[2px] border-[#FF9500] hover:bg-transparent transition duration-300 ease-in-out text-[#F7F7F7] font-Montserrat lg:text-[32px] md:text-2xl text-base font-extrabold leading-normal hover:text-[#FC5B67] whitespace-nowrap"
-                onClick={() => {
-                  setShowForm(true);
-                  setIsIframeLoading(true);
-                  setIsFormSuccess(false);
-                }}
-              >
-                FREE LOCATION PDF
-              </button>
-            )}
-
-            {showForm && isMobile && renderIframe}
-          </div>
+          {/* Mobile buttons removed - only desktop buttons in yellow section */}
         </div>
       </div>
     </div>

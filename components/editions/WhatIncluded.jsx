@@ -189,7 +189,7 @@ const WhatIncluded = ({ d, items, location }) => {
             {items.map((item, index) => (
               <div
                 key={index}
-                className="sm:max-w-[380px] sm:mx-auto max-sm:w-full rounded-[50px] bg-[#F4F1E6] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.10)] flex items-center gap-1 h-[50px]"
+                className="max-w-[380px] w-full mx-auto rounded-[50px] bg-[#F4F1E6] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.10)] flex items-center gap-1 h-[50px]"
               >
                 {/* Conditional icon rendering for Honduras specifically */}
                 {((location?.heading?.toLowerCase().includes('honduras') || 

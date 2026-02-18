@@ -21,11 +21,6 @@ const getStylesWhatsIncludedImage = (title) => {
 };
 
 const WhatIncluded = ({ d, items, location }) => {
-  const [showForm, setShowForm] = useState(false);
-  const [formSubmitted, setFormSubmitted] = useState(false);
-  const [isIframeLoading, setIsIframeLoading] = useState(true);
-  const [isFormSuccess, setIsFormSuccess] = useState(false);
-  const [showPdfButton, setShowPdfButton] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
   // Check if this is Honduras/family edition location
@@ -35,42 +30,6 @@ const WhatIncluded = ({ d, items, location }) => {
     location?.city?.toLowerCase()?.includes("monserrat");
 
   useEffect(() => {
-    const fetchEditions = async () => {
-      try {
-        const allowedLocations = [
-          "Buenos Aires",
-          "Barcelona",
-          "Belize",
-          "Brazil",
-          "Budapest",
-          "Cape Town",
-          "Costa Rica",
-          "Guatemala",
-          "Japan",
-          "Kenya",
-          "Lisbon",
-          "London",
-          "Marrakech",
-          "Panama",
-          "Peru",
-          "Sri Lanka",
-        ].map((loc) => loc.toLowerCase());
-
-        const heading = location?.heading?.toLowerCase() || "";
-        const isLocationAllowed = allowedLocations.some((loc) =>
-          heading.includes(loc)
-        );
-
-        setShowPdfButton(isLocationAllowed);
-      } catch (error) {
-        console.error("Failed to check location:", error);
-      }
-    };
-
-    fetchEditions();
-  }, [location]);
-
-  useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 640);
     };
@@ -78,60 +37,6 @@ const WhatIncluded = ({ d, items, location }) => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-
-  useEffect(() => {
-    if (formSubmitted) {
-      const timer = setTimeout(() => {
-        setShowForm(false);
-        setFormSubmitted(false);
-        setIsFormSuccess(false);
-      }, 30000);
-      return () => clearTimeout(timer);
-    }
-  }, [formSubmitted]);
-
-  const renderIframe = (
-    <div className="bg-[#F7F7F7] p-4 rounded-3xl shadow-md w-full max-w-[500px] mt-4 mx-auto relative min-h-[220px]">
-      {isIframeLoading && (
-        <div className="absolute inset-0 flex justify-center items-center bg-white rounded-3xl z-10">
-          <div className="w-12 h-12 border-4 border-[#FC5B67] border-t-transparent rounded-full animate-spin"></div>
-        </div>
-      )}
-      <iframe
-        src="https://link.jbenquet.com/widget/form/5DhwvsBVdiF5zlwzXGtS"
-        style={{
-          width: "100%",
-          height: isFormSuccess ? "260px" : "575px",
-          border: "none",
-          borderRadius: "36px",
-          display: isIframeLoading ? "none" : "block",
-          transition: "height 0.3s ease-in-out",
-        }}
-        id="inline-5DhwvsBVdiF5zlwzXGtS"
-        data-layout='{"id":"INLINE"}'
-        data-trigger-type="alwaysShow"
-        data-trigger-value=""
-        data-activation-type="alwaysActivated"
-        data-activation-value=""
-        data-deactivation-type="neverDeactivate"
-        data-deactivation-value=""
-        data-form-name="Download PDF"
-        data-height="575"
-        data-layout-iframe-id="inline-5DhwvsBVdiF5zlwzXGtS"
-        data-form-id="5DhwvsBVdiF5zlwzXGtS"
-        title="Download PDF"
-        onLoad={() => {
-          if (formSubmitted) {
-            setIsFormSuccess(true);
-          } else {
-            setFormSubmitted(true);
-          }
-          setIsIframeLoading(false);
-        }}
-      ></iframe>
-      <script src="https://link.jbenquet.com/js/form_embed.js"></script>
-    </div>
-  );
 
   return (
     <div className="bg-[#FFDA7F] max-sm:mx-0 max-sm:px-0 max-sm:w-full">
@@ -162,22 +67,6 @@ const WhatIncluded = ({ d, items, location }) => {
             >
               {isHondurasLocation ? "APPLY NOW" : "GET STARTED"}
             </button>
-
-            {!showForm && showPdfButton && (
-              <button
-                type="button"
-                className="md:max-w-[402px] max-w-[250px] w-full px-6 py-2 md:py-4 rounded-full bg-[#FF9500] border-[2px] border-[#FF9500] hover:bg-transparent transition duration-300 ease-in-out text-[#F7F7F7] font-Montserrat lg:text-[32px] md:text-2xl text-base font-extrabold leading-normal hover:text-[#FC5B67] whitespace-nowrap max-sm:text-xs max-sm:py-2 max-sm:max-w-[180px] max-sm:px-2"
-                onClick={() => {
-                  setShowForm(true);
-                  setIsIframeLoading(true);
-                  setIsFormSuccess(false);
-                }}
-              >
-                FREE LOCATION PDF
-              </button>
-            )}
-
-            {showForm && !isMobile && renderIframe}
           </div>
         </div>
 

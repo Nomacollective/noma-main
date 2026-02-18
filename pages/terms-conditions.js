@@ -211,7 +211,7 @@ const TermsConditions = () => {
         <p>
           Due to the above it is HIGHLY recommended that all clients purchase
           “trip cancellation insurance” in order to cover a possible
-          cancellation of 60 days or less of your itinerary.
+          cancellation of 90 days or less of your itinerary.
         </p>
         <p>
           Noma Collective reserves the right to cancel your booking or reject a

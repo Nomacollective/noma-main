@@ -15,6 +15,12 @@ const AccomodationCard = ({ item, location }) => {
     location?.heading?.toLowerCase()?.includes("monserrat") ||
     location?.city?.toLowerCase()?.includes("monserrat");
 
+  // Check if this is Japan location
+  const isJapanLocation = location?.heading?.toLowerCase()?.includes("japan") ||
+    location?.city?.toLowerCase()?.includes("osaka") ||
+    location?.city?.toLowerCase()?.includes("tokyo") ||
+    location?.country?.toLowerCase()?.includes("japan");
+
   return (
     <div className="mx-auto w-[328px] cursor-pointer hover:scale-[1.02] transition duration-300 ease-in-out flex flex-col gap-2 max-sm:px-2 max-sm:py-4">
       <div className="flex gap-2">
@@ -76,12 +82,14 @@ const AccomodationCard = ({ item, location }) => {
                   ? "https://www.noma-collective-bookings.com/waitlist"
                   : isHondurasLocation
                   ? "https://noma-family-edition.carrd.co/"
+                  : isJapanLocation
+                  ? "https://japan-noma-application.carrd.co/"
                   : "https://lp.noma-collective.com/schedule-your-meeting-page",
-                isHondurasLocation && !zeroSpots ? "_blank" : "_self"
+                (isHondurasLocation || isJapanLocation) && !zeroSpots ? "_blank" : "_self"
               )
             }
           >
-            {zeroSpots ? "JOIN WAITLIST" : isHondurasLocation ? "APPLY NOW" : "BOOK YOUR TRIP"}
+            {zeroSpots ? "JOIN WAITLIST" : (isHondurasLocation || isJapanLocation) ? "APPLY NOW" : "BOOK YOUR TRIP"}
           </button>
         )}
       </div>

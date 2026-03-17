@@ -29,6 +29,12 @@ const WhatIncluded = ({ d, items, location }) => {
     location?.heading?.toLowerCase()?.includes("monserrat") ||
     location?.city?.toLowerCase()?.includes("monserrat");
 
+  // Check if this is Japan location
+  const isJapanLocation = location?.heading?.toLowerCase()?.includes("japan") ||
+    location?.city?.toLowerCase()?.includes("osaka") ||
+    location?.city?.toLowerCase()?.includes("tokyo") ||
+    location?.country?.toLowerCase()?.includes("japan");
+
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 640);
@@ -60,12 +66,14 @@ const WhatIncluded = ({ d, items, location }) => {
                 window.open(
                   isHondurasLocation 
                     ? "https://noma-family-edition.carrd.co/"
+                    : isJapanLocation
+                    ? "https://japan-noma-application.carrd.co/"
                     : "https://lp.noma-collective.com/schedule-your-meeting-page",
-                  isHondurasLocation ? "_blank" : "_self"
+                  (isHondurasLocation || isJapanLocation) ? "_blank" : "_self"
                 )
               }
             >
-              {isHondurasLocation ? "APPLY NOW" : "GET STARTED"}
+              {(isHondurasLocation || isJapanLocation) ? "APPLY NOW" : "GET STARTED"}
             </button>
           </div>
         </div>

@@ -3,29 +3,59 @@ import BlogOpenSection from "@/components/blogdetail/BlogOpenSection";
 import OpenBlogInterested from "@/components/blogdetail/OpenBlogInterested";
 import Layout from "@/components/common/Layout";
 import PageSEO from "@/components/common/PageSEO";
-import { getAllBlogs, getBlogById } from "@/lib/api";
+import { getBlogById, fetchGraphQL } from "@/lib/api";
 import React from "react";
 
 export const getServerSideProps = async ({ params }) => {
-  const blog = await getBlogById({ blogId: params.id });
-  const allBlogs = await getAllBlogs()
-  return {
-    props: {
-      blog,
-      allBlogs,
-    },
-  };
+  try {
+    const blog = await getBlogById({ blogId: params.id });
+    
+    // Get related blogs from the same category without making another full API call
+    // We'll fetch just the blogs we need for the "interesting blogs" section
+    const relatedBlogsQuery = `
+    {
+      blogCollection(where: {category: "${blog?.blog?.category || ''}", sys: {id_not: "${params.id}"}}, limit: 3) {
+        items {
+          sys {
+            id
+          }
+          title
+          category
+          excerpt
+          cardImage {
+            url
+            title
+          }
+        }
+      }
+    }`;
+    
+    const relatedBlogs = blog?.blog?.category ? await fetchGraphQL(relatedBlogsQuery) : { data: { blogCollection: { items: [] } } };
+    
+    return {
+      props: {
+        blog: blog || { blog: null },
+        relatedBlogs: relatedBlogs?.data?.blogCollection?.items || [],
+      },
+    };
+  } catch (error) {
+    console.error('Error fetching blog data:', error);
+    return {
+      props: {
+        blog: { blog: null },
+        relatedBlogs: [],
+      },
+    };
+  }
 }
 
-const Blog = ({ blog, allBlogs }) => {
-  const sortedBlogs = allBlogs.blogCollection.items.filter((item) => item.title !== blog.blog.title) // Removing an existing blog
-  const interestingBlogs = sortedBlogs.filter((item) => item.category === blog.blog.category).slice(0, 3);
+const Blog = ({ blog, relatedBlogs }) => {
   return (
     <Layout>
       <PageSEO title="Blogs" />
       <BlogOpenHero />
       <BlogOpenSection blog={blog?.blog} />
-      <OpenBlogInterested interestingBlogs={interestingBlogs} />
+      <OpenBlogInterested interestingBlogs={relatedBlogs} />
     </Layout>
   );
 };

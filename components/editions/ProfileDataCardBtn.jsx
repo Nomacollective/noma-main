@@ -7,7 +7,7 @@ const ProfileDataCardBtn = ({ item, value }) => {
     <>
       <button
         type="submit"
-        className="px-3 py-1 rounded-full text-[#313131] font-Montserrat text-sm xl:text-base font-normal leading-normal"
+        className="px-3 py-1 rounded-full text-[#313131] font-Montserrat text-sm xl:text-base font-normal leading-normal whitespace-nowrap"
         style={{ backgroundColor: BgColor }}
       >
         {item.btn1}

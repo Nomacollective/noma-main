@@ -14,6 +14,7 @@ const SearchInput = ({
   tempFilter,
   typeFilter,
   continentFilterItems,
+  hasLocations = true, // New prop to indicate if locations are available
 }) => {
   const [filterOpen, setFilterOpen] = useState(false);
   const filters = {
@@ -94,11 +95,15 @@ const SearchInput = ({
         </article>
         <article className="sm:max-w-[200px] sm:w-full w-[110px] border-l border-light-grey bg-pastel-yellow rounded-r-[57px] h-full flex items-center py-4 pr-[15px]">
           <button
-            onClick={onSurpriseMeClick}
-            className="text-[#666] text-[10px] gap-1 sm:gap-5 sm:text-[13px] font-Montserrat font-normal leading-normal flex items-center justify-end text-center w-full"
+            onClick={hasLocations ? onSurpriseMeClick : undefined}
+            disabled={!hasLocations}
+            className={`text-[#666] text-[10px] gap-1 sm:gap-5 sm:text-[13px] font-Montserrat font-normal leading-normal flex items-center justify-end text-center w-full ${
+              !hasLocations ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'
+            }`}
+            title={!hasLocations ? 'No locations available at the moment' : 'Find a random location'}
           >
             <span className="text-center text-[8px] sm:text-[12px]">
-              Surprise me
+              {hasLocations ? 'Surprise me' : 'No locations'}
             </span>
             <SearchIcon />
           </button>

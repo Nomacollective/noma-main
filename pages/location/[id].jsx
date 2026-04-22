@@ -181,7 +181,12 @@ const Editions = ({ location }) => {
   };
   return (
     <Layout>
-      <PageSEO title="Location" />
+      <PageSEO
+        title={locationMapped?.heading}
+        description={locationMapped?.description}
+        image={locationMapped?.hero}
+        url={`https://www.noma-collective.com/location/${location?.contentTypeLocation?.sys?.id}`}
+      />
       <div
         style={{
           background: `url(${locationMapped?.hero})`,

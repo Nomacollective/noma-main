@@ -25,6 +25,8 @@ const AdsSite = ({ locations }) => {
     "Barcelona",
     "Brazil",
     "Lisbon",
+    "Puerto Escondido",
+    "Oaxaca",
   ];
   const uniqueCities = new Set();
   const locationItems = locationlist.filter((location) => {

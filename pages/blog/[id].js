@@ -52,7 +52,12 @@ export const getServerSideProps = async ({ params }) => {
 const Blog = ({ blog, relatedBlogs }) => {
   return (
     <Layout>
-      <PageSEO title="Blogs" />
+      <PageSEO
+        title={blog?.blog?.title || "Blog"}
+        description={blog?.blog?.excerpt || ""}
+        image={blog?.blog?.cardImage?.url || ""}
+        url={typeof window !== "undefined" ? window.location.href : ""}
+      />
       <BlogOpenHero />
       <BlogOpenSection blog={blog?.blog} />
       <OpenBlogInterested interestingBlogs={relatedBlogs} />

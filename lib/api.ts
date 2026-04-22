@@ -113,6 +113,7 @@ const GET_BLOG_BY_ID = (blogId: string) => `
   blog(id: "${blogId}") {
     title
     category
+    excerpt
     cardImage {
       url
     }
